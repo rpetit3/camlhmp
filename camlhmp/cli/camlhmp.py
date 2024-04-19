@@ -111,8 +111,8 @@ def camlhmp(
     print(f"[italic]    --input {input}[/italic]", file=sys.stderr)
     print(f"[italic]    --yaml {yaml}[/italic]", file=sys.stderr)
     print(f"[italic]    --targets {targets}[/italic]", file=sys.stderr)
-    print(f"[italic]    --min_pident {min_pident}[/italic]", file=sys.stderr)
-    print(f"[italic]    --min_coverage {min_coverage}[/italic]\n", file=sys.stderr)
+    print(f"[italic]    --min-pident {min_pident}[/italic]", file=sys.stderr)
+    print(f"[italic]    --min-coverage {min_coverage}[/italic]\n", file=sys.stderr)
 
     profile_hits = None
     if framework['engine']['tool'] == "blastn":
