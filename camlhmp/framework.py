@@ -1,6 +1,7 @@
 """
 A set of functions for working with the caml framework.
 """
+
 import logging
 
 from rich import print
@@ -8,6 +9,7 @@ from rich.panel import Panel
 from rich.text import Text
 
 from camlhmp.utils import parse_yaml
+
 
 def read_framework(yamlfile: str) -> dict:
     """
@@ -53,18 +55,21 @@ def get_profiles(framework: dict) -> dict:
     # Save the profiles and their targets
     for profile in framework["profiles"]:
         profiles[profile["name"]] = []
-        for target in profile['targets']:
+        for target in profile["targets"]:
             if target in aliases:
-                profiles[profile["name"]] = [*profiles[profile["name"]], *aliases[target]]
-            elif target in framework['targets']:
+                profiles[profile["name"]] = [
+                    *profiles[profile["name"]],
+                    *aliases[target],
+                ]
+            elif target in framework["targets"]:
                 profiles[profile["name"]].append(target)
             else:
                 raise ValueError(f"Target {target} not found in framework")
 
     # Debugging information
     logging.debug("camlhmp.framework.get_profiles")
-    logging.debug(f"Aliases: {framework["aliases"]}")
-    logging.debug(f"Targets: {framework["targets"]}")
+    logging.debug(f"Aliases: {framework['aliases']}")
+    logging.debug(f"Targets: {framework['targets']}")
     logging.debug(f"Profiles: {profiles}")
 
     return profiles

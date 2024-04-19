@@ -12,10 +12,10 @@ from rich.logging import RichHandler
 from rich.table import Table
 
 import camlhmp
-from camlhmp.engines.blast import run_blastn, get_blast_target_hits
-from camlhmp.framework import read_framework, get_profiles, check_profiles
-from camlhmp.visuals.framework import describe_framework
+from camlhmp.engines.blast import get_blast_target_hits, run_blastn
+from camlhmp.framework import check_profiles, get_profiles, read_framework
 from camlhmp.utils import validate_file
+from camlhmp.visuals.framework import describe_framework
 
 DB_PATH = str(Path(__file__).parent.absolute()).replace("bin", "data")
 
@@ -31,7 +31,7 @@ click.rich_click.OPTION_GROUPS = {
                 "--input",
                 "--yaml",
                 "--targets",
-            ]
+            ],
         },
         {
             "name": "Filtering Options",
@@ -55,8 +55,12 @@ click.rich_click.OPTION_GROUPS = {
 
 @click.command()
 @click.version_option(camlhmp.__version__, "--version", "-V")
-@click.option("--input", "-i", required=True, help="Input file in FASTA format to classify")
-@click.option("--yaml", "-y", required=True, help="YAML file documenting the targets and profiles")
+@click.option(
+    "--input", "-i", required=True, help="Input file in FASTA format to classify"
+)
+@click.option(
+    "--yaml", "-y", required=True, help="YAML file documenting the targets and profiles"
+)
 @click.option("--targets", "-t", required=True, help="Query targets in FASTA format")
 @click.option(
     "--min-pident",
@@ -104,10 +108,13 @@ def camlhmp(
 
     # Read the YAML file
     framework = read_framework(yaml_path)
-    #describe_framework(framework)
+    # describe_framework(framework)
 
     console = rich.console.Console(stderr=True)
-    print("[italic]Running [deep_sky_blue1]camlhmp[/deep_sky_blue1] with following parameters:[/italic]", file=sys.stderr)
+    print(
+        "[italic]Running [deep_sky_blue1]camlhmp[/deep_sky_blue1] with following parameters:[/italic]",
+        file=sys.stderr,
+    )
     print(f"[italic]    --input {input}[/italic]", file=sys.stderr)
     print(f"[italic]    --yaml {yaml}[/italic]", file=sys.stderr)
     print(f"[italic]    --targets {targets}[/italic]", file=sys.stderr)
@@ -115,11 +122,13 @@ def camlhmp(
     print(f"[italic]    --min-coverage {min_coverage}[/italic]\n", file=sys.stderr)
 
     profile_hits = None
-    if framework['engine']['tool'] == "blastn":
+    if framework["engine"]["tool"] == "blastn":
         # Run BLASTN
         print("[italic]Running BLASTN...[/italic]", file=sys.stderr)
-        blast_stdout, blast_stderr = run_blastn(input_path, targets_path, min_pident, min_coverage)
-        target_results = get_blast_target_hits(framework['targets'], blast_stdout)
+        blast_stdout, blast_stderr = run_blastn(
+            input_path, targets_path, min_pident, min_coverage
+        )
+        target_results = get_blast_target_hits(framework["targets"], blast_stdout)
 
         print("[italic]Processing hits...[/italic]", file=sys.stderr)
         profiles = get_profiles(framework)
@@ -134,6 +143,7 @@ def camlhmp(
         for profile, status in profile_hits.items():
             profile_table.add_row(profile, str(status))
         console.print(profile_table)
+
 
 def main():
     if len(sys.argv) == 1:
