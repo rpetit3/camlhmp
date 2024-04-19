@@ -1,0 +1,49 @@
+%YAML 1.2
+---
+metadata:
+  name: "SCCmec Typing"
+  description: "A partial schema for SCCmec typing"
+  author: "Robert Petit"
+  version: "0.1"
+engine:
+  tool: blastn
+targets:
+  - "ccrA1"
+  - "ccrA2"
+  - "ccrA3"
+  - "ccrB1"
+  - "ccrB2"
+  - "ccrB3"
+  - "IS431"
+  - "IS1272"
+  - "mecA"
+  - "mecI"
+  - "mecR1"
+aliases:
+  - name: "ccr Type 1"
+    targets: ["ccrA1", "ccrB1"]
+  - name: "ccr Type 2"
+    targets: ["ccrA2", "ccrB2"]
+  - name: "ccr Type 3"
+    targets: ["ccrA3", "ccrB3"]
+  - name: "mec Class A"
+    targets: ["IS431", "mecA", "mecR1", "mecI"]
+  - name: "mec Class B"
+    targets: ["IS431", "mecA", "mecR1", "IS1272"]
+profiles:
+  - name: "I"
+    targets:
+      - "ccr Type 1"
+      - "mec Class B"
+  - name: "II"
+    targets:
+      - "ccr Type 2"
+      - "mec Class A"
+  - name: "III"
+    targets:
+      - "ccr Type 3"
+      - "mec Class A"
+  - name: "IV"
+    targets:
+      - "ccr Type 2"
+      - "mec Class B"
