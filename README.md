@@ -1,7 +1,12 @@
-# camlhmp
-
 camlhmp - Classification through yAML Heuristic Mapping Protocol (__yeah, it's a stretch to
 make sure 🐪 is in the name!__)
+
+# camlhmp
+
+`camlhmp` is a tool for generating organism typing tools from YAML schemas. The idea came
+up from discussions with Tim Read about the need for a tool that would allow researchers
+to more easily define typing schemas for their organisms of interest. YAML seemed like a
+a nice format for this due to its simplicity and readability.
 
 _`camlhmp` is under active development, and any feedback is appreciated._
 
@@ -22,6 +27,15 @@ I think `camlhmp` will help me to keep them up-to-date and consistent.
 
 ## Installation
 
+`camlhmp` will be made available through PyPI and Bioconda. For now, you can install it
+from the GitHub repository with the following command:
+
+```bash
+conda create -n camlhmp python poetry
+conda activate camlhmp
+poetry add git+ssh://git@github.com:rpetit3/camlhmp.git
+camlhmp --help
+```
 
 ## YAML Schema Structure
 
