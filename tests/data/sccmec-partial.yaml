@@ -1,12 +1,16 @@
 %YAML 1.2
 ---
+# metadata provides information about the schema
 metadata:
-  name: "SCCmec Typing"
-  description: "A partial schema for SCCmec typing"
-  author: "Robert Petit"
-  version: "0.1"
+  name: "SCCmec Typing"                              # name of the schema
+  description: "A partial schema for SCCmec typing"  # description of the schema
+  version: "0.1"                                     # version of the schema
+  curators:                                          # A list of curators of the schema
+    - "Robert Petit"
+# engine provides information about the tool and parameters used
 engine:
-  tool: blastn
+  tool: blastn # The tool used to generate the data
+# targets provides a list of sequence targets (primers, genes, proteins, etc...)
 targets:
   - "ccrA1"
   - "ccrA2"
@@ -19,9 +23,10 @@ targets:
   - "mecA"
   - "mecI"
   - "mecR1"
+# aliases allow for grouping of targets under a common name
 aliases:
-  - name: "ccr Type 1"
-    targets: ["ccrA1", "ccrB1"]
+  - name: "ccr Type 1"           # name of the alias
+    targets: ["ccrA1", "ccrB1"]  # list of targets that are part of the alias
   - name: "ccr Type 2"
     targets: ["ccrA2", "ccrB2"]
   - name: "ccr Type 3"
@@ -30,9 +35,10 @@ aliases:
     targets: ["IS431", "mecA", "mecR1", "mecI"]
   - name: "mec Class B"
     targets: ["IS431", "mecA", "mecR1", "IS1272"]
+# profiles includes the final typing designations based on targets and aliases 
 profiles:
-  - name: "I"
-    targets:
+  - name: "I"          # name of the profile
+    targets:           # list of targets that are part of the profile
       - "ccr Type 1"
       - "mec Class B"
   - name: "II"
