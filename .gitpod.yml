@@ -6,7 +6,7 @@ tasks:
       . /opt/conda/etc/profile.d/conda.sh
       conda activate base
       sleep 5
-      mamba env create --name camlhmp --file /workspace/camlhmp/environment.yaml
+      mamba env create --name camlhmp --file /workspace/camlhmp/environment.yml
       conda activate camlhmp
       mamba install -y -c conda-forge -c bioconda just pre-commit
       mkdir -p .vscode
