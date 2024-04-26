@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "camlhmp"
-version = "0.0.1"
+version = "0.0.2"
 description = "Classification through yAML Heuristic Mapping Protocol"
 authors = [
     "Robert A. Petit III <robbie.petit@gmail.com>",
@@ -13,6 +13,7 @@ keywords = ["bioinformatics", "bacteria", "serotype", "genotype"]
 
 [tool.poetry.scripts]
 camlhmp = "camlhmp.cli.camlhmp:main"
+camlhmp-extract = "camlhmp.cli.extract:main"
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -20,6 +21,7 @@ pyyaml = "^6.0.1"
 executor = "^23.2"
 rich = "^13.7.1"
 rich-click = "^1.7.4"
+biopython = "^1.83"
 
 [tool.poetry.group.dev.dependencies]
 executor = "^23.2"

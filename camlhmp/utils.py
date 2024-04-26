@@ -1,3 +1,4 @@
+import csv
 import logging
 import sys
 from pathlib import Path
@@ -6,6 +7,7 @@ from sys import platform
 from typing import Union
 
 import yaml
+from Bio import SeqIO
 from executor import ExternalCommand, ExternalCommandFailed
 from rich import print
 
@@ -95,6 +97,46 @@ def validate_file(filename: str) -> str:
     if not f.exists():
         raise FileNotFoundError(f"File not found: {filename}")
     return f.absolute()
+
+
+def parse_seq(seqfile: str, format: str) -> SeqIO:
+    """
+    Parse a sequence file.
+
+    Args:
+        seqfile (str): input file to be read
+        format (str): format of the input file
+
+    Returns:
+        SeqIO: the parsed file as a SeqIO object
+    """
+    with open(seqfile, "rt") as fh:
+        return SeqIO.read(fh, format)
+
+
+def parse_table(
+    csvfile: str, delimiter: str = "\t", has_header: bool = True
+) -> Union[list, dict]:
+    """
+    Parse a delimited file.
+
+    Args:
+        csvfile (str): input delimited file to be parsed
+        delimiter (str, optional): delimter used to separate column values. Defaults to '\t'.
+        has_header (bool, optional): the first line should be treated as a header. Defaults to True.
+
+    Returns:
+        Union[list, dict]: A dict is returned if a header is present, otherwise a list is returned
+    """
+    data = []
+    with open(csvfile, "rt") as fh:
+        for row in (
+            csv.DictReader(fh, delimiter=delimiter)
+            if has_header
+            else csv.reader(fh, delimiter=delimiter)
+        ):
+            data.append(row)
+    return data
 
 
 def parse_yaml(yamlfile: str) -> Union[list, dict]:

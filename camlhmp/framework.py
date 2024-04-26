@@ -54,17 +54,33 @@ def get_profiles(framework: dict) -> dict:
 
     # Save the profiles and their targets
     for profile in framework["profiles"]:
-        profiles[profile["name"]] = []
+        profiles[profile["name"]] = {
+            "targets": [],
+            "excludes": [],
+        }
         for target in profile["targets"]:
             if target in aliases:
-                profiles[profile["name"]] = [
-                    *profiles[profile["name"]],
+                profiles[profile["name"]]["targets"] = [
+                    *profiles[profile["name"]]["targets"],
                     *aliases[target],
                 ]
             elif target in framework["targets"]:
-                profiles[profile["name"]].append(target)
+                profiles[profile["name"]]["targets"].append(target)
             else:
                 raise ValueError(f"Target {target} not found in framework")
+
+        # Capture any targets that should cause a profile to fail
+        if "excludes" in profile:
+            for exclude in profile["excludes"]:
+                if exclude in aliases:
+                    profiles[profile["name"]]["excludes"] = [
+                        *profiles[profile["name"]]["excludes"],
+                        *aliases[exclude],
+                    ]
+                elif exclude in framework["targets"]:
+                    profiles[profile["name"]]["excludes"].append(exclude)
+                else:
+                    raise ValueError(f"Target {exclude} not found in framework")
 
     # Debugging information
     logging.debug("camlhmp.framework.get_profiles")
@@ -87,11 +103,21 @@ def check_profiles(profiles: dict, results: dict) -> dict:
         dict: the profiles and their outcome
     """
     profile_hits = {}
-    for profile, targets in profiles.items():
+    for profile, vals in profiles.items():
+        targets = vals["targets"]
+        excludes = vals["excludes"]
         profile_hits[profile] = {}
         matched_all_targets = True
         for target in targets:
             if not results[target]:
+                matched_all_targets = False
+
+        # Check if any of the excludes are present
+        for exclude in excludes:
+            if results[exclude]:
+                logging.debug(
+                    f"Excluded target {exclude} found, failing profile {profile}"
+                )
                 matched_all_targets = False
         profile_hits[profile] = matched_all_targets
 

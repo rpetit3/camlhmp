@@ -63,6 +63,7 @@ aliases:
 profiles:
   - name: ""
     targets: []
+    excludes: []
 ```
 
 From this schema we have a few sections:
@@ -119,10 +120,11 @@ reference.
 The `profiles` section defines specific combinations of targets and aliases to form distinct
 typing profiles.
 
-| Field   | Type   | Description                                    |
-|---------|--------|------------------------------------------------|
-| name    | string | The name of the profile                        |
-| targets | list   | A list of targets (can use aliases) that are part of the profile |
+| Field   | Type   | Description                                                             |
+|---------|--------|-------------------------------------------------------------------------|
+| name    | string | The name of the profile                                                 |
+| targets | list   | A list of targets (or aliases) that are part of the profile             |
+| excludes | list  | A list of targets (or aliases) that will automatically fail the profile |
 
 ### Example Schema: Partial SCCmec Typing
 
