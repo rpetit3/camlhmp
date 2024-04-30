@@ -108,7 +108,9 @@ def file_exists_error(filename: str, force: bool = False):
         force (bool, optional): force overwrite. Defaults to False.
     """
     if Path(filename).exists() and not force:
-        raise FileExistsError(f"Results already exists! Use --force to overwrite: {filename}")
+        raise FileExistsError(
+            f"Results already exists! Use --force to overwrite: {filename}"
+        )
 
 
 def parse_seq(seqfile: str, format: str) -> SeqIO:
@@ -163,7 +165,7 @@ def parse_yaml(yamlfile: str) -> Union[list, dict]:
     """
     with open(yamlfile, "rt") as fh:
         return yaml.safe_load(fh)
-    
+
 
 def write_tsv(data: list, output: str):
     """
@@ -175,6 +177,6 @@ def write_tsv(data: list, output: str):
     """
     logging.debug(f"Writing TSV results to {output}")
     with open(output, "w") as csvfile:
-        writer = csv.DictWriter(csvfile, delimiter="\t", fieldnames = data[0].keys())
+        writer = csv.DictWriter(csvfile, delimiter="\t", fieldnames=data[0].keys())
         writer.writeheader()
         writer.writerows(data)

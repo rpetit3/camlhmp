@@ -31,10 +31,9 @@ I think `camlhmp` will help me to keep them up-to-date and consistent.
 from the GitHub repository with the following command:
 
 ```bash
-conda create -n camlhmp python poetry
+conda create -n camlhmp -c conda-forge -c bioconda camlhmp
 conda activate camlhmp
-poetry add git+ssh://git@github.com:rpetit3/camlhmp.git
-camlhmp --help
+camlhmp
 ```
 
 ## YAML Schema Structure
@@ -45,25 +44,33 @@ expected schema structure:
 ```yaml
 %YAML 1.2
 ---
+# metadata: general information about the schema
 metadata:
-  name: ""
-  description: ""
-  version: ""
-  curators: []
+  id: ""          # unique identifier for the schema
+  name: ""        # name of the schema
+  description: "" # description of the schema
+  version: ""     # version of the schema
+  curators: []    # A list of curators of the schema
 
+# engine: specifies the computational tools and additional parameters used for sequence
+#         analysis.
 engine:
-  tool: ""
+  tool: "" # The tool used to generate the data
 
+# targets: Lists the specific sequence targets such as genes, proteins, or markers that the
+#          schema will analyze. These should be included in the associated sequence query data
 targets: []
 
+# aliases: groups multiple targets under a common name for easier reference
 aliases:
-  - name: ""
-    targets: []
+  - name: ""     # name of the alias
+    targets: []  # list of targets that are part of the alias
 
-profiles:
-  - name: ""
-    targets: []
-    excludes: []
+# types: define specific combinations of targets and aliases to form distinct types
+types:
+  - name: ""     # name of the profile
+    targets: []  # list of targets (can use aliases) that are part of the profile
+    excludes: [] # list of targets (or aliases) that will automatically fail the type
 ```
 
 From this schema we have a few sections:
@@ -82,6 +89,7 @@ The `metadata` section provides general information about the schema. This inclu
 
 | Field        | Type   | Description                                      |
 |--------------|--------|--------------------------------------------------|
+| id           | string | A unique identifier for the schema               |
 | name         | string | The name of the schema                           |
 | description  | string | A brief description of the schema                |
 | version      | string | The version of the schema                        |
@@ -115,16 +123,16 @@ reference.
 | name    | string | The name of the alias                          |
 | targets | list   | A list of targets that are part of the alias   |
 
-### profiles
+### types
 
-The `profiles` section defines specific combinations of targets and aliases to form distinct
-typing profiles.
+The `types` section defines specific combinations of targets and aliases to form distinct
+types.
 
-| Field   | Type   | Description                                                             |
-|---------|--------|-------------------------------------------------------------------------|
-| name    | string | The name of the profile                                                 |
-| targets | list   | A list of targets (or aliases) that are part of the profile             |
-| excludes | list  | A list of targets (or aliases) that will automatically fail the profile |
+| Field   | Type   | Description                                                          |
+|---------|--------|----------------------------------------------------------------------|
+| name    | string | The name of the profile                                              |
+| targets | list   | A list of targets (or aliases) that are part of the type             |
+| excludes | list  | A list of targets (or aliases) that will automatically fail the type |
 
 ### Example Schema: Partial SCCmec Typing
 
@@ -135,15 +143,18 @@ Here is an example of a partial schema for SCCmec typing:
 ---
 # metadata: general information about the schema
 metadata:
+  id: "sccmec_partial"                                # unique identifier for the schema
   name: "SCCmec Typing"                              # name of the schema
   description: "A partial schema for SCCmec typing"  # description of the schema
-  version: "0.1"                                     # version of the schema
+  version: "0.0.1"                                     # version of the schema
   curators:                                          # A list of curators of the schema
     - "Robert Petit"
+
 # engine: specifies the computational tools and additional parameters used for sequence
 #         analysis.
 engine:
   tool: blastn # The tool used to generate the data
+
 # targets: Lists the specific sequence targets such as genes, proteins, or markers that the
 #          schema will analyze. These should be included in the associated sequence query data
 targets:
@@ -158,6 +169,7 @@ targets:
   - "mecA"
   - "mecI"
   - "mecR1"
+
 # aliases: groups multiple targets under a common name for easier reference
 aliases:
   - name: "ccr Type 1"           # name of the alias
@@ -170,8 +182,9 @@ aliases:
     targets: ["IS431", "mecA", "mecR1", "mecI"]
   - name: "mec Class B"
     targets: ["IS431", "mecA", "mecR1", "IS1272"]
-# profiles: define specific combinations of targets and aliases to form distinct typing profiles
-profiles:
+
+# types: define specific combinations of targets and aliases to form distinct types
+types:
   - name: "I"          # name of the profile
     targets:           # list of targets (can use aliases) that are part of the profile
       - "ccr Type 1"
@@ -193,6 +206,130 @@ profiles:
 From this schema, `camlhmp` can generate a typing tool that can be used to analyze input
 assemblies. This is only a partial schema, as there are many more SCCmec types and subtypes.
 But using this schema it should be straight forward to add additional targets and profiles.
+
+## `camlhmp-blast`
+
+`camlhmp-blast` is a command that allows users to type their samples using a provided schema
+with BLAST algorithms.
+
+### Usage
+
+```bash
+ 🐪 camlhmp-blast 🐪 - Classify assemblies with a camlhmp schema using BLAST                          
+
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────╮
+│    --version       -V           Show the version and exit.                                  │
+│ *  --input         -i  TEXT     Input file in FASTA format to classify [required]           │
+│ *  --yaml          -y  TEXT     YAML file documenting the targets and types [required]      │
+│ *  --targets       -t  TEXT     Query targets in FASTA format [required]                    │
+│    --outdir        -o  PATH     Directory to write output [default: ./]                     │
+│    --prefix        -p  TEXT     Prefix to use for output files [default: camlhmp]           │
+│    --min-pident        INTEGER  Minimum percent identity to count a hit [default: 95]       │
+│    --min-coverage      INTEGER  Minimum percent coverage to count a hit [default: 95]       │
+│    --force                      Overwrite existing reports                                  │
+│    --verbose                    Increase the verbosity of output                            │
+│    --silent                     Only critical errors will be printed                        │
+│    --help                       Show this message and exit.                                 |
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### Output Files
+
+`camlhmp-blast` will generate three output files:
+
+| File Name              | Description                                     |
+|------------------------|-------------------------------------------------|
+| `{PREFIX}.tsv`         | A tab-delimited file with the predicted type    |
+| `{PREFIX}.blast.tsv`   | A tab-delimited file of all blast hits          |
+| `{PREFIX}.details.tsv` | A tab-delimited file with details for each type |
+
+#### Example {PREFIX}.tsv
+
+```tsv
+sample	type	targets	schema	version	comment
+saureus	V	ccrC1,IS431,IS431_1,IS431_2,mecA,mecR1	sccmec	1.0.0	
+```
+
+| Column  | Description                                      |
+|---------|--------------------------------------------------|
+| sample  | The sample name as determined by `--prefix`      |
+| type    | The predicted type                               |
+| targets | The targets for the given type that had a hit    |
+| schema  | The schema used to determine the type            |
+| version | The version of the schema used                   |
+| comment | A small comment about the result                 |
+
+#### Example {PREFIX}.blast.tsv
+
+```tsv
+qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore
+ccrC1	AB121219.1	100.000	100	1623	28612	1623	1623	0	0	1	1623	16132	17754	0.0	2998
+IS431_1	AB121219.1	100.000	100	791	28612	791	791	0	0	1	791	8221	9011	0.0	1461
+IS431_1	AB121219.1	99.704	100	675	28612	675	673	2	0	1	675	2693	3367	0.0	1236
+IS431_1	AB121219.1	98.519	100	675	28612	675	665	10	0	1	675	8951	8277	0.0	1192
+...
+```
+
+This is the standard BLAST output with `-outfmt 6`
+
+#### Example {PREFIX}.details.tsv
+
+```tsv
+sample	type	status	targets	missing	schema	version	comment
+type-v	I	False	IS431,mecA,mecR1	ccrA1,ccrB1,IS1272	sccmec	1.0.0	
+type-v	II	False	IS431,mecA,mecR1	ccrA2,ccrB2,mecI	sccmec	1.0.0	
+type-v	III	False	IS431,mecA,mecR1	ccrA3,ccrB3,mecI	sccmec	1.0.0	
+type-v	IV	False	IS431,mecA,mecR1	ccrA2,ccrB2,IS1272	sccmec	1.0.0	
+type-v	V	True	ccrC1,IS431_1,mecA,mecR1,IS431_2		sccmec	1.0.0	
+type-v	VI	False	IS431,mecA,mecR1	ccrA4,ccrB4,IS1272	sccmec	1.0.0	
+type-v	VII	False	ccrC1,IS431_1,mecA,mecR1,IS431_2	IS12960D	sccmec	1.0.0	
+type-v	VIII	False	IS431,mecA,mecR1	ccrA4,ccrB4,mecI	sccmec	1.0.0	Excluded target ccrC1 found, failing type VIII
+type-v	IX	False	IS431_1,mecA,mecR1,IS431_2	ccrA1,ccrB1	sccmec	1.0.0	
+type-v	X	False	IS431_1,mecA,mecR1,IS431_2	ccrA1,ccrB6	sccmec	1.0.0	
+type-v	XI	False	mecA,mecR1	ccrA1,ccrB3,blaZ,mecI	sccmec	1.0.0	
+type-v	XII	False	IS431_1,mecA,mecR1,IS431_2	ccrC2	sccmec	1.0.0	
+type-v	XIII	False	IS431,mecA,mecR1	ccrC2,mecI	sccmec	1.0.0	
+type-v	XIV	False	ccrC1,IS431,mecA,mecR1	mecI	sccmec	1.0.0	
+type-v	XV	False	IS431,mecA,mecR1	ccrA1,ccrB6,mecI	sccmec	1.0.0	
+```
+
+This file provides a detailed view of the results. The columns are:
+
+| Column  | Description                                        |
+|---------|----------------------------------------------------|
+| sample  | The sample name as determined by `--prefix`        |
+| type    | The predicted type                                 |
+| status  | The status of the type (True if failed)            |
+| targets | The targets for the given type that had a match    |
+| missing | The targets for the given type that were not found |
+| schema  | The schema used to determine the type              |
+| version | The version of the schema used                     |
+| comment | A small comment about the result                   |
+
+## `camlhmp-extract`
+
+`camlhmp-extract` is a command that allows users to extract targets from a set of references.
+You should think of this script as a "helper" script for curators. It allows you to maintain
+a TSV file with the targets and their positions in the reference sequences. `camlhmp-extract`
+will then extract the targets from the reference sequences and write them to a FASTA file.
+
+### Usage
+
+```bash
+ 🐪 camlhmp-extract 🐪 - Extract typing targets from a set of reference sequences
+
+╭─ Required Options ──────────────────────────────────────────────────────────────────────────╮
+│ *  --path     -i  TEXT  The path where input files are located [required]                   │
+│ *  --targets  -t  TEXT  A TSV of targets to extract in FASTA format [required]              │
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Additional Options ────────────────────────────────────────────────────────────────────────╮
+│ --outdir   -o  TEXT  The path to save the extracted targets                                 │
+│ --verbose            Increase the verbosity of output                                       │
+│ --silent             Only critical errors will be printed                                   │
+│ --version  -V        Show the version and exit.                                             │
+│ --help               Show this message and exit.                                            │
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ## Citations
 

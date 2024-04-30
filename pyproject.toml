@@ -12,6 +12,7 @@ repository = "https://github.com/rpetit3/camlhmp"
 keywords = ["bioinformatics", "bacteria", "serotype", "genotype"]
 
 [tool.poetry.scripts]
+camlhmp = "camlhmp.cli.camlhmp:main"
 camlhmp-blast = "camlhmp.cli.blast:main"
 camlhmp-extract = "camlhmp.cli.extract:main"
 

@@ -1,5 +1,5 @@
-import json
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -62,9 +62,21 @@ click.rich_click.OPTION_GROUPS = {
     "--input", "-i", required=True, help="Input file in FASTA format to classify"
 )
 @click.option(
-    "--yaml", "-y", required=True, help="YAML file documenting the targets and types"
+    "--yaml",
+    "-y",
+    required=True,
+    default=os.environ.get("CAML_YAML", ""),
+    show_default=True,
+    help="YAML file documenting the targets and types",
 )
-@click.option("--targets", "-t", required=True, help="Query targets in FASTA format")
+@click.option(
+    "--targets",
+    "-t",
+    required=True,
+    default=os.environ.get("CAML_TARGETS", ""),
+    show_default=True,
+    help="Query targets in FASTA format",
+)
 @click.option(
     "--outdir",
     "-o",
@@ -108,7 +120,7 @@ def camlhmp(
     verbose,
     silent,
 ):
-    """🐪 camlhmp ([i]camel hump[/i])🐪 - [u]C[/u]lassification through y[u]AML[/u] [u]H[/u]euristic [u]M[/u]apping [u]P[/u]rotocol"""
+    """🐪 camlhmp-blast 🐪 - Classify assemblies with a camlhmp schema using BLAST"""
     # Setup logs
     logging.basicConfig(
         format="%(asctime)s:%(name)s:%(levelname)s - %(message)s",
@@ -136,7 +148,9 @@ def camlhmp(
 
     # Output files
     result_tsv = f"{outdir}/{prefix}.tsv".replace("//", "/")
-    blast_tsv = f"{outdir}/{prefix}.{framework['engine']['tool']}.tsv".replace("//", "/")
+    blast_tsv = f"{outdir}/{prefix}.{framework['engine']['tool']}.tsv".replace(
+        "//", "/"
+    )
     details_tsv = f"{outdir}/{prefix}.details.tsv".replace("//", "/")
 
     # Make sure output files don't already exist
@@ -158,10 +172,13 @@ def camlhmp(
     print(f"[italic]    --min-pident {min_pident}[/italic]", file=sys.stderr)
     print(f"[italic]    --min-coverage {min_coverage}[/italic]\n", file=sys.stderr)
 
-    print(f"[italic]Starting camlhmp for {framework['metadata']['name']}...[/italic]", file=sys.stderr)
+    print(
+        f"[italic]Starting camlhmp for {framework['metadata']['name']}...[/italic]",
+        file=sys.stderr,
+    )
 
     # Verify the engine is a support blast subcommand
-    if framework['engine']['tool'] not in ["blastn"]:
+    if framework["engine"]["tool"] not in ["blastn"]:
         raise ValueError(
             f"Unsupported engine ({framework['engine']['tool']}), camlhmp-blast only supports blast"
         )
@@ -184,6 +201,8 @@ def camlhmp(
     type_table.add_column("sample", style="white")
     type_table.add_column("type", style="white")
     type_table.add_column("targets", style="cyan")
+    type_table.add_column("schema", style="cyan")
+    type_table.add_column("version", style="cyan")
     type_table.add_column("comment", style="cyan")
 
     final_type = []
@@ -193,19 +212,23 @@ def camlhmp(
     for target, status in target_results.items():
         if status:
             final_targets.append(target)
-    
+
     # Get the final type(s)
     final_details = []
     for type, vals in type_hits.items():
-        final_details.append({
-            "sample": prefix,
-            "type": type,
-            "status": vals['status'],
-            "targets": ",".join(vals['targets']),
-            "missing": ",".join(vals['missing']),
-            "comment": vals['comment'],
-        })
-        if vals['status']:
+        final_details.append(
+            {
+                "sample": prefix,
+                "type": type,
+                "status": vals["status"],
+                "targets": ",".join(vals["targets"]),
+                "missing": ",".join(vals["missing"]),
+                "schema": framework["metadata"]["id"],
+                "version": framework["metadata"]["version"],
+                "comment": vals["comment"],
+            }
+        )
+        if vals["status"]:
             final_type.append(type)
 
     # Generate a comment based on the results
@@ -220,7 +243,14 @@ def camlhmp(
         final_type = ["multiple"]
 
     final_type = ",".join(final_type) if len(final_type) > 0 else "-"
-    type_table.add_row(prefix, final_type, ",".join(final_targets), comment)
+    type_table.add_row(
+        prefix,
+        final_type,
+        ",".join(final_targets),
+        framework["metadata"]["id"],
+        framework["metadata"]["version"],
+        comment,
+    )
     console.print(type_table)
 
     # Write the results
@@ -231,17 +261,28 @@ def camlhmp(
         "sample": prefix,
         "type": final_type,
         "targets": ",".join(final_targets),
+        "schema": framework["metadata"]["id"],
+        "version": framework["metadata"]["version"],
         "comment": comment,
     }
-    print(f"[italic]Final predicted type written to [deep_sky_blue1]{result_tsv}[/deep_sky_blue1][/italic]", file=sys.stderr)
+    print(
+        f"[italic]Final predicted type written to [deep_sky_blue1]{result_tsv}[/deep_sky_blue1][/italic]",
+        file=sys.stderr,
+    )
     write_tsv([final_result], result_tsv)
 
     # Write details for each type
-    print(f"[italic]Results against each type written to [deep_sky_blue1]{details_tsv}[/deep_sky_blue1][/italic]", file=sys.stderr)
+    print(
+        f"[italic]Results against each type written to [deep_sky_blue1]{details_tsv}[/deep_sky_blue1][/italic]",
+        file=sys.stderr,
+    )
     write_tsv(final_details, details_tsv)
 
     # Write blast results
-    print(f"[italic]{framework['engine']['tool']} results written to [deep_sky_blue1]{blast_tsv}[/deep_sky_blue1][/italic]", file=sys.stderr)
+    print(
+        f"[italic]{framework['engine']['tool']} results written to [deep_sky_blue1]{blast_tsv}[/deep_sky_blue1][/italic]",
+        file=sys.stderr,
+    )
     write_tsv(blast_stdout, blast_tsv)
 
 

@@ -107,26 +107,28 @@ def check_types(types: dict, results: dict) -> dict:
         targets = vals["targets"]
         excludes = vals["excludes"]
         type_hits[type] = {
-            'status': False,
-            'targets': [],
-            'missing': [],
-            'comment': "",
+            "status": False,
+            "targets": [],
+            "missing": [],
+            "comment": "",
         }
         matched_all_targets = True
         for target in targets:
             if results[target]:
-                type_hits[type]['targets'].append(target)
+                type_hits[type]["targets"].append(target)
             else:
-                type_hits[type]['missing'].append(target)
+                type_hits[type]["missing"].append(target)
                 matched_all_targets = False
 
         # Check if any of the excludes are present
         for exclude in excludes:
             if results[exclude]:
-                type_hits[type]['comment'] = f"Excluded target {exclude} found, failing type {type}"
+                type_hits[type][
+                    "comment"
+                ] = f"Excluded target {exclude} found, failing type {type}"
                 logging.debug(f"Excluded target {exclude} found, failing type {type}")
                 matched_all_targets = False
-        type_hits[type]['status'] = matched_all_targets
+        type_hits[type]["status"] = matched_all_targets
 
     # Debugging information
     logging.debug("camlhmp.framework.check_types")
