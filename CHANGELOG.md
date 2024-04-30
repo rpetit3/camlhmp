@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v0.1.0 rpetit3/camlhmp "" 2024/04/30
+## v0.1.0 rpetit3/camlhmp "Little baby legs" 2024/04/30
 
 ### `Added`
 
