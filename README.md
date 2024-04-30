@@ -1,4 +1,4 @@
-camlhmp - Classification through yAML Heuristic Mapping Protocol (__yeah, it's a stretch to
+🐪 camlhmp 🐪 - Classification through yAML Heuristic Mapping Protocol (__yeah, it's a stretch to
 make sure 🐪 is in the name!__)
 
 # camlhmp
