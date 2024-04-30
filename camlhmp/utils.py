@@ -99,6 +99,18 @@ def validate_file(filename: str) -> str:
     return f.absolute()
 
 
+def file_exists_error(filename: str, force: bool = False):
+    """
+    Raise a FileExistsError if the file exists and force is False
+
+    Args:
+        filename (str): the file to check
+        force (bool, optional): force overwrite. Defaults to False.
+    """
+    if Path(filename).exists() and not force:
+        raise FileExistsError(f"Results already exists! Use --force to overwrite: {filename}")
+
+
 def parse_seq(seqfile: str, format: str) -> SeqIO:
     """
     Parse a sequence file.
@@ -151,3 +163,18 @@ def parse_yaml(yamlfile: str) -> Union[list, dict]:
     """
     with open(yamlfile, "rt") as fh:
         return yaml.safe_load(fh)
+    
+
+def write_tsv(data: list, output: str):
+    """
+    Write the dictionary to a TSV file.
+
+    Args:
+        data (list): a list of dicts to be written
+        output (str): The output file
+    """
+    logging.debug(f"Writing TSV results to {output}")
+    with open(output, "w") as csvfile:
+        writer = csv.DictWriter(csvfile, delimiter="\t", fieldnames = data[0].keys())
+        writer.writeheader()
+        writer.writerows(data)

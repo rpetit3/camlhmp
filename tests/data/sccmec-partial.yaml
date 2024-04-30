@@ -35,8 +35,8 @@ aliases:
     targets: ["IS431", "mecA", "mecR1", "mecI"]
   - name: "mec Class B"
     targets: ["IS431", "mecA", "mecR1", "IS1272"]
-# profiles includes the final typing designations based on targets and aliases 
-profiles:
+# types includes the final typing designations based on targets and aliases 
+types:
   - name: "I"          # name of the profile
     targets:           # list of targets that are part of the profile
       - "ccr Type 1"

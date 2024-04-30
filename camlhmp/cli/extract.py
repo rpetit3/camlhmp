@@ -54,7 +54,7 @@ click.rich_click.OPTION_GROUPS = {
     "--outdir",
     "-o",
     help="The path to save the extracted targets",
-    default="./camhmp-extract",
+    default="./camlhmp-extract",
 )
 @click.option("--verbose", is_flag=True, help="Increase the verbosity of output")
 @click.option("--silent", is_flag=True, help="Only critical errors will be printed")

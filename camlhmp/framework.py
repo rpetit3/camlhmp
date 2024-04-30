@@ -24,15 +24,15 @@ def read_framework(yamlfile: str) -> dict:
     return parse_yaml(yamlfile)
 
 
-def get_profiles(framework: dict) -> dict:
+def get_types(framework: dict) -> dict:
     """
-    Get the profiles from the framework.
+    Get the types from the framework.
 
     Example framework:
     aliases:
     - name: "ccr Type 2"
       targets: ["ccrA1", "ccrB1"]
-    profiles:
+    types:
     - name: "I"
       targets:
         - "ccr Type 1"
@@ -42,9 +42,9 @@ def get_profiles(framework: dict) -> dict:
         framework (dict): the parsed YAML framework
 
     Returns:
-        dict: the profiles with associated targets
+        dict: the types with associated targets
     """
-    profiles = {}
+    types = {}
     aliases = {}
 
     # If aliases are present, save their targets
@@ -52,20 +52,20 @@ def get_profiles(framework: dict) -> dict:
         for alias in framework["aliases"]:
             aliases[alias["name"]] = alias["targets"]
 
-    # Save the profiles and their targets
-    for profile in framework["profiles"]:
-        profiles[profile["name"]] = {
+    # Save the types and their targets
+    for profile in framework["types"]:
+        types[profile["name"]] = {
             "targets": [],
             "excludes": [],
         }
         for target in profile["targets"]:
             if target in aliases:
-                profiles[profile["name"]]["targets"] = [
-                    *profiles[profile["name"]]["targets"],
+                types[profile["name"]]["targets"] = [
+                    *types[profile["name"]]["targets"],
                     *aliases[target],
                 ]
             elif target in framework["targets"]:
-                profiles[profile["name"]]["targets"].append(target)
+                types[profile["name"]]["targets"].append(target)
             else:
                 raise ValueError(f"Target {target} not found in framework")
 
@@ -73,56 +73,63 @@ def get_profiles(framework: dict) -> dict:
         if "excludes" in profile:
             for exclude in profile["excludes"]:
                 if exclude in aliases:
-                    profiles[profile["name"]]["excludes"] = [
-                        *profiles[profile["name"]]["excludes"],
+                    types[profile["name"]]["excludes"] = [
+                        *types[profile["name"]]["excludes"],
                         *aliases[exclude],
                     ]
                 elif exclude in framework["targets"]:
-                    profiles[profile["name"]]["excludes"].append(exclude)
+                    types[profile["name"]]["excludes"].append(exclude)
                 else:
                     raise ValueError(f"Target {exclude} not found in framework")
 
     # Debugging information
-    logging.debug("camlhmp.framework.get_profiles")
+    logging.debug("camlhmp.framework.get_types")
     logging.debug(f"Aliases: {framework['aliases']}")
     logging.debug(f"Targets: {framework['targets']}")
-    logging.debug(f"Profiles: {profiles}")
+    logging.debug(f"Types: {types}")
 
-    return profiles
+    return types
 
 
-def check_profiles(profiles: dict, results: dict) -> dict:
+def check_types(types: dict, results: dict) -> dict:
     """
-    Check the profiles against the results.
+    Check the types against the results.
 
     Args:
-        profiles (dict): the profiles with associated targets
+        types (dict): the types with associated targets
         results (dict): the BLAST results
 
     Returns:
-        dict: the profiles and their outcome
+        dict: the types and their outcome
     """
-    profile_hits = {}
-    for profile, vals in profiles.items():
+    type_hits = {}
+    for type, vals in types.items():
         targets = vals["targets"]
         excludes = vals["excludes"]
-        profile_hits[profile] = {}
+        type_hits[type] = {
+            'status': False,
+            'targets': [],
+            'missing': [],
+            'comment': "",
+        }
         matched_all_targets = True
         for target in targets:
-            if not results[target]:
+            if results[target]:
+                type_hits[type]['targets'].append(target)
+            else:
+                type_hits[type]['missing'].append(target)
                 matched_all_targets = False
 
         # Check if any of the excludes are present
         for exclude in excludes:
             if results[exclude]:
-                logging.debug(
-                    f"Excluded target {exclude} found, failing profile {profile}"
-                )
+                type_hits[type]['comment'] = f"Excluded target {exclude} found, failing type {type}"
+                logging.debug(f"Excluded target {exclude} found, failing type {type}")
                 matched_all_targets = False
-        profile_hits[profile] = matched_all_targets
+        type_hits[type]['status'] = matched_all_targets
 
     # Debugging information
-    logging.debug("camlhmp.framework.check_profiles")
-    logging.debug(f"Profile Hits: {profile_hits}")
+    logging.debug("camlhmp.framework.check_types")
+    logging.debug(f"Type Hits: {type_hits}")
 
-    return profile_hits
+    return type_hits
