@@ -179,4 +179,9 @@ def write_tsv(data: list, output: str):
     with open(output, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter="\t", fieldnames=data[0].keys())
         writer.writeheader()
-        writer.writerows(data)
+        if next(iter(data[0].values())) != "NO_HITS":
+            # Data is not empty
+            writer.writerows(data)
+        else:
+            # Data is empty
+            logging.debug("NO_HITS found, only writing the column headers")

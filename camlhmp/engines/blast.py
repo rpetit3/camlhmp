@@ -78,4 +78,8 @@ def run_blastn(subject: str, query: str, min_pident: float, min_coverage: int) -
         results.append(dict(zip(BLASTN_COLS, cols)))
         target_hits.append(cols[0])
 
+    if not results:
+        # Create an empty dict if no results are found
+        results.append(dict(zip(BLASTN_COLS, ["NO_HITS"] * len(BLASTN_COLS))))
+
     return [target_hits, results, stderr]
