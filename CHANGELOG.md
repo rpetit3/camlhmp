@@ -1,6 +1,16 @@
 
 # Changelog
 
+## v0.2.1 rpetit3/camlhmp "Four little bunnies" 2024/07/22
+
+### `Added`
+
+- version output with schema name and version
+
+### `Fixed`
+
+- Empty input files will no longer be processed
+
 ## v0.2.0 rpetit3/camlhmp "Four little bunnies" 2024/07/22
 
 ### `Added`

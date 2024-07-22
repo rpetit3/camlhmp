@@ -13,7 +13,7 @@ from rich.table import Table
 
 import camlhmp
 from camlhmp.engines.blast import get_blast_region_hits, run_blastn
-from camlhmp.framework import check_regions, get_types, read_framework
+from camlhmp.framework import check_regions, get_types, print_version, read_framework
 from camlhmp.utils import file_exists_error, parse_seqs, validate_file, write_tsv
 
 DB_PATH = str(Path(__file__).parent.absolute()).replace("bin", "data")
@@ -56,7 +56,6 @@ click.rich_click.OPTION_GROUPS = {
 
 
 @click.command()
-@click.version_option(camlhmp.__version__, "--version", "-V")
 @click.option(
     "--input", "-i", required=True, help="Input file in FASTA format to classify"
 )
@@ -107,6 +106,7 @@ click.rich_click.OPTION_GROUPS = {
 @click.option("--force", is_flag=True, help="Overwrite existing reports")
 @click.option("--verbose", is_flag=True, help="Increase the verbosity of output")
 @click.option("--silent", is_flag=True, help="Only critical errors will be printed")
+@click.option("--version", "-V", is_flag=True, help="Print schema and camlhmp version")
 def camlhmp_blast_region(
     input,
     yaml,
@@ -118,6 +118,7 @@ def camlhmp_blast_region(
     force,
     verbose,
     silent,
+    version,
 ):
     """🐪 camlhmp-blast-region 🐪 - Classify assemblies with a camlhmp schema using BLAST against larger genomic regions"""
     # Setup logs
@@ -137,13 +138,19 @@ def camlhmp_blast_region(
     Path(outdir).mkdir(parents=True, exist_ok=True)
 
     # Verify input files are available
-    input_path = validate_file(input)
     yaml_path = validate_file(yaml)
-    targets_path = validate_file(targets)
-    logging.debug(f"Processing {targets}")
 
     # Read the YAML file
     framework = read_framework(yaml_path)
+
+    # If prompted, print the schema and camlhmp version, then exit
+    if version:
+        print_version(framework)
+
+    # Verify remaining input files
+    input_path = validate_file(input)
+    targets_path = validate_file(targets)
+    logging.debug(f"Processing {targets}")
 
     # Output files
     result_tsv = f"{outdir}/{prefix}.tsv".replace("//", "/")

@@ -1,9 +1,12 @@
 """
 A set of functions for working with the caml framework.
 """
-
+import sys
 import logging
 
+from rich import print
+
+import camlhmp
 from camlhmp.utils import parse_yaml
 
 
@@ -18,6 +21,18 @@ def read_framework(yamlfile: str) -> dict:
         dict: the parsed YAML file
     """
     return parse_yaml(yamlfile)
+
+
+def print_version(framework: dict) -> None:
+    """
+    Print the version of the framework, then exit
+
+    Args:
+        framework (dict): the parsed YAML framework
+    """
+    print(f"camlhmp, version {camlhmp.__version__}", file=sys.stderr)
+    print(f"schema {framework['metadata']['id']}, version {framework['metadata']['version']}", file=sys.stderr)
+    sys.exit(0)
 
 
 def get_types(framework: dict) -> dict:

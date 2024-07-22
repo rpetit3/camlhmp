@@ -18,11 +18,11 @@ types:
   - name: "O1"           # name of the profile
     targets: ["O1"]      # list of targets that are part of the profile
   - name: "O2"
-    targets: ["O2"]
-    excludes: ["wzyB"]
+    targets: ["O2", "wzyB"]
   - name: "O3"
     targets: ["O3"]
   - name: "O4"
     targets: ["O4"]
   - name: "O5"
-    targets: ["O2", "wzyB"]
+    targets: ["O2"]
+    excludes: ["wzyB"]

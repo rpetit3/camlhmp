@@ -85,7 +85,7 @@ def get_platform() -> str:
 
 def validate_file(filename: str) -> str:
     """
-    Validate a file exists and return the absolute path
+    Validate a file exists and not empty, if passing return the absolute path
 
     Args:
         filename (str): a file to validate exists
@@ -95,7 +95,9 @@ def validate_file(filename: str) -> str:
     """
     f = Path(filename)
     if not f.exists():
-        raise FileNotFoundError(f"File not found: {filename}")
+        raise FileNotFoundError(f"File ('{filename}') not found, cannot continue")
+    elif f.stat().st_size == 0:
+        raise ValueError(f"File ('{filename}') is empty, cannot continue")
     return f.absolute()
 
 
