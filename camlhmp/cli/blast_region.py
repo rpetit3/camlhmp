@@ -12,9 +12,9 @@ from rich.logging import RichHandler
 from rich.table import Table
 
 import camlhmp
-from camlhmp.engines.blast import get_blast_target_hits, run_blastn
-from camlhmp.framework import check_types, get_types, read_framework
-from camlhmp.utils import file_exists_error, validate_file, write_tsv
+from camlhmp.engines.blast import get_blast_region_hits, run_blastn
+from camlhmp.framework import check_regions, get_types, read_framework
+from camlhmp.utils import file_exists_error, parse_seqs, validate_file, write_tsv
 
 DB_PATH = str(Path(__file__).parent.absolute()).replace("bin", "data")
 
@@ -107,7 +107,7 @@ click.rich_click.OPTION_GROUPS = {
 @click.option("--force", is_flag=True, help="Overwrite existing reports")
 @click.option("--verbose", is_flag=True, help="Increase the verbosity of output")
 @click.option("--silent", is_flag=True, help="Only critical errors will be printed")
-def camlhmp_blast(
+def camlhmp_blast_region(
     input,
     yaml,
     targets,
@@ -119,7 +119,7 @@ def camlhmp_blast(
     verbose,
     silent,
 ):
-    """🐪 camlhmp-blast 🐪 - Classify assemblies with a camlhmp schema using BLAST"""
+    """🐪 camlhmp-blast-region 🐪 - Classify assemblies with a camlhmp schema using BLAST against larger genomic regions"""
     # Setup logs
     logging.basicConfig(
         format="%(asctime)s:%(name)s:%(levelname)s - %(message)s",
@@ -184,15 +184,21 @@ def camlhmp_blast(
 
     # Run blast
     print(f"[italic]Running {framework['engine']['tool']}...[/italic]", file=sys.stderr)
-    hits, blast_stdout, blast_stderr = run_blastn(
-        input_path, targets_path, min_pident, min_coverage
+    hits, blast_stdout, blast_stderr = run_blastn(input_path, targets_path, 0, 0)
+
+    # Get lengths of the targets
+    target_lengths = {}
+    for seq in parse_seqs(targets_path, "fasta"):
+        logging.debug(f"Processing {seq.id} with length {len(seq.seq)}")
+        target_lengths[seq.id] = len(seq.seq)
+    target_results = get_blast_region_hits(
+        target_lengths, blast_stdout, min_pident, min_coverage
     )
-    target_results = get_blast_target_hits(framework["targets"], hits)
 
     # Process the hits against the types
     print("[italic]Processing hits...[/italic]", file=sys.stderr)
     types = get_types(framework)
-    type_hits = check_types(types, target_results)
+    type_hits = check_regions(types, target_results, min_coverage)
 
     # Finalize the results
     print("[italic]Final Results...[/italic]", file=sys.stderr)
@@ -200,6 +206,8 @@ def camlhmp_blast(
     type_table.add_column("sample", style="white")
     type_table.add_column("type", style="white")
     type_table.add_column("targets", style="cyan")
+    type_table.add_column("coverages", style="cyan")
+    type_table.add_column("hits", style="cyan")
     type_table.add_column("schema", style="cyan")
     type_table.add_column("schema_version", style="cyan")
     type_table.add_column("camlhmp_version", style="cyan")
@@ -208,11 +216,15 @@ def camlhmp_blast(
 
     final_type = []
     final_targets = []
+    final_coverages = []
+    final_hits = []
 
     # Get a list of targets that met the threshold
-    for target, status in target_results.items():
-        if status:
-            final_targets.append(target)
+    for target, vals in type_hits.items():
+        if vals["status"]:
+            final_targets.append(",".join(vals["targets"]))
+            final_coverages.append(",".join(vals["coverage"]))
+            final_hits.append(",".join(vals["hits"]))
 
     # Get the final type(s)
     final_details = []
@@ -224,11 +236,13 @@ def camlhmp_blast(
                 "status": vals["status"],
                 "targets": ",".join(vals["targets"]),
                 "missing": ",".join(vals["missing"]),
+                "coverage": ",".join(vals["coverage"]),
+                "hits": ",".join(vals["hits"]),
                 "schema": framework["metadata"]["id"],
                 "schema_version": framework["metadata"]["version"],
                 "camlhmp_version": camlhmp.__version__,
                 "params": f"min-coverage={min_coverage};min-pident={min_pident}",
-                "comment": vals["comment"],
+                "comment": ";".join(vals["comment"]),
             }
         )
         if vals["status"]:
@@ -244,12 +258,17 @@ def camlhmp_blast(
     elif len(final_type) > 1:
         comment = f"Found matches for multiple types including: {', '.join(final_type)}"
         final_type = ["multiple"]
+    else:
+        # There is only one type, capture any available comments
+        comment = ";".join(type_hits[final_type[0]]["comment"])
 
     final_type = ",".join(final_type) if len(final_type) > 0 else "-"
     type_table.add_row(
         prefix,
         final_type,
         ",".join(final_targets),
+        ",".join(final_coverages),
+        ",".join(final_hits),
         framework["metadata"]["id"],
         framework["metadata"]["version"],
         camlhmp.__version__,
@@ -266,6 +285,8 @@ def camlhmp_blast(
         "sample": prefix,
         "type": final_type,
         "targets": ",".join(final_targets),
+        "coverage": ",".join(final_coverages),
+        "hits": ",".join(final_hits),
         "schema": framework["metadata"]["id"],
         "schema_version": framework["metadata"]["version"],
         "camlhmp_version": camlhmp.__version__,
@@ -295,9 +316,9 @@ def camlhmp_blast(
 
 def main():
     if len(sys.argv) == 1:
-        camlhmp_blast.main(["--help"])
+        camlhmp_blast_region.main(["--help"])
     else:
-        camlhmp_blast()
+        camlhmp_blast_region()
 
 
 if __name__ == "__main__":

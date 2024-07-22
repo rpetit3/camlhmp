@@ -1,18 +1,16 @@
-import sys
-
 import rich
 import rich.console
 import rich.traceback
 import rich_click as click
 from rich import print
-from rich.logging import RichHandler
 from rich.table import Table
 
 import camlhmp
 
 # List of available commands
 COMMANDS = {
-    "camlhmp-blast": "Classify assemblies with a camlhmp schema using BLAST",
+    "camlhmp-blast": "Classify assemblies with a camlhmp schema using BLAST against individual genes or proteins",
+    "camlhmp-blast-region": "Classify assemblies with a camlhmp schema using BLAST against larger genomic regions",
     "camlhmp-extract": "Extract typing targets from a set of reference sequences",
 }
 

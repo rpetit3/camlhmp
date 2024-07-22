@@ -105,7 +105,7 @@ def camlhmp(
         else:
             raise ValueError(f"Unknown format: {vals['format']}")
 
-    # Extract the seqeunces
+    # Extract the sequences
     sequences = {}
     for target in targets:
         if target["target"] not in sequences:
@@ -128,7 +128,7 @@ def camlhmp(
             }
         )
 
-    # Write the seqeunces to file (giving each target its own file)
+    # Write the sequences to file (giving each target its own file)
     for target, seqs in sequences.items():
         # create outdir if it doesn't exist
         Path(outdir).mkdir(parents=True, exist_ok=True)

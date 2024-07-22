@@ -115,7 +115,7 @@ def file_exists_error(filename: str, force: bool = False):
 
 def parse_seq(seqfile: str, format: str) -> SeqIO:
     """
-    Parse a sequence file.
+    Parse a sequence file containing a single record.
 
     Args:
         seqfile (str): input file to be read
@@ -126,6 +126,21 @@ def parse_seq(seqfile: str, format: str) -> SeqIO:
     """
     with open(seqfile, "rt") as fh:
         return SeqIO.read(fh, format)
+
+
+def parse_seqs(seqfile: str, format: str) -> SeqIO:
+    """
+    Parse a sequence file containing a multiple records.
+
+    Args:
+        seqfile (str): input file to be read
+        format (str): format of the input file
+
+    Returns:
+        SeqIO: the parsed file as a SeqIO object
+    """
+    with open(seqfile, "rt") as fh:
+        return list(SeqIO.parse(fh, format))
 
 
 def parse_table(

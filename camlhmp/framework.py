@@ -4,10 +4,6 @@ A set of functions for working with the caml framework.
 
 import logging
 
-from rich import print
-from rich.panel import Panel
-from rich.text import Text
-
 from camlhmp.utils import parse_yaml
 
 
@@ -84,7 +80,8 @@ def get_types(framework: dict) -> dict:
 
     # Debugging information
     logging.debug("camlhmp.framework.get_types")
-    logging.debug(f"Aliases: {framework['aliases']}")
+    if "aliases" in framework:
+        logging.debug(f"Aliases: {framework['aliases']}")
     logging.debug(f"Targets: {framework['targets']}")
     logging.debug(f"Types: {types}")
 
@@ -132,6 +129,79 @@ def check_types(types: dict, results: dict) -> dict:
 
     # Debugging information
     logging.debug("camlhmp.framework.check_types")
+    logging.debug(f"Type Hits: {type_hits}")
+
+    return type_hits
+
+
+def check_regions(types: dict, results: dict, min_coverage: int) -> dict:
+    """
+    Check the region types against the results.
+
+    Args:
+        types (dict): the types with associated targets
+        results (dict): the BLAST results
+        min_coverage (int): the minimum coverage required for a region
+
+    Returns:
+        dict: the types and their outcome
+    """
+    type_hits = {}
+    for type, vals in types.items():
+        targets = vals["targets"]
+        excludes = vals["excludes"]
+        type_hits[type] = {
+            "status": False,
+            "targets": [],
+            "missing": [],
+            "coverage": [],
+            "hits": [],
+            "comment": [],
+        }
+        matched_all_targets = True
+        for target in targets:
+            if target in results:
+                if results[target]["coverage"] >= min_coverage:
+                    type_hits[type]["targets"].append(target)
+                else:
+                    type_hits[type]["missing"].append(target)
+                    matched_all_targets = False
+
+                type_hits[type]["coverage"].append(f"{results[target]['coverage']:.2f}")
+                type_hits[type]["hits"].append(str(len(results[target]["hits"])))
+                if len(targets) > 1:
+                    if results[target]["comment"]:
+                        formatted_comments = []
+                        for comment in results[target]["comment"]:
+                            formatted_comments.append(f"{target}:{comment}")
+                        if formatted_comments:
+                            type_hits[type]["comment"].append(
+                                ";".join(formatted_comments)
+                            )
+                else:
+                    if results[target]["comment"]:
+                        type_hits[type]["comment"].append(
+                            ";".join(results[target]["comment"])
+                        )
+            else:
+                matched_all_targets = False
+
+        # Check if any of the excludes are present
+        for exclude in excludes:
+            if results[exclude]:
+                if results[exclude]["coverage"] >= min_coverage:
+                    type_hits[type]["comment"].append(
+                        f"Excluded target {exclude} found, failing type {type}"
+                    )
+                    logging.debug(
+                        f"Excluded target {exclude} found, failing type {type}"
+                    )
+                    matched_all_targets = False
+
+        type_hits[type]["status"] = matched_all_targets
+
+    # Debugging information
+    logging.debug("camlhmp.framework.check_regions")
     logging.debug(f"Type Hits: {type_hits}")
 
     return type_hits
