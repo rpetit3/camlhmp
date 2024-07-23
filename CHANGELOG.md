@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v0.2.1 rpetit3/camlhmp "Four little bunnies" 2024/07/22
+## v0.2.1 rpetit3/camlhmp "And a bunch of birds" 2024/07/22
 
 ### `Added`
 
