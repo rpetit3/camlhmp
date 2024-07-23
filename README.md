@@ -1,7 +1,8 @@
-🐪 camlhmp 🐪 - Classification through yAML Heuristic Mapping Protocol (__yeah, it's a stretch to
-make sure 🐪 is in the name!__)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/rpetit3/camlhmp)
 
 # camlhmp
+
+🐪 camlhmp 🐪 - Classification through yAML Heuristic Mapping Protocol
 
 `camlhmp` is a tool for generating organism typing tools from YAML schemas. The idea came
 up from discussions with Tim Read about the need for a tool that would allow researchers
@@ -21,7 +22,7 @@ level.
 with the tools necessary tools to create and maintain their own schemas. This I believe will
 ensure the schemas remain up to date with the latest developments in its respective field.
 
-Additionally, this really aroses from a practical need to streamline my maintenance of
+Additionally, this really arose from a practical need to streamline my maintenance of
 multiple organism typing tools. Long-term maintenance of these tools is a challenge, and
 I think `camlhmp` will help me to keep them up-to-date and consistent.
 
@@ -335,9 +336,12 @@ will then extract the targets from the reference sequences and write them to a F
 
 If you make use of this tool, please cite the following:
 
-* **[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)**  
+- __camlhmp__  
+_Petit III RA [camlhmp: Classification through yAML Heuristic Mapping Protocol](https://github.com/rpetit3/camlhmp) (GitHub)_  
+
+- _[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)__  
 Basic Local Alignment Search Tool  
-*Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL [BLAST+: architecture and applications](http://dx.doi.org/10.1186/1471-2105-10-421). BMC Bioinformatics 10, 421 (2009)*  
+_Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL [BLAST+: architecture and applications](http://dx.doi.org/10.1186/1471-2105-10-421). BMC Bioinformatics 10, 421 (2009)_  
 
 ## Naming
 
