@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v0.2.2 rpetit3/camlhmp "Even a few baby birds" 2024/07/22
+
+### `Fixed`
+
+- `--version` flag now works as expected
+
 ## v0.2.1 rpetit3/camlhmp "And a bunch of birds" 2024/07/22
 
 ### `Added`

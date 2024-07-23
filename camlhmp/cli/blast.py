@@ -57,21 +57,24 @@ click.rich_click.OPTION_GROUPS = {
 
 @click.command()
 @click.option(
-    "--input", "-i", required=True, help="Input file in FASTA format to classify"
+    "--input",
+    "-i",
+    required=False if "--version" in sys.argv else True,
+    help="Input file in FASTA format to classify",
 )
 @click.option(
     "--yaml",
     "-y",
     required=True,
-    default=os.environ.get("CAML_YAML", ""),
+    default=os.environ.get("CAML_YAML", None),
     show_default=True,
     help="YAML file documenting the targets and types",
 )
 @click.option(
     "--targets",
     "-t",
-    required=True,
-    default=os.environ.get("CAML_TARGETS", ""),
+    required=False if "--version" in sys.argv else True,
+    default=os.environ.get("CAML_TARGETS", None),
     show_default=True,
     help="Query targets in FASTA format",
 )
@@ -106,7 +109,7 @@ click.rich_click.OPTION_GROUPS = {
 @click.option("--force", is_flag=True, help="Overwrite existing reports")
 @click.option("--verbose", is_flag=True, help="Increase the verbosity of output")
 @click.option("--silent", is_flag=True, help="Only critical errors will be printed")
-@click.option("--version", "-V", is_flag=True, help="Print schema and camlhmp version")
+@click.option("--version", is_flag=True, help="Print schema and camlhmp version")
 def camlhmp_blast(
     input,
     yaml,
@@ -133,10 +136,6 @@ def camlhmp_blast(
         logging.ERROR if silent else logging.DEBUG if verbose else logging.INFO
     )
 
-    # Create the output directory
-    logging.debug(f"Creating output directory: {outdir}")
-    Path(outdir).mkdir(parents=True, exist_ok=True)
-
     # Verify input files are available
     yaml_path = validate_file(yaml)
 
@@ -151,6 +150,10 @@ def camlhmp_blast(
     input_path = validate_file(input)
     targets_path = validate_file(targets)
     logging.debug(f"Processing {targets}")
+
+    # Create the output directory
+    logging.debug(f"Creating output directory: {outdir}")
+    Path(outdir).mkdir(parents=True, exist_ok=True)
 
     # Output files
     result_tsv = f"{outdir}/{prefix}.tsv".replace("//", "/")
