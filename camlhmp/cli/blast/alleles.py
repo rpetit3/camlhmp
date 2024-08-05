@@ -12,8 +12,9 @@ from rich.logging import RichHandler
 from rich.table import Table
 
 import camlhmp
-from camlhmp.engines.blast import get_blast_target_hits, run_blastn
+from camlhmp.engines.blast import run_blast
 from camlhmp.framework import check_types, get_types, print_version, read_framework
+from camlhmp.parsers.blast import get_blast_allele_hits
 from camlhmp.utils import file_exists_error, validate_file, write_tsv
 
 DB_PATH = str(Path(__file__).parent.absolute()).replace("bin", "data")
@@ -110,7 +111,7 @@ click.rich_click.OPTION_GROUPS = {
 @click.option("--verbose", is_flag=True, help="Increase the verbosity of output")
 @click.option("--silent", is_flag=True, help="Only critical errors will be printed")
 @click.option("--version", is_flag=True, help="Print schema and camlhmp version")
-def camlhmp_blast(
+def camlhmp_blast_alleles(
     input,
     yaml,
     targets,
@@ -123,7 +124,7 @@ def camlhmp_blast(
     silent,
     version,
 ):
-    """🐪 camlhmp-blast 🐪 - Classify assemblies with a camlhmp schema using BLAST"""
+    """🐪 camlhmp-blast-alleles 🐪 - Classify assemblies using BLAST against alleles of a set of genes"""
     # Setup logs
     logging.basicConfig(
         format="%(asctime)s:%(name)s:%(levelname)s - %(message)s",
@@ -187,84 +188,55 @@ def camlhmp_blast(
     )
 
     # Verify the engine is a support blast subcommand
-    if framework["engine"]["tool"] not in ["blastn"]:
+    if framework["engine"]["type"] not in ["blast"]:
         raise ValueError(
-            f"Unsupported engine ({framework['engine']['tool']}), camlhmp-blast only supports blast"
+            f"Unsupported engine ({framework['engine']['type']}), camlhmp-blast-alleles only supports blast"
         )
 
     # Run blast
     print(f"[italic]Running {framework['engine']['tool']}...[/italic]", file=sys.stderr)
-    hits, blast_stdout, blast_stderr = run_blastn(
-        input_path, targets_path, min_pident, min_coverage
+    hits, blast_stdout, blast_stderr = run_blast(
+        framework["engine"]["tool"], input_path, targets_path, min_pident, min_coverage
     )
-    target_results = get_blast_target_hits(framework["targets"], hits)
 
     # Process the hits against the types
     print("[italic]Processing hits...[/italic]", file=sys.stderr)
-    types = get_types(framework)
-    type_hits = check_types(types, target_results)
+    target_results = get_blast_allele_hits(framework["targets"], blast_stdout, min_pident, min_coverage)
 
     # Finalize the results
     print("[italic]Final Results...[/italic]", file=sys.stderr)
     type_table = Table(title=f"{framework['metadata']['name']}")
     type_table.add_column("sample", style="white")
-    type_table.add_column("type", style="white")
-    type_table.add_column("targets", style="cyan")
     type_table.add_column("schema", style="cyan")
     type_table.add_column("schema_version", style="cyan")
     type_table.add_column("camlhmp_version", style="cyan")
     type_table.add_column("params", style="cyan")
-    type_table.add_column("comment", style="cyan")
-
-    final_type = []
-    final_targets = []
-
-    # Get a list of targets that met the threshold
-    for target, status in target_results.items():
-        if status:
-            final_targets.append(target)
+    for target in target_results:
+        type_table.add_column(f"{target}_id", style="cyan")
+        type_table.add_column(f"{target}_pident", style="cyan")
+        type_table.add_column(f"{target}_qcovs", style="cyan")
+        type_table.add_column(f"{target}_bitscore", style="cyan")
+        type_table.add_column(f"{target}_comment", style="cyan")
 
     # Get the final type(s)
     final_details = []
-    for type, vals in type_hits.items():
-        final_details.append(
-            {
-                "sample": prefix,
-                "type": type,
-                "status": vals["status"],
-                "targets": ",".join(vals["targets"]),
-                "missing": ",".join(vals["missing"]),
-                "schema": framework["metadata"]["id"],
-                "schema_version": framework["metadata"]["version"],
-                "camlhmp_version": camlhmp.__version__,
-                "params": f"min-coverage={min_coverage};min-pident={min_pident}",
-                "comment": vals["comment"],
-            }
-        )
-        if vals["status"]:
-            final_type.append(type)
+    final_row = {
+        "sample": prefix,
+        "schema": framework["metadata"]["id"],
+        "schema_version": framework["metadata"]["version"],
+        "camlhmp_version": camlhmp.__version__,
+        "params": f"min-coverage={min_coverage};min-pident={min_pident}",
+    }
+    for target in target_results:
+        final_row[f"{target}_id"] = target_results[target]["id"]
+        final_row[f"{target}_pident"] = str(target_results[target]["pident"])
+        final_row[f"{target}_qcovs"] = str(target_results[target]["qcovs"])
+        final_row[f"{target}_bitscore"] = str(target_results[target]["bitscore"])
+        final_row[f"{target}_comment"] = target_results[target]["comment"]
 
     # Generate a comment based on the results
-    comment = ""
-    if not len(final_type):
-        if len(final_targets):
-            comment = "A type could not be determined, but one or more targets found"
-        else:
-            comment = "A type could not be determined"
-    elif len(final_type) > 1:
-        comment = f"Found matches for multiple types including: {', '.join(final_type)}"
-        final_type = ["multiple"]
-
-    final_type = ",".join(final_type) if len(final_type) > 0 else "-"
     type_table.add_row(
-        prefix,
-        final_type,
-        ",".join(final_targets),
-        framework["metadata"]["id"],
-        framework["metadata"]["version"],
-        camlhmp.__version__,
-        f"min-coverage={min_coverage};min-pident={min_pident}",
-        comment,
+        *final_row.values(),
     )
     console.print(type_table)
 
@@ -272,28 +244,11 @@ def camlhmp_blast(
     print("[italic]Writing outputs...[/italic]", file=sys.stderr)
 
     # Write final prediction
-    final_result = {
-        "sample": prefix,
-        "type": final_type,
-        "targets": ",".join(final_targets),
-        "schema": framework["metadata"]["id"],
-        "schema_version": framework["metadata"]["version"],
-        "camlhmp_version": camlhmp.__version__,
-        "params": f"min-coverage={min_coverage};min-pident={min_pident}",
-        "comment": comment,
-    }
     print(
         f"[italic]Final predicted type written to [deep_sky_blue1]{result_tsv}[/deep_sky_blue1][/italic]",
         file=sys.stderr,
     )
-    write_tsv([final_result], result_tsv)
-
-    # Write details for each type
-    print(
-        f"[italic]Results against each type written to [deep_sky_blue1]{details_tsv}[/deep_sky_blue1][/italic]",
-        file=sys.stderr,
-    )
-    write_tsv(final_details, details_tsv)
+    write_tsv([final_row], result_tsv)
 
     # Write blast results
     print(
@@ -305,9 +260,9 @@ def camlhmp_blast(
 
 def main():
     if len(sys.argv) == 1:
-        camlhmp_blast.main(["--help"])
+        camlhmp_blast_alleles.main(["--help"])
     else:
-        camlhmp_blast()
+        camlhmp_blast_alleles()
 
 
 if __name__ == "__main__":

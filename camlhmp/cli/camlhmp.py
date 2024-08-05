@@ -9,8 +9,9 @@ import camlhmp
 
 # List of available commands
 COMMANDS = {
-    "camlhmp-blast": "Classify assemblies with a camlhmp schema using BLAST against individual genes or proteins",
-    "camlhmp-blast-region": "Classify assemblies with a camlhmp schema using BLAST against larger genomic regions",
+    "camlhmp-blast-alleles": "Classify assemblies using BLAST against alleles of a set of genes",
+    "camlhmp-blast-regions": "Classify assemblies using BLAST against larger genomic regions",
+    "camlhmp-blast-targets": "Classify assemblies using BLAST against individual genes or proteins",
     "camlhmp-extract": "Extract typing targets from a set of reference sequences",
 }
 

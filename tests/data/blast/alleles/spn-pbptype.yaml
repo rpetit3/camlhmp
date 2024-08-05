@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+# metadata provides information about the schema
+metadata:
+  id: "pbptype_partial"                                         # id of the schema
+  name: "S. pneumoniae PBP typing"                              # name of the schema
+  description: "A partial schema for S. pneumoniae PBP typing"  # description of the schema
+  version: "0.0.1"                                              # version of the schema
+  curators:                                                     # A list of curators of the schema
+    - "Robert Petit"
+# engine provides information about the tool and parameters used
+engine:
+  type: blast   # The type of tool used to generate the data
+  tool: tblastn # The tool used to generate the data
+# targets provides a list of sequence targets (primers, genes, proteins, etc...)
+targets: ["1A", "2A", "2X"]
+# types includes the final typing designations based on targets and aliases 
+types:
+  - name: "1A"           # name of the profile
+    targets: ["1A"]      # list of targets that are part of the profile
+  - name: "2A"
+    targets: ["2A"]
+  - name: "2X"
+    targets: ["2X"]

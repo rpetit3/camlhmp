@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "camlhmp"
-version = "0.2.2"
+version = "0.3.0"
 description = "Classification through yAML Heuristic Mapping Protocol"
 authors = [
     "Robert A. Petit III <robbie.petit@gmail.com>",
@@ -13,8 +13,9 @@ keywords = ["bioinformatics", "bacteria", "serotype", "genotype"]
 
 [tool.poetry.scripts]
 camlhmp = "camlhmp.cli.camlhmp:main"
-camlhmp-blast = "camlhmp.cli.blast:main"
-camlhmp-blast-region = "camlhmp.cli.blast_region:main"
+camlhmp-blast-alleles = "camlhmp.cli.blast.alleles:main"
+camlhmp-blast-regions = "camlhmp.cli.blast.regions:main"
+camlhmp-blast-targets = "camlhmp.cli.blast.targets:main"
 camlhmp-extract = "camlhmp.cli.extract:main"
 
 [tool.poetry.dependencies]
