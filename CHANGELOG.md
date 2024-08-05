@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v0.3.0 rpetit3/camlhmp "More bunnies and fewer baby birds" 2024/08/05
+
+### `Added`
+
+- `camlhmp-blast-alleles` command to search alleles in a set of query sequences using BLAST algorithms
+
 ## v0.2.2 rpetit3/camlhmp "Even a few baby birds" 2024/07/22
 
 ### `Fixed`
