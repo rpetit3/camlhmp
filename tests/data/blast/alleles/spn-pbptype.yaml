@@ -12,13 +12,14 @@ metadata:
 engine:
   type: blast   # The type of tool used to generate the data
   tool: tblastn # The tool used to generate the data
+    
 # targets provides a list of sequence targets (primers, genes, proteins, etc...)
-targets: ["1A", "2A", "2X"]
+targets: ["1A", "2B", "2X"]
 # types includes the final typing designations based on targets and aliases 
 types:
   - name: "1A"           # name of the profile
     targets: ["1A"]      # list of targets that are part of the profile
-  - name: "2A"
-    targets: ["2A"]
+  - name: "2B"
+    targets: ["2B"]
   - name: "2X"
     targets: ["2X"]

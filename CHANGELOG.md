@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v0.3.1 rpetit3/camlhmp "Maybe a cat?" 2024/08/05
+
+### `Fixed`
+
+- `camlhmp-blast-alleles` not having a default value for targets
+
 ## v0.3.0 rpetit3/camlhmp "More bunnies and fewer baby birds" 2024/08/05
 
 ### `Added`

@@ -49,6 +49,15 @@ def get_blast_allele_hits(
                 })
 
     final_allele_hits = {}
+    for target in targets:
+        final_allele_hits[target] = {
+            "id": "-",
+            "qcovs": 0,
+            "pident": 0,
+            "bitscore": 0,
+            "comment": "No hits met thresholds",
+        }
+
     for target in target_results:
         if len(target_results[target]["known"]):
             # exact matches to known alleles were found
@@ -75,15 +84,6 @@ def get_blast_allele_hits(
                 # multiple hits, only report highest score
                 final_allele_hits[target] = sorted(target_results[target]["novel"], key=lambda x: x["bitscore"], reverse=True)[0]
                 final_allele_hits[target]["comment"] = "No exact matches to known alleles"
-        else:
-            # no hits
-            final_allele_hits[target] = {
-                "id": "-",
-                "qcovs": 0,
-                "pident": 0,
-                "bitscore": 0,
-                "comment": "No hits met thresholds",
-            }
 
     # Debugging information
     logging.debug("camlhmp.engines.blast.get_blast_allele_hits")
