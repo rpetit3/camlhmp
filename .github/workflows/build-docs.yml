@@ -13,13 +13,7 @@ jobs:
         shell: bash -x -l {0}
     steps:
       - name: Checkout main
-        uses: actions/checkout@v2
-
-      - name: Pull camlhmp
-        uses: actions/checkout@v2
-        with:
-          repository: rpetit3/camlhmp
-          path: camlhmp
+        uses: actions/checkout@v4
       
       - name: Setup miniconda
         uses: conda-incubator/setup-miniconda@v2
@@ -59,7 +53,7 @@ jobs:
           mike set-default --push latest
 
       - name: Commit changes
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           message: "ci - auto build from camlhmp"
           committer_name: GitHub Actions
