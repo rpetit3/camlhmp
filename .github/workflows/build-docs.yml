@@ -1,0 +1,67 @@
+name: Publish Docs On Change
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master]
+
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -x -l {0}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+
+      - name: Pull camlhmp
+        uses: actions/checkout@v2
+        with:
+          repository: rpetit3/camlhmp
+          path: camlhmp
+      
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: mkdocs
+          auto-activate-base: false
+
+      - name: Setup Docs Environment
+        env:
+          MKDOCS_INSIDERS: ${{ secrets.MKDOCS_INSIDERS }}
+        run: |
+          # Conda dependencies
+          conda install -c conda-forge jq 'python>3.6'
+          # MkDocs dependencies
+          pip install \
+            "cairosvg>=2.5" \
+            "mkdocs-git-committers-plugin-2<1" \
+            "mkdocs-git-revision-date-localized-plugin>=1.0" \
+            "mkdocs-minify-plugin>=0.3" \
+            "mkdocs-rss-plugin>=1.1" \
+            "mkdocs-redirects>=1.0" \
+            "pillow<10" \
+            mike
+          # MkDocs Insiders
+          pip install \
+            git+https://${MKDOCS_INSIDERS}@github.com/rpetit3/mkdocs-material-insiders.git
+          mkdocs --version
+
+      - name: Deploy Docs
+        run: |
+          git fetch origin gh-pages --depth=1
+          git config user.name "GitHub Actions"
+          git config user.email actions@github.com
+          LATEST_RELEASE=$(curl -sL https://api.github.com/repos/rpetit3/camlhmp/releases/latest | jq -r ".tag_name")
+          echo ${LATEST_RELEASE}
+          mike deploy --push --update-aliases ${LATEST_RELEASE} latest
+          mike set-default --push latest
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: "ci - auto build from camlhmp"
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
+          add: 'mkdocs.yml docs/'
