@@ -50,6 +50,7 @@ jobs:
           git config user.email actions@github.com
           LATEST_RELEASE=$(curl -sL https://api.github.com/repos/rpetit3/camlhmp/releases/latest | jq -r ".tag_name")
           echo ${LATEST_RELEASE}
+          ls -lha 
           mike deploy --push --update-aliases ${LATEST_RELEASE} latest
           mike set-default --push latest
 
