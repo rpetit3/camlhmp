@@ -13,10 +13,10 @@ jobs:
         shell: bash -x -l {0}
     steps:
       - name: Checkout main
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       
       - name: Setup miniconda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: mkdocs
           auto-activate-base: false
