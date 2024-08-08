@@ -23,7 +23,7 @@ BLASTN_COLS = [
 
 def run_blast(engine: str, subject: str, query: str, min_pident: float, min_coverage: int) -> list:
     """
-    Query sequences against a input subject using BLASTN.
+    Query sequences against a input subject using BLAST+.
 
     Args:
         engine (str): The BLAST engine to use
