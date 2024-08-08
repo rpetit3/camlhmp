@@ -55,6 +55,7 @@ plugins:
       cache: true
       cards: true
   - mkdocstrings:
+      default_handler: python
       handlers:
         python:
           paths: [camlhmp]
