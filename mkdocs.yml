@@ -55,8 +55,8 @@ plugins:
       cache: true
       cards: true
   - gen-files:
-    scripts:
-      - .github/gen_ref_pages.py
+      scripts:
+        - .github/gen_ref_pages.py
   - mkdocstrings:
       default_handler: python
       handlers:
