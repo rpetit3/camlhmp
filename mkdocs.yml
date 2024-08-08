@@ -54,6 +54,8 @@ plugins:
       enabled: true
       cache: true
       cards: true
+  - mkdocstrings:
+    default_handler: python
 
 extra:
   analytics:
