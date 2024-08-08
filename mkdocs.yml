@@ -137,6 +137,6 @@ nav:
   - 'camlhmp':
     - 'Introduction': 'index.md'
     - 'Installation': 'installation.md'
-    - 'API Reference':
-      - 'Overview': 'api/index.md'
-      - 'Engines': 'api/engines.md'
+  - 'API Reference':
+    - 'Overview': 'api/index.md'
+    - 'Engines': 'api/engines.md'
