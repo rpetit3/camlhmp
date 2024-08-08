@@ -45,6 +45,8 @@ jobs:
           mkdocs --version
 
       - name: Deploy Docs
+        env:
+          MKDOCS_INSIDERS: ${{ secrets.MKDOCS_INSIDERS }}
         run: |
           git fetch origin gh-pages --depth=1
           git config user.name "GitHub Actions"
