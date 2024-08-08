@@ -141,6 +141,12 @@ nav:
   - 'camlhmp':
     - 'Introduction': 'index.md'
     - 'Installation': 'installation.md'
+    - 'Schema': 'schema.md'
+    - 'Commands':
+      - 'Overview': 'cli/index.md'
+      - 'blast-alleles': 'cli/camlhmp-blast-alleles.md'
+      - 'blast-regions': 'cli/camlhmp-blast-regions.md'
+      - 'blast-targets': 'cli/camlhmp-blast-targets.md'
   - 'API Reference':
     - 'Overview': 'api/index.md'
     - 'Engines': 
