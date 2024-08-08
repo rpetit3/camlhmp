@@ -1,7 +1,9 @@
 # Installation
 
-`camlhmp` will be made available through PyPI and Bioconda. For now, you can install it
-from the GitHub repository with the following command:
+`camlhmp` is available through [PyPI](https://pypi.org/project/camlhmp/) and
+[Bioconda](https://bioconda.github.io/recipes/camlhmp/README.html). While you can install it
+through PyPi, it is recommended to install it through BioConda so that non-Python dependencies
+are also installed.
 
 ```bash
 conda create -n camlhmp -c conda-forge -c bioconda camlhmp

@@ -2,60 +2,74 @@
 
 🐪 camlhmp 🐪 - Classification through yAML Heuristic Mapping Protocol
 
-`camlhmp` is a tool for generating organism typing tools from YAML schemas. The idea came
-up from discussions with Tim Read about the need for a tool that would allow researchers
-to more easily define typing schemas for their organisms of interest. YAML seemed like a
-a nice format for this due to its simplicity and readability.
-
-_`camlhmp` is under active development, and any feedback is appreciated._
+`camlhmp` is a tool for generating organism typing tools from YAML schemas. Through discussions
+with Tim Read, we identified a need for a straightforward method to define and manage typing
+schemas for organisms of interest. YAML was chosen for its simplicity and readability.
 
 ## Purpose
 
 The primary purpose of `camlhmp` is to provide a framework that enables researchers to
-independently define typing schemas for their organisms of interest using YAML. This
-facilitates the management and analysis biological data, no matter the researchers experience
-level.
+_independently_ define typing schemas for their organisms of interest using YAML. This
+approach facilitates the management and analysis biological data for researchers at any
+level of experience.
 
-`camlhmp` does not supply any pre-defined typing schemas. Instead, it provides researchers
-with the tools necessary tools to create and maintain their own schemas. This I believe will
-ensure the schemas remain up to date with the latest developments in its respective field.
+`camlhmp` does not supply pre-defined typing schemas. Instead, it equips researchers
+with the necessary tools to create and maintain their own schemas, ensuring these schemas
+can easily remain up to date with the latest scientific developments.
 
-Additionally, this really arose from a practical need to streamline my maintenance of
-multiple organism typing tools. Long-term maintenance of these tools is a challenge, and
-I think `camlhmp` will help me to keep them up-to-date and consistent.
+Finally, the development of `camlhmp` was driven by a practical need to streamline
+maintenance of multiple organism typing tools. Managing these tools separately is
+time-consuming and challenging. `camlhmp` simplifies this by providing a single
+framework for each tool.
 
-## Installation
+## Documentation Overview
 
-`camlhmp` will be made available through PyPI and Bioconda. For now, you can install it
-from the GitHub repository with the following command:
+[Installation](installation.md)  
+Information for installing `camlhmp` on your system
 
-```bash
-conda create -n camlhmp -c conda-forge -c bioconda camlhmp
-conda activate camlhmp
-camlhmp
-```
+[Available Tools](typers.md)  
+A list of available typing tools utilizing `camlhmp`
 
-## Citations
+[Schema Definition](bactopia/gather.md)  
+Details about defining schemas for use with `camlhmp`
 
-If you make use of this tool, please cite the following:
+[API Reference](api/index.md)  
+Details about using the `camlhmp` package in your own code
 
-- __camlhmp__  
-_Petit III RA [camlhmp: Classification through yAML Heuristic Mapping Protocol](https://github.com/rpetit3/camlhmp) (GitHub)_  
-
-- _[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)__  
-Basic Local Alignment Search Tool  
-_Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL [BLAST+: architecture and applications](http://dx.doi.org/10.1186/1471-2105-10-421). BMC Bioinformatics 10, 421 (2009)_  
+[About](about.md)
+Information about the development and funding of `camlhmp`
 
 ## Naming
 
-If I'm being honest, I really wanted to name a tool with "camel" in it because they are my
-wife's favorite animal🐪 and they also remind me of my friends in Oman!
+I really wanted to name a tool with "camel" in it because they are my wife's favorite animal🐪
+and camels also remind me of my friends in Oman!
 
-Once it was decided YAML was going to be the format for defining schemas, I quickly stumbled
-on "Classification through YAML" and quickly found out I wasn't the only once who thought
-of "CAML". But, no matter, it was decided it would be something with "CAML", then Tim Read
-came with the save and suggested "Heuristic Mapping Protocol". So, here we are - _camlhmp_!
+Once it was decided YAML was going to be the format for defining schemas, I immediately was
+drawn into "Classification through YAML", or _CAML_", but quickly found out many others had
+also thought of this (_for other use cases_). We went through a few other iterations of
+_CAML_ without any success. Fortunately, Tim Read came through with a clutch save suggested
+_"Heuristic Mapping Protocol"_. So, here we are - _camlhmp_!
 
-## License
+## Funding
 
-I'm not a lawyer and MIT has always been my go-to license. So, MIT it is!
+Support for this project came (in part) from the [Wyoming Public Health Division](https://health.wyo.gov/publichealth/), and
+the [Center for Applied Pathogen Epidemiology and Outbreak Control (CAPE)](https://www.linkedin.com/company/center-for-applied-pathogen-epidemiology-and-outbreak-control/).
+
+<a href="https://health.wyo.gov/publichealth/">
+![Wyoming Public Health Division](assets/wyphd-banner.jpg){ width="50%" }
+</a>
+<a href="https://www.linkedin.com/company/center-for-applied-pathogen-epidemiology-and-outbreak-control/">
+![Center for Applied 
+Pathogen Epidemiology and Outbreak Control](assets/cape-banner.png){ width="50%" }
+</a>
+
+
+## Citing `camlhmp`
+
+If you make use of `camlhmp` in your analysis, please cite the following:
+
+- __camlhmp__  
+_Petit III RA, Read TD [camlhmp: Classification through yAML Heuristic Mapping Protocol](https://github.com/rpetit3/camlhmp) (GitHub)_  
+
+- __[BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi)__  
+_Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL [BLAST+: architecture and applications](http://dx.doi.org/10.1186/1471-2105-10-421). BMC Bioinformatics 10, 421 (2009)_  

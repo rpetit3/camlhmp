@@ -141,16 +141,21 @@ nav:
   - 'camlhmp':
     - 'Introduction': 'index.md'
     - 'Installation': 'installation.md'
-    - 'Schema': 'schema.md'
-    - 'Commands':
-      - 'Overview': 'cli/index.md'
+    - 'Changelog': 'CHANGELOG.md'
+  - 'Available Tools': 'available-tools.md'
+  - 'Schema': 'schema.md'
+  - 'CLI':
+    - 'Overview': 'developers/cli/index.md'
+    - 'BLAST': 
       - 'blast-alleles': 'cli/camlhmp-blast-alleles.md'
       - 'blast-regions': 'cli/camlhmp-blast-regions.md'
       - 'blast-targets': 'cli/camlhmp-blast-targets.md'
-  - 'API Reference':
-    - 'Overview': 'api/index.md'
+  - 'API':
+    - 'Overview': 'developers/api/index.md'
     - 'Engines': 
-      - "Blast": 'api/engines/blast.md'
+      - "BLAST": 'developers/api/engines/blast.md'
     - 'Parsers': 
-      - "Blast": 'api/parsers/blast.md'
+      - "BLAST": 'developers/api/parsers/blast.md'
+  - "About":
+    - "About camlhmp": "about.md"
 
