@@ -2,4 +2,4 @@
 
 ## Blast
 
-::: camlhmp.engines.blast
+::: camlhmp.engines.blast.run_blast
