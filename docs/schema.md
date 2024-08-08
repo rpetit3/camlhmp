@@ -1,4 +1,8 @@
-# YAML Schema Structure
+---
+title: Schema Reference
+description: >-
+    Details about defining schemas for use with `camlhmp`
+---
 
 The schema structure is designed to be simple and intuitive. Here is a basic skeleton of the
 expected schema structure:

@@ -1,4 +1,8 @@
-# Blast
+---
+title: BLAST API Reference
+description: >-
+    Details about the BLAST engines available in `camlhmp` API
+---
 
 ::: camlhmp.engines.blast.run_blast
 

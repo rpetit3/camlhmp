@@ -1,3 +1,9 @@
+---
+title: camlhmp-blast-regions
+description: >-
+    Classify assemblies with a camlhmp schema using BLAST against larger genomic regions
+---
+
 # `camlhmp-blast-regions`
 
 `camlhmp-blast-regions` is a command that allows users to search for full regions of interest.

@@ -1,4 +1,8 @@
-# Installation
+---
+title: Installation
+description: >-
+    Information for installing `camlhmp` on your system
+---
 
 `camlhmp` is available through [PyPI](https://pypi.org/project/camlhmp/) and
 [Bioconda](https://bioconda.github.io/recipes/camlhmp/README.html). While you can install it

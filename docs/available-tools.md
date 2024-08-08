@@ -1,4 +1,8 @@
-# Available Tools
+---
+title: Available Tools
+description: >-
+    A list of available typing tools utilizing `camlhmp`
+---
 
 Below is a list of available typing tools utilizing `camlhmp`. Each tool is designed to
 analyze specific sequence data and generate a typing profile based on the schema provided.

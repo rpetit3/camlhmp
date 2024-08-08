@@ -1,4 +1,8 @@
-# Blast
+---
+title: BLAST API Reference
+description: >-
+    Details about the BLAST parsers available in `camlhmp` API
+---
 
 ## `get_blast_allele_hits`
 

@@ -1,3 +1,9 @@
+---
+title: camlhmp-blast-targets
+description: >-
+    Classify assemblies using BLAST against alleles of a set of genes
+---
+
 # `camlhmp-blast-targets`
 
 `camlhmp-blast` is a command that allows users to type their samples using a provided schema
