@@ -27,11 +27,14 @@ framework for each tool.
 [Installation](installation.md)  
 Information for installing `camlhmp` on your system
 
-[Available Tools](typers.md)  
+[Available Tools](available-tools.md)  
 A list of available typing tools utilizing `camlhmp`
 
-[Schema Definition](bactopia/gather.md)  
+[Schema Definition](schema.md)  
 Details about defining schemas for use with `camlhmp`
+
+[CLI Reference](cli/index.md)  
+Details about available CLI commands from `camlhmp`
 
 [API Reference](api/index.md)  
 Details about using the `camlhmp` package in your own code
@@ -51,7 +54,6 @@ the [Center for Applied Pathogen Epidemiology and Outbreak Control (CAPE)](https
 ![Center for Applied 
 Pathogen Epidemiology and Outbreak Control](assets/cape-banner.png){ width="40%" }
 </a>
-
 
 ## Citing `camlhmp`
 
