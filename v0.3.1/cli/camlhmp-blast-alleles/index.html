@@ -12,27 +12,31 @@
         <meta name="author" content="Robert A. Petit III">
       
       
-        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-regions/">
+        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-alleles/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../camlhmp-blast-regions/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31+insiders-4.53.12">
     
     
       
-        <title>camlhmp-blast-regions - camlhmp</title>
+        <title>blast-alleles - camlhmp</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.dad623df.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.dad623df.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,18 +50,18 @@
         
         
         
-        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.2196aa76.css">
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.2196aa76.css">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../custom/magnific-popup.css">
+      <link rel="stylesheet" href="../../custom/magnific-popup.css">
     
-      <link rel="stylesheet" href="../../../custom/extra.css">
+      <link rel="stylesheet" href="../../custom/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -75,17 +79,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="camlhmp-blast-regions - camlhmp" />
+<meta property="og:title" content="blast-alleles - camlhmp" />
 <meta property="og:description" content="🐪 Classification through yAML Heuristic Mapping Protocol 🐪" />
-<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/developers/cli/camlhmp-blast-regions.png" />
+<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-blast-alleles.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-regions/" />
+<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-alleles/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="camlhmp-blast-regions - camlhmp" />
+<meta property="twitter:title" content="blast-alleles - camlhmp" />
 <meta property="twitter:description" content="🐪 Classification through yAML Heuristic Mapping Protocol 🐪" />
-<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/developers/cli/camlhmp-blast-regions.png" />
+<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-blast-alleles.png" />
 </head>
   
   
@@ -104,11 +108,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#camlhmp-blast-regions" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -125,7 +124,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="camlhmp" class="md-header__button md-logo" aria-label="camlhmp" data-md-component="logo">
+    <a href="../.." title="camlhmp" class="md-header__button md-logo" aria-label="camlhmp" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -145,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              camlhmp-blast-regions
+              blast-alleles
             
           </span>
         </div>
@@ -258,7 +257,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   camlhmp
@@ -274,7 +273,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../available-tools/" class="md-tabs__link">
+      <a href="../../available-tools/" class="md-tabs__link">
         
   
     
@@ -291,7 +290,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../schema/" class="md-tabs__link">
+      <a href="../../schema/" class="md-tabs__link">
         
   
     
@@ -306,10 +305,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -346,7 +347,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about/" class="md-tabs__link">
+        <a href="../../about/" class="md-tabs__link">
           
   
   About
@@ -385,7 +386,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="camlhmp" class="md-nav__button md-logo" aria-label="camlhmp" data-md-component="logo">
+    <a href="../.." title="camlhmp" class="md-nav__button md-logo" aria-label="camlhmp" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -463,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -490,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CHANGELOG.md" class="md-nav__link">
+      <a href="../../CHANGELOG.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -551,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../available-tools/" class="md-nav__link">
+      <a href="../../available-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -577,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../schema/" class="md-nav__link">
+      <a href="../../schema/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -600,23 +601,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -633,7 +639,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -675,6 +681,8 @@
                 
   
   
+    
+  
   
   
     
@@ -684,11 +692,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -708,7 +716,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -723,10 +731,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-alleles.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -741,6 +756,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -753,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-regions.md" class="md-nav__link">
+      <a href="../camlhmp-blast-regions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -780,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-targets.md" class="md-nav__link">
+      <a href="../camlhmp-blast-targets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1118,7 +1134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,77 +1178,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Files
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-prefixtsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example {PREFIX}.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-prefixblasttsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example {PREFIX}.blast.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-prefixdetailstsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example {PREFIX}.details.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1249,7 +1194,7 @@
 
 
   
-    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/developers/cli/camlhmp-blast-regions.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/cli/camlhmp-blast-alleles.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1257,192 +1202,9 @@
   
 
 
-<h1 id="camlhmp-blast-regions"><code>camlhmp-blast-regions</code><a class="headerlink" href="#camlhmp-blast-regions" title="Permanent link">&para;</a></h1>
-<p><code>camlhmp-blast-regions</code> is a command that allows users to search for full regions of interest.
-It is nearly identical to <code>camlhmp-blast</code>, but instead of many smaller targets the idea is to
-instead look at full regions such as O-antigens and or similar features.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-region<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast-region<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Classify<span class="w"> </span>assemblies<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>camlhmp<span class="w"> </span>schema<span class="w"> </span>using<span class="w"> </span>BLAST<span class="w"> </span>against
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span>larger<span class="w"> </span>genomic<span class="w"> </span>regions
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────────────────╮
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w"> </span>*<span class="w">  </span>--input<span class="w">         </span>-i<span class="w">  </span>TEXT<span class="w">     </span>Input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>classify<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">           </span>│
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w"> </span>*<span class="w">  </span>--yaml<span class="w">          </span>-y<span class="w">  </span>TEXT<span class="w">     </span>YAML<span class="w"> </span>file<span class="w"> </span>documenting<span class="w"> </span>the<span class="w"> </span>targets<span class="w"> </span>and<span class="w"> </span>types<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">      </span>│
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w"> </span>*<span class="w">  </span>--targets<span class="w">       </span>-t<span class="w">  </span>TEXT<span class="w">     </span>Query<span class="w"> </span>targets<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">                    </span>│
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w">    </span>--outdir<span class="w">        </span>-o<span class="w">  </span>PATH<span class="w">     </span>Directory<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>output<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>./<span class="o">]</span><span class="w">                     </span>│
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w">    </span>--prefix<span class="w">        </span>-p<span class="w">  </span>TEXT<span class="w">     </span>Prefix<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>camlhmp<span class="o">]</span><span class="w">           </span>│
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">    </span>--min-pident<span class="w">        </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>identity<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">       </span>│
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│<span class="w">    </span>--min-coverage<span class="w">      </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>coverage<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">       </span>│
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│<span class="w">    </span>--force<span class="w">                      </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>reports<span class="w">                                  </span>│
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│<span class="w">    </span>--verbose<span class="w">                    </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w"> </span>output<span class="w">                            </span>│
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│<span class="w">    </span>--silent<span class="w">                     </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w">                        </span>│
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│<span class="w">    </span>--version<span class="w">       </span>-V<span class="w">           </span>Print<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>camlhmp<span class="w"> </span>version<span class="w">                            </span>│
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                 </span>│
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>╰─────────────────────────────────────────────────────────────────────────────────────────────╯
-</span></code></pre></div>
-<h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
-<p><code>camlhmp-blast-region</code> will generate three output files:</p>
-<table>
-<thead>
-<tr>
-<th>File Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>{PREFIX}.tsv</code></td>
-<td>A tab-delimited file with the predicted type</td>
-</tr>
-<tr>
-<td><code>{PREFIX}.blast.tsv</code></td>
-<td>A tab-delimited file of all blast hits</td>
-</tr>
-<tr>
-<td><code>{PREFIX}.details.tsv</code></td>
-<td>A tab-delimited file with details for each type</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example-prefixtsv">Example {PREFIX}.tsv<a class="headerlink" href="#example-prefixtsv" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  type    targets coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp O5  O2  100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Column</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sample</td>
-<td>The sample name as determined by <code>--prefix</code></td>
-</tr>
-<tr>
-<td>type</td>
-<td>The predicted type</td>
-</tr>
-<tr>
-<td>targets</td>
-<td>The targets for the given type that had a hit</td>
-</tr>
-<tr>
-<td>coverage</td>
-<td>The coverage of the target region</td>
-</tr>
-<tr>
-<td>hits</td>
-<td>The number of hits used to calculate coverage of the target region</td>
-</tr>
-<tr>
-<td>schema</td>
-<td>The schema used to determine the type</td>
-</tr>
-<tr>
-<td>schema_version</td>
-<td>The version of the schema used</td>
-</tr>
-<tr>
-<td>camlhmp_version</td>
-<td>The version of camlhmp used</td>
-</tr>
-<tr>
-<td>params</td>
-<td>The parameters used for the analysis</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>A small comment about the result</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example-prefixblasttsv">Example {PREFIX}.blast.tsv<a class="headerlink" href="#example-prefixblasttsv" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6874509 6875103 0.0 717
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6920911 6921505 0.0 717
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6872864 6873403 0.0 680
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6919266 6919805 0.0 680
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>O1  NZ_PSQS01000003.1   97.972  12  18368   6935329 1972    1932    38  2   16398   18368   6620589 6618619 0.0 3419
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>O1  NZ_PSQS01000003.1   96.296  12  18368   6935329 324 312 11  1   1   323 6641914 6641591 1.68e-149   531
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>O2  NZ_PSQS01000003.1   99.841  100 23303   6935329 23303   23266   30  1   1   23303   6618619 6641914 0.0 42821
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>O2  NZ_PSQS01000003.1   86.935  100 23303   6935329 1240    1078    130 12  2542    3749    3864567 3863328 0.0 1363
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>O3  NZ_PSQS01000003.1   94.442  13  20210   6935329 2393    2260    114 15  1   2386    6618619 6620999 0.0 3664
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>O3  NZ_PSQS01000003.1   99.308  13  20210   6935329 289 287 2   0   19922   20210   6641626 6641914 3.09e-147   523
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>O4  NZ_PSQS01000003.1   97.448  14  15279   6935329 1842    1795    47  0   1   1842    6618619 6620460 0.0 3142
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>O4  NZ_PSQS01000003.1   99.638  14  15279   6935329 276 275 1   0   15004   15279   6641639 6641914 8.46e-142   505
-</span></code></pre></div>
-<p>This is the standard BLAST output with <code>-outfmt 6</code></p>
-<h3 id="example-prefixdetailstsv">Example {PREFIX}.details.tsv<a class="headerlink" href="#example-prefixdetailstsv" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span></code></pre></div>
-<p>This file provides a detailed view of the results. The columns are:</p>
-<table>
-<thead>
-<tr>
-<th>Column</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sample</td>
-<td>The sample name as determined by <code>--prefix</code></td>
-</tr>
-<tr>
-<td>type</td>
-<td>The predicted type</td>
-</tr>
-<tr>
-<td>status</td>
-<td>The status of the type (True if failed)</td>
-</tr>
-<tr>
-<td>targets</td>
-<td>The targets for the given type that had a match</td>
-</tr>
-<tr>
-<td>missing</td>
-<td>The targets for the given type that were not found</td>
-</tr>
-<tr>
-<td>coverage</td>
-<td>The coverage of the target region</td>
-</tr>
-<tr>
-<td>hits</td>
-<td>The number of hits used to calculate coverage of the target region</td>
-</tr>
-<tr>
-<td>schema</td>
-<td>The schema used to determine the type</td>
-</tr>
-<tr>
-<td>schema_version</td>
-<td>The version of the schema used</td>
-</tr>
-<tr>
-<td>camlhmp_version</td>
-<td>The version of camlhmp used</td>
-</tr>
-<tr>
-<td>params</td>
-<td>The parameters used for the analysis</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>A small comment about the result</td>
-</tr>
-</tbody>
-</table>
+  <h1>blast-alleles</h1>
+
+
 
 
 
@@ -1475,6 +1237,44 @@ instead look at full regions such as O-antigens and or similar features.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../camlhmp-blast-regions/" class="md-footer__link md-footer__link--next" aria-label="Next: blast-regions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                blast-regions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1604,18 +1404,18 @@ instead look at full regions such as O-antigens and or similar features.</p>
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.4a1b0f67.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4a1b0f67.min.js"></script>
       
-        <script src="../../../custom/fontawesome.js"></script>
+        <script src="../../custom/fontawesome.js"></script>
       
-        <script src="../../../custom/jquery.min.js"></script>
+        <script src="../../custom/jquery.min.js"></script>
       
-        <script src="../../../custom/jquery.magnific-popup.min.js"></script>
+        <script src="../../custom/jquery.magnific-popup.min.js"></script>
       
-        <script src="../../../custom/extra.js"></script>
+        <script src="../../custom/extra.js"></script>
       
     
   </body>

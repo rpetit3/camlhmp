@@ -12,7 +12,7 @@
         <meta name="author" content="Robert A. Petit III">
       
       
-        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-alleles/">
+        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-extract/">
       
       
       
@@ -20,19 +20,19 @@
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31+insiders-4.53.12">
     
     
       
-        <title>Camlhmp blast alleles - camlhmp</title>
+        <title>Camlhmp extract - camlhmp</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.dad623df.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.dad623df.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,18 +46,18 @@
         
         
         
-        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.2196aa76.css">
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.2196aa76.css">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../custom/magnific-popup.css">
+      <link rel="stylesheet" href="../../custom/magnific-popup.css">
     
-      <link rel="stylesheet" href="../../../custom/extra.css">
+      <link rel="stylesheet" href="../../custom/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -75,17 +75,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Camlhmp blast alleles - camlhmp" />
+<meta property="og:title" content="Camlhmp extract - camlhmp" />
 <meta property="og:description" content="🐪 Classification through yAML Heuristic Mapping Protocol 🐪" />
-<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/developers/cli/camlhmp-blast-alleles.png" />
+<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-extract.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-alleles/" />
+<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-extract/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Camlhmp blast alleles - camlhmp" />
+<meta property="twitter:title" content="Camlhmp extract - camlhmp" />
 <meta property="twitter:description" content="🐪 Classification through yAML Heuristic Mapping Protocol 🐪" />
-<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/developers/cli/camlhmp-blast-alleles.png" />
+<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-extract.png" />
 </head>
   
   
@@ -104,6 +104,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#camlhmp-extract" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -120,7 +125,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="camlhmp" class="md-header__button md-logo" aria-label="camlhmp" data-md-component="logo">
+    <a href="../.." title="camlhmp" class="md-header__button md-logo" aria-label="camlhmp" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -140,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Camlhmp blast alleles
+              Camlhmp extract
             
           </span>
         </div>
@@ -253,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   camlhmp
@@ -269,7 +274,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../available-tools/" class="md-tabs__link">
+      <a href="../../available-tools/" class="md-tabs__link">
         
   
     
@@ -286,7 +291,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../schema/" class="md-tabs__link">
+      <a href="../../schema/" class="md-tabs__link">
         
   
     
@@ -341,7 +346,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about/" class="md-tabs__link">
+        <a href="../../about/" class="md-tabs__link">
           
   
   About
@@ -380,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="camlhmp" class="md-nav__button md-logo" aria-label="camlhmp" data-md-component="logo">
+    <a href="../.." title="camlhmp" class="md-nav__button md-logo" aria-label="camlhmp" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -458,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -485,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CHANGELOG.md" class="md-nav__link">
+      <a href="../../CHANGELOG.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -546,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../available-tools/" class="md-nav__link">
+      <a href="../../available-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -572,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../schema/" class="md-nav__link">
+      <a href="../../schema/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -721,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-alleles.md" class="md-nav__link">
+      <a href="../camlhmp-blast-alleles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -748,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-regions.md" class="md-nav__link">
+      <a href="../camlhmp-blast-regions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -775,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/camlhmp-blast-targets.md" class="md-nav__link">
+      <a href="../camlhmp-blast-targets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1113,7 +1118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1158,6 +1163,42 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#camlhmp-extract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        camlhmp-extract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="camlhmp-extract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1173,7 +1214,7 @@
 
 
   
-    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/developers/cli/camlhmp-blast-alleles.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/cli/camlhmp-extract.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1181,9 +1222,28 @@
   
 
 
-  <h1>Camlhmp blast alleles</h1>
+  <h1>Camlhmp extract</h1>
 
-
+<h2 id="camlhmp-extract"><code>camlhmp-extract</code><a class="headerlink" href="#camlhmp-extract" title="Permanent link">&para;</a></h2>
+<p><code>camlhmp-extract</code> is a command that allows users to extract targets from a set of references.
+You should think of this script as a "helper" script for curators. It allows you to maintain
+a TSV file with the targets and their positions in the reference sequences. <code>camlhmp-extract</code>
+will then extract the targets from the reference sequences and write them to a FASTA file.</p>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-extract<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Extract<span class="w"> </span>typing<span class="w"> </span>targets<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>reference<span class="w"> </span>sequences
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>╭─<span class="w"> </span>Required<span class="w"> </span>Options<span class="w"> </span>──────────────────────────────────────────────────────────────────────────╮
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│<span class="w"> </span>*<span class="w">  </span>--path<span class="w">     </span>-i<span class="w">  </span>TEXT<span class="w">  </span>The<span class="w"> </span>path<span class="w"> </span>where<span class="w"> </span>input<span class="w"> </span>files<span class="w"> </span>are<span class="w"> </span>located<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">                   </span>│
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│<span class="w"> </span>*<span class="w">  </span>--targets<span class="w">  </span>-t<span class="w">  </span>TEXT<span class="w">  </span>A<span class="w"> </span>TSV<span class="w"> </span>of<span class="w"> </span>targets<span class="w"> </span>to<span class="w"> </span>extract<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">              </span>│
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>╭─<span class="w"> </span>Additional<span class="w"> </span>Options<span class="w"> </span>────────────────────────────────────────────────────────────────────────╮
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w"> </span>--outdir<span class="w">   </span>-o<span class="w">  </span>TEXT<span class="w">  </span>The<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>extracted<span class="w"> </span>targets<span class="w">                                 </span>│
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w"> </span>--verbose<span class="w">            </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w"> </span>output<span class="w">                                       </span>│
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w"> </span>--silent<span class="w">             </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w">                                   </span>│
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w"> </span>--version<span class="w">  </span>-V<span class="w">        </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                             </span>│
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w"> </span>--help<span class="w">               </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                            </span>│
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+</span></code></pre></div>
 
 
 
@@ -1345,18 +1405,18 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.code.copy", "navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.4a1b0f67.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4a1b0f67.min.js"></script>
       
-        <script src="../../../custom/fontawesome.js"></script>
+        <script src="../../custom/fontawesome.js"></script>
       
-        <script src="../../../custom/jquery.min.js"></script>
+        <script src="../../custom/jquery.min.js"></script>
       
-        <script src="../../../custom/jquery.magnific-popup.min.js"></script>
+        <script src="../../custom/jquery.magnific-popup.min.js"></script>
       
-        <script src="../../../custom/extra.js"></script>
+        <script src="../../custom/extra.js"></script>
       
     
   </body>

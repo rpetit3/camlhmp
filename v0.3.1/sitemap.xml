@@ -26,42 +26,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/api/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/api/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/api/engines/blast/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/api/engines/blast/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/api/parsers/blast/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/api/parsers/blast/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-alleles/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-alleles/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-regions/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-regions/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-blast-targets/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-targets/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/developers/cli/camlhmp-extract/</loc>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-extract/</loc>
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
