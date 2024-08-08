@@ -62,6 +62,7 @@ plugins:
           options:
             show_source: true
             show_symbol_type_heading: false
+            show_root_heading: true
 
 extra:
   analytics:
