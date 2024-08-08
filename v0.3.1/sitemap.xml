@@ -10,4 +10,14 @@
          <lastmod>2024-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/api/</loc>
+         <lastmod>2024-08-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/api/engines/</loc>
+         <lastmod>2024-08-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
