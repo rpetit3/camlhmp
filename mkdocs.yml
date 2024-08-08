@@ -54,9 +54,6 @@ plugins:
       enabled: true
       cache: true
       cards: true
-  - gen-files:
-      scripts:
-        - .github/gen-ref-pages.py
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -140,3 +137,6 @@ nav:
   - 'camlhmp':
     - 'Introduction': 'index.md'
     - 'Installation': 'installation.md'
+    - 'API Reference':
+      - 'Overview': 'api/index.md'
+      - 'Engines': 'api/engines.md'
