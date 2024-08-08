@@ -145,17 +145,17 @@ nav:
   - 'Available Tools': 'available-tools.md'
   - 'Schema': 'schema.md'
   - 'CLI':
-    - 'Overview': 'developers/cli/index.md'
+    - 'Overview': 'cli/index.md'
     - 'BLAST': 
       - 'blast-alleles': 'cli/camlhmp-blast-alleles.md'
       - 'blast-regions': 'cli/camlhmp-blast-regions.md'
       - 'blast-targets': 'cli/camlhmp-blast-targets.md'
   - 'API':
-    - 'Overview': 'developers/api/index.md'
+    - 'Overview': 'api/index.md'
     - 'Engines': 
-      - "BLAST": 'developers/api/engines/blast.md'
+      - "BLAST": 'api/engines/blast.md'
     - 'Parsers': 
-      - "BLAST": 'developers/api/parsers/blast.md'
+      - "BLAST": 'api/parsers/blast.md'
   - "About":
     - "About camlhmp": "about.md"
 
