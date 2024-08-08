@@ -34,6 +34,10 @@ def run_blast(engine: str, subject: str, query: str, min_pident: float, min_cove
 
     Returns:
         list: The parsed BLAST results, raw blast results, and stderr
+
+    Examples:
+        >>> from camlhmp.engines.blast import run_blast
+        >>> run_blast("blastn", "subject.fasta", "query.fasta", 95, 95)
     """
     outfmt = " ".join(BLASTN_COLS)
     cat_type = "zcat" if str(subject).endswith(".gz") else "cat"

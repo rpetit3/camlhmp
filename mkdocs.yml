@@ -60,10 +60,10 @@ plugins:
         python:
           paths: [camlhmp]
           options:
-            show_source: true
-            show_symbol_type_heading: false
             show_root_heading: true
             show_root_toc_entry: false
+            show_source: true
+            show_symbol_type_heading: false
 
 extra:
   analytics:
