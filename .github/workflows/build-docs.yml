@@ -42,6 +42,8 @@ jobs:
           pip install \
             git+https://${MKDOCS_INSIDERS}@github.com/rpetit3/mkdocs-material-insiders.git
           mkdocs --version
+          # camlhmp
+          pip install -vv .
 
       - name: Deploy Docs
         run: |
