@@ -36,6 +36,7 @@ jobs:
             "mkdocs-rss-plugin>=1.1" \
             "mkdocs-redirects>=1.0" \
             "mkdocstrings[python]>=0.18" \
+            mkdocs-gen-files \
             "pillow<10" \
             mike
           # MkDocs Insiders
