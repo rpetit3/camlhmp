@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
-        with:
-            fetch-depth: 0
       
       - name: Setup miniconda
         uses: conda-incubator/setup-miniconda@v3
@@ -45,15 +43,13 @@ jobs:
           mkdocs --version
 
       - name: Deploy Docs
-        env:
-          MKDOCS_INSIDERS: ${{ secrets.MKDOCS_INSIDERS }}
         run: |
           git fetch origin gh-pages --depth=1
           git config user.name "GitHub Actions"
           git config user.email actions@github.com
           LATEST_RELEASE=$(curl -sL https://api.github.com/repos/rpetit3/camlhmp/releases/latest | jq -r ".tag_name")
           echo ${LATEST_RELEASE}
-          mike deploy -r https://${MKDOCS_INSIDERS}@github.com/rpetit3/camlhmp.git -b gh-pages --push --update-aliases ${LATEST_RELEASE} latest
+          mike deploy --push --update-aliases ${LATEST_RELEASE} latest
           mike set-default --push latest
 
       - name: Commit changes
