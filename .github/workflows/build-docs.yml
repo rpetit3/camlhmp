@@ -14,9 +14,11 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
       
       - name: Setup miniconda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: mkdocs
           auto-activate-base: false
