@@ -862,6 +862,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1314,6 +1325,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1401,8 +1423,8 @@
 
 <h1 id="camlhmp-blast-targets"><code>camlhmp-blast-targets</code><a class="headerlink" href="#camlhmp-blast-targets" title="Permanent link">&para;</a></h1>
 <p><code>camlhmp-blast-targets</code> is a command that allows users to type their samples using a provided
-schema with BLAST algorithms. This command is useful when there is no extra logic needed for
-a given schema.</p>
+schema with BLAST algorithms. This command is useful when a schema is looking at full length
+genes or proteins.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-targets<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1427,6 +1449,44 @@ a given schema.</p>
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                         </span>│
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>╰─────────────────────────────────────────────────────────────────────────────────────╯
 </span></code></pre></div>
+<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<p>To run <code>camlhmp-blast-targets</code>, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+<code>camlhmp-blast-targets</code> using available test data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>camlhmp-blast-targets<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/targets/sccmec-partial.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/targets/sccmec-partial.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/targets/sccmec-i.fasta
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Running<span class="w"> </span>camlhmp<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/targets/sccmec-i.fasta
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/targets/sccmec-partial.yaml
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/targets/sccmec-partial.fasta
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--outdir<span class="w"> </span>./
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Starting<span class="w"> </span>camlhmp<span class="w"> </span><span class="k">for</span><span class="w"> </span>SCCmec<span class="w"> </span>Typing...
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>Running<span class="w"> </span>blastn...
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Processing<span class="w"> </span>hits...
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Final<span class="w"> </span>Results...
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                                     </span>SCCmec<span class="w"> </span>Typing
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>┏━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━┓
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>┃<span class="w"> </span>sample<span class="w">  </span>┃<span class="w"> </span><span class="nb">type</span><span class="w"> </span>┃<span class="w"> </span>targets<span class="w">   </span>┃<span class="w"> </span>schema<span class="w">    </span>┃<span class="w"> </span>schema_v…<span class="w"> </span>┃<span class="w"> </span>camlhmp…<span class="w"> </span>┃<span class="w"> </span>params<span class="w">    </span>┃<span class="w"> </span>comment<span class="w"> </span>┃
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>┡━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━┩
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│<span class="w"> </span>camlhmp<span class="w"> </span>│<span class="w"> </span>I<span class="w">    </span>│<span class="w"> </span>ccrA1,cc…<span class="w"> </span>│<span class="w"> </span>sccmec_p…<span class="w"> </span>│<span class="w"> </span><span class="m">0</span>.0.1<span class="w">     </span>│<span class="w"> </span><span class="m">0</span>.3.1<span class="w">    </span>│<span class="w"> </span>min-cove…<span class="w"> </span>│<span class="w">         </span>│
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└─────────┴──────┴───────────┴───────────┴───────────┴──────────┴───────────┴─────────┘
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Writing<span class="w"> </span>outputs...
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>Final<span class="w"> </span>predicted<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tsv
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>Results<span class="w"> </span>against<span class="w"> </span>each<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.details.tsv
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>blastn<span class="w"> </span>results<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.blastn.tsv
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table printed to STDOUT by <code>camlhmp-blast-targets</code> has been purposefully truncated
+for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.</p>
+</div>
 <h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
 <p><code>camlhmp-blast-targets</code> will generate three output files:</p>
 <table>
@@ -1496,22 +1556,22 @@ a given schema.</p>
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  type    targets schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp I   ccrA1,ccrB1,IS431,IS1272,mecA,mecR1 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sample  type    targets schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>camlhmp I   ccrA1,ccrB1,IS431,IS1272,mecA,mecR1 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
 </span></code></pre></div>
 <h3 id="prefixblasttsv">{PREFIX}.blast.tsv<a class="headerlink" href="#prefixblasttsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.blast.tsv</code> file is a tab-delimited file of the raw output for all blast hits.
 The columns are the standard BLAST output with <code>-outfmt 6</code>.</p>
 <p>Here is an example of the <code>{PREFIX}.blast.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ccrA1   AB033763.2  100.000 100 1350    39332   1350    1350    0   0   1   1350    23692   25041   0.0 2494
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ccrB1   AB033763.2  100.000 100 1152    39332   1152    1152    0   0   1   1152    25063   26214   0.0 2128
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>IS1272  AB033763.2  100.000 100 1659    39332   1659    1659    0   0   1   1659    28423   30081   0.0 3064
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>mecR1   AB033763.2  100.000 100 987 39332   987 987 0   0   1   987 30304   31290   0.0 1823
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>mecA    AB033763.2  99.950  100 2007    39332   2007    2006    1   0   1   2007    31390   33396   0.0 3701
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>mecA    AB033763.2  99.950  100 2007    39332   2007    2006    1   0   1   2007    31390   33396   0.0 3701
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>IS431   AB033763.2  99.873  100 790 39332   790 789 1   0   1   790 35958   36747   0.0 1454
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>IS431   AB033763.2  100.000 100 792 39332   792 792 0   0   1   792 35957   36748   0.0 1463
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ccrA1   AB033763.2  100.000 100 1350    39332   1350    1350    0   0   1   1350    23692   25041   0.0 2494
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ccrB1   AB033763.2  100.000 100 1152    39332   1152    1152    0   0   1   1152    25063   26214   0.0 2128
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>IS1272  AB033763.2  100.000 100 1659    39332   1659    1659    0   0   1   1659    28423   30081   0.0 3064
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mecR1   AB033763.2  100.000 100 987 39332   987 987 0   0   1   987 30304   31290   0.0 1823
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>mecA    AB033763.2  99.950  100 2007    39332   2007    2006    1   0   1   2007    31390   33396   0.0 3701
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>mecA    AB033763.2  99.950  100 2007    39332   2007    2006    1   0   1   2007    31390   33396   0.0 3701
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>IS431   AB033763.2  99.873  100 790 39332   790 789 1   0   1   790 35958   36747   0.0 1454
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>IS431   AB033763.2  100.000 100 792 39332   792 792 0   0   1   792 35957   36748   0.0 1463
 </span></code></pre></div>
 <h3 id="prefixdetailstsv">{PREFIX}.details.tsv<a class="headerlink" href="#prefixdetailstsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.details.tsv</code> file is a tab-delimited file with details for each type. This file
@@ -1568,11 +1628,11 @@ can be useful for seeing how a sample did against all other types in a schema.</
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.details.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp I   True    ccrA1,ccrB1,IS431,mecA,mecR1,IS1272     sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp II  False   IS431,mecA,mecR1    ccrA2,ccrB2,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp III False   IS431,mecA,mecR1    ccrA3,ccrB3,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp IV  False   IS431,mecA,mecR1,IS1272 ccrA2,ccrB2 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sample  type    status  targets missing schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>camlhmp I   True    ccrA1,ccrB1,IS431,mecA,mecR1,IS1272     sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>camlhmp II  False   IS431,mecA,mecR1    ccrA2,ccrB2,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>camlhmp III False   IS431,mecA,mecR1    ccrA3,ccrB3,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>camlhmp IV  False   IS431,mecA,mecR1,IS1272 ccrA2,ccrB2 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
 </span></code></pre></div>
 <h2 id="example-implementation">Example Implementation<a class="headerlink" href="#example-implementation" title="Permanent link">&para;</a></h2>
 <p>If you would like to see how <code>camlhmp-blast-targets</code> can be used, please see
@@ -1580,13 +1640,13 @@ can be useful for seeing how a sample did against all other types in a schema.</
 to directly use <code>camlhmp-blast-targets</code> to classify samples without any extra
 logic.</p>
 <p>This allows for a simple wrapper like the following:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/usr/bin/env bash</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">sccmec_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$0</span><span class="k">)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">CAML_YAML</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">CAML_TARGETS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.fasta&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>camlhmp-blast-targets<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">sccmec_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$0</span><span class="k">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">CAML_YAML</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">CAML_TARGETS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.fasta&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>camlhmp-blast-targets<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
 </span></code></pre></div>
 <p>This script will run <code>camlhmp-blast-targets</code> with the <code>sccmec</code> schema and targets.</p>
 

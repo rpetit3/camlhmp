@@ -835,6 +835,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1314,6 +1325,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1427,6 +1449,44 @@ idea is to instead look at full regions such as O-antigens and or similar featur
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                         </span>│
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>╰─────────────────────────────────────────────────────────────────────────────────────╯
 </span></code></pre></div>
+<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<p>To run <code>camlhmp-blast-regions</code>, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+<code>camlhmp-blast-regions</code> using available test data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>camlhmp-blast-regions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/regions/pseudomonas-serogroup.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/regions/pseudomonas-serogroup.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/regions/O1-GCF_000504045.fna.gz
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Running<span class="w"> </span>camlhmp<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/regions/O1-GCF_000504045.fna.gz
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/regions/pseudomonas-serogroup.yaml
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/regions/pseudomonas-serogroup.fasta
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--outdir<span class="w"> </span>./
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Starting<span class="w"> </span>camlhmp<span class="w"> </span><span class="k">for</span><span class="w"> </span>Pseudomonas<span class="w"> </span>Serogrouping...
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>Running<span class="w"> </span>blastn...
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Processing<span class="w"> </span>hits...
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Final<span class="w"> </span>Results...
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                               </span>Pseudomonas<span class="w"> </span>Serogrouping
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>┏━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>┃<span class="w"> </span>sample<span class="w"> </span>┃<span class="w"> </span><span class="nb">type</span><span class="w"> </span>┃<span class="w"> </span>targe…<span class="w"> </span>┃<span class="w"> </span>cover…<span class="w"> </span>┃<span class="w"> </span>hits<span class="w"> </span>┃<span class="w"> </span>schema<span class="w"> </span>┃<span class="w"> </span>schem…<span class="w"> </span>┃<span class="w"> </span>camlh…<span class="w"> </span>┃<span class="w"> </span>params<span class="w"> </span>┃<span class="w"> </span>comme…<span class="w"> </span>┃
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>┡━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│<span class="w"> </span>camlh…<span class="w"> </span>│<span class="w"> </span>O1<span class="w">   </span>│<span class="w"> </span>O1<span class="w">     </span>│<span class="w"> </span><span class="m">100</span>.00<span class="w"> </span>│<span class="w"> </span><span class="m">1</span><span class="w">    </span>│<span class="w"> </span>pseud…<span class="w"> </span>│<span class="w"> </span><span class="m">0</span>.0.1<span class="w">  </span>│<span class="w"> </span><span class="m">0</span>.3.1<span class="w">  </span>│<span class="w"> </span>min-c…<span class="w"> </span>│<span class="w">        </span>│
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└────────┴──────┴────────┴────────┴──────┴────────┴────────┴────────┴────────┴────────┘
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Writing<span class="w"> </span>outputs...
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>Final<span class="w"> </span>predicted<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tsv
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>Results<span class="w"> </span>against<span class="w"> </span>each<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.details.tsv
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>blastn<span class="w"> </span>results<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.blastn.tsv
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table printed to STDOUT by <code>camlhmp-blast-regions</code> has been purposefully truncated
+for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.</p>
+</div>
 <h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
 <p><code>camlhmp-blast-region</code> will generate three output files:</p>
 <table>
@@ -1504,26 +1564,26 @@ idea is to instead look at full regions such as O-antigens and or similar featur
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  type    targets coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp O5  O2  100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sample  type    targets coverage    hits    schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>camlhmp O5  O2  100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
 </span></code></pre></div>
 <h3 id="prefixblasttsv">{PREFIX}.blast.tsv<a class="headerlink" href="#prefixblasttsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.blast.tsv</code> file is a tab-delimited file of the raw output for all blast hits.
 The columns are the standard BLAST output with <code>-outfmt 6</code>.</p>
 <p>Here is an example of the <code>{PREFIX}.blast.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6874509 6875103 0.0 717
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6920911 6921505 0.0 717
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6872864 6873403 0.0 680
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6919266 6919805 0.0 680
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>O1  NZ_PSQS01000003.1   97.972  12  18368   6935329 1972    1932    38  2   16398   18368   6620589 6618619 0.0 3419
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>O1  NZ_PSQS01000003.1   96.296  12  18368   6935329 324 312 11  1   1   323 6641914 6641591 1.68e-149   531
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>O2  NZ_PSQS01000003.1   99.841  100 23303   6935329 23303   23266   30  1   1   23303   6618619 6641914 0.0 42821
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>O2  NZ_PSQS01000003.1   86.935  100 23303   6935329 1240    1078    130 12  2542    3749    3864567 3863328 0.0 1363
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>O3  NZ_PSQS01000003.1   94.442  13  20210   6935329 2393    2260    114 15  1   2386    6618619 6620999 0.0 3664
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>O3  NZ_PSQS01000003.1   99.308  13  20210   6935329 289 287 2   0   19922   20210   6641626 6641914 3.09e-147   523
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>O4  NZ_PSQS01000003.1   97.448  14  15279   6935329 1842    1795    47  0   1   1842    6618619 6620460 0.0 3142
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>O4  NZ_PSQS01000003.1   99.638  14  15279   6935329 276 275 1   0   15004   15279   6641639 6641914 8.46e-142   505
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6874509 6875103 0.0 717
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>wzyB    NZ_PSQS01000003.1   88.403  99  1140    6935329 595 526 69  0   545 1139    6920911 6921505 0.0 717
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6872864 6873403 0.0 680
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>wzyB    NZ_PSQS01000003.1   89.444  99  1140    6935329 540 483 56  1   1   539 6919266 6919805 0.0 680
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>O1  NZ_PSQS01000003.1   97.972  12  18368   6935329 1972    1932    38  2   16398   18368   6620589 6618619 0.0 3419
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>O1  NZ_PSQS01000003.1   96.296  12  18368   6935329 324 312 11  1   1   323 6641914 6641591 1.68e-149   531
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>O2  NZ_PSQS01000003.1   99.841  100 23303   6935329 23303   23266   30  1   1   23303   6618619 6641914 0.0 42821
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>O2  NZ_PSQS01000003.1   86.935  100 23303   6935329 1240    1078    130 12  2542    3749    3864567 3863328 0.0 1363
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>O3  NZ_PSQS01000003.1   94.442  13  20210   6935329 2393    2260    114 15  1   2386    6618619 6620999 0.0 3664
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>O3  NZ_PSQS01000003.1   99.308  13  20210   6935329 289 287 2   0   19922   20210   6641626 6641914 3.09e-147   523
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>O4  NZ_PSQS01000003.1   97.448  14  15279   6935329 1842    1795    47  0   1   1842    6618619 6620460 0.0 3142
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>O4  NZ_PSQS01000003.1   99.638  14  15279   6935329 276 275 1   0   15004   15279   6641639 6641914 8.46e-142   505
 </span></code></pre></div>
 <h3 id="prefixdetailstsv">{PREFIX}.details.tsv<a class="headerlink" href="#prefixdetailstsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.details.tsv</code> file is a tab-delimited file with details for each type. This file
@@ -1588,12 +1648,12 @@ can be useful for seeing how a sample did against all other types in a schema.</
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.details.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
 </span></code></pre></div>
 <h2 id="example-implementation">Example Implementation<a class="headerlink" href="#example-implementation" title="Permanent link">&para;</a></h2>
 <p>If you would like to see how <code>camlhmp-blast-regions</code> can be used, please see
@@ -1601,13 +1661,13 @@ can be useful for seeing how a sample did against all other types in a schema.</
 to directly use <code>camlhmp-blast-regions</code> to classify samples without any extra
 logic.</p>
 <p>This allows for a simple wrapper like the following:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/usr/bin/env bash</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">pasty_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$0</span><span class="k">)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">CAML_YAML</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">pasty_dir</span><span class="si">}</span><span class="s2">/../data/pa-osa.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">CAML_TARGETS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">pasty_dir</span><span class="si">}</span><span class="s2">/../data/pa-osa.fasta&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>camlhmp-blast-regions<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">pasty_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$0</span><span class="k">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">CAML_YAML</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">pasty_dir</span><span class="si">}</span><span class="s2">/../data/pa-osa.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">CAML_TARGETS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">pasty_dir</span><span class="si">}</span><span class="s2">/../data/pa-osa.fasta&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>camlhmp-blast-regions<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
 </span></code></pre></div>
 <p>This script will run <code>camlhmp-blast-regions</code> with the <code>pasty</code> schema and targets.</p>
 

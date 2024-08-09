@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#output-files" class="md-skip">
+        <a href="#camlhmp-blast-alleles" class="md-skip">
           Skip to content
         </a>
       
@@ -745,6 +745,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -785,12 +787,25 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
@@ -1267,12 +1282,25 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#output-files" class="md-nav__link">
@@ -1349,8 +1377,10 @@
   
 
 
-  <h1>blast-alleles</h1>
-
+<h1 id="camlhmp-blast-alleles"><code>camlhmp-blast-alleles</code><a class="headerlink" href="#camlhmp-blast-alleles" title="Permanent link">&para;</a></h1>
+<p><code>camlhmp-blast-alleles</code> is a command that allows users to type their samples using a provided
+schema with BLAST algorithms. This command is useful when the schema is typing specific alleles
+of a gene or set of genes (e.g. MLST).</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-alleles<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast-alleles<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Classify<span class="w"> </span>assemblies<span class="w"> </span>using<span class="w"> </span>BLAST<span class="w"> </span>against<span class="w"> </span>alleles<span class="w"> </span>of
@@ -1376,6 +1406,43 @@
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                    </span>│
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>╰────────────────────────────────────────────────────────────────────────────────╯
 </span></code></pre></div>
+<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<p>To run <code>camlhmp-blast-alleles</code>, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+<code>camlhmp-blast-alleles</code> using available test data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>camlhmp-blast-alleles<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/alleles/SRR2912551.fna.gz
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Running<span class="w"> </span>camlhmp<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/alleles/SRR2912551.fna.gz
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.yaml
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.fasta
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--outdir<span class="w"> </span>./
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Starting<span class="w"> </span>camlhmp<span class="w"> </span><span class="k">for</span><span class="w"> </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing...
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>Running<span class="w"> </span>tblastn...
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Processing<span class="w"> </span>hits...
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Final<span class="w"> </span>Results...
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                               </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┓
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━┩
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│<span class="w"> </span><span class="m">0</span><span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">5</span>…<span class="w"> </span>│<span class="w">   </span>│<span class="w"> </span><span class="m">2</span><span class="w">  </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┘
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Writing<span class="w"> </span>outputs...
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>Final<span class="w"> </span>predicted<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tsv
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>tblastn<span class="w"> </span>results<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tblastn.tsv
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table printed to STDOUT by <code>camlhmp-blast-alleles</code> has been purposefully truncated
+for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.</p>
+</div>
 <h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
 <p><code>camlhmp-blast-region</code> will generate three output files:</p>
 <table>
@@ -1449,31 +1516,31 @@
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  schema  schema_version  camlhmp_version params  1A_id   1A_pident   1A_qcovs    1A_bitscore 1A_comment  2B_id   2B_pident   2B_qcovs    2B_bitscore 2B_comment  2X_id   2X_pident   2X_qcovs    2X_bitscore 2X_comment
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp pbptype_partial 0.0.1   0.3.1   min-coverage=95;min-pident=95   23  100.0   100 556     0   100.0   100 567     2   100.0   100 741 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sample  schema  schema_version  camlhmp_version params  1A_id   1A_pident   1A_qcovs    1A_bitscore 1A_comment  2B_id   2B_pident   2B_qcovs    2B_bitscore 2B_comment  2X_id   2X_pident   2X_qcovs    2X_bitscore 2X_comment
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>camlhmp pbptype_partial 0.0.1   0.3.1   min-coverage=95;min-pident=95   23  100.0   100 556     0   100.0   100 567     2   100.0   100 741 
 </span></code></pre></div>
 <h3 id="prefixblasttsv">{PREFIX}.blast.tsv<a class="headerlink" href="#prefixblasttsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.blast.tsv</code> file is a tab-delimited file of the raw output for all blast hits.
 The columns are the standard BLAST output with <code>-outfmt 6</code>.</p>
 <p>Here is an example of the <code>{PREFIX}.blast.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>1A_0    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>1A_1    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>1A_2    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 554
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>1A_3    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 553
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>1A_4    NODE_223_length_8196_cov_21.291849  84.420  100 276 8324    276 233 43  0   1   276 1807    2634    3.91e-155   474
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>1A_23   NODE_223_length_8196_cov_21.291849  100.000 100 276 8324    276 276 0   0   1   276 1807    2634    0.0 556
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>2B_0    NODE_878_length_2854_cov_17.976875  100.000 100 277 2982    277 277 0   0   1   277 1218    2048    0.0 567
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>2B_1    NODE_878_length_2854_cov_17.976875  87.365  100 277 2982    277 242 35  0   1   277 1218    2048    3.24e-173   501
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>2B_2    NODE_878_length_2854_cov_17.976875  99.278  100 277 2982    277 275 2   0   1   277 1218    2048    0.0 563
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>2B_3    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>2B_4    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>2X_0    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 740
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>2X_1    NODE_210_length_5085_cov_16.539627  92.179  100 358 5213    358 330 28  0   1   358 3172    2099    0.0 688
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>2X_1    NODE_878_length_2854_cov_17.976875  23.797  99  358 2982    395 94  230 17  1   353 915 2012    1.95e-06    45.8
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>2X_2    NODE_210_length_5085_cov_16.539627  100.000 100 358 5213    358 358 0   0   1   358 3172    2099    0.0 741
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>2X_3    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 739
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>2X_4    NODE_210_length_5085_cov_16.539627  99.441  100 358 5213    358 356 2   0   1   358 3172    2099    0.0 738
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>1A_0    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>1A_1    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>1A_2    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 554
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>1A_3    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 553
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>1A_4    NODE_223_length_8196_cov_21.291849  84.420  100 276 8324    276 233 43  0   1   276 1807    2634    3.91e-155   474
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>1A_23   NODE_223_length_8196_cov_21.291849  100.000 100 276 8324    276 276 0   0   1   276 1807    2634    0.0 556
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>2B_0    NODE_878_length_2854_cov_17.976875  100.000 100 277 2982    277 277 0   0   1   277 1218    2048    0.0 567
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>2B_1    NODE_878_length_2854_cov_17.976875  87.365  100 277 2982    277 242 35  0   1   277 1218    2048    3.24e-173   501
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>2B_2    NODE_878_length_2854_cov_17.976875  99.278  100 277 2982    277 275 2   0   1   277 1218    2048    0.0 563
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>2B_3    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>2B_4    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>2X_0    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 740
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>2X_1    NODE_210_length_5085_cov_16.539627  92.179  100 358 5213    358 330 28  0   1   358 3172    2099    0.0 688
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>2X_1    NODE_878_length_2854_cov_17.976875  23.797  99  358 2982    395 94  230 17  1   353 915 2012    1.95e-06    45.8
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>2X_2    NODE_210_length_5085_cov_16.539627  100.000 100 358 5213    358 358 0   0   1   358 3172    2099    0.0 741
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>2X_3    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 739
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>2X_4    NODE_210_length_5085_cov_16.539627  99.441  100 358 5213    358 356 2   0   1   358 3172    2099    0.0 738
 </span></code></pre></div>
 <h3 id="prefixdetailstsv">{PREFIX}.details.tsv<a class="headerlink" href="#prefixdetailstsv" title="Permanent link">&para;</a></h3>
 <p>The <code>{PREFIX}.details.tsv</code> file is a tab-delimited file with details for each type. This file
@@ -1538,12 +1605,12 @@ can be useful for seeing how a sample did against all other types in a schema.</
 </tbody>
 </table>
 <p>Below is an example of the <code>{PREFIX}.details.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
 </span></code></pre></div>
 
 
