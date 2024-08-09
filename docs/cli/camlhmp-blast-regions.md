@@ -37,6 +37,47 @@ idea is to instead look at full regions such as O-antigens and or similar featur
 ╰─────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+## Example Usage
+
+To run `camlhmp-blast-regions`, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+`camlhmp-blast-regions` using available test data.
+
+```bash
+camlhmp-blast-regions \
+    --yaml tests/data/blast/regions/pseudomonas-serogroup.yaml \
+    --targets tests/data/blast/regions/pseudomonas-serogroup.fasta \
+    --input tests/data/blast/regions/O1-GCF_000504045.fna.gz
+
+Running camlhmp with following parameters:
+    --input tests/data/blast/regions/O1-GCF_000504045.fna.gz
+    --yaml tests/data/blast/regions/pseudomonas-serogroup.yaml
+    --targets tests/data/blast/regions/pseudomonas-serogroup.fasta
+    --outdir ./
+    --prefix camlhmp
+    --min-pident 95
+    --min-coverage 95
+
+Starting camlhmp for Pseudomonas Serogrouping...
+Running blastn...
+Processing hits...
+Final Results...
+                               Pseudomonas Serogrouping
+┏━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃ sample ┃ type ┃ targe… ┃ cover… ┃ hits ┃ schema ┃ schem… ┃ camlh… ┃ params ┃ comme… ┃
+┡━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│ camlh… │ O1   │ O1     │ 100.00 │ 1    │ pseud… │ 0.0.1  │ 0.3.1  │ min-c… │        │
+└────────┴──────┴────────┴────────┴──────┴────────┴────────┴────────┴────────┴────────┘
+Writing outputs...
+Final predicted type written to ./camlhmp.tsv
+Results against each type written to ./camlhmp.details.tsv
+blastn results written to ./camlhmp.blastn.tsv
+```
+
+!!! Note
+    The table printed to STDOUT by `camlhmp-blast-regions` has been purposefully truncated
+    for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.
+
 ## Output Files
 
 `camlhmp-blast-region` will generate three output files:

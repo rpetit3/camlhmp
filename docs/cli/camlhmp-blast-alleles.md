@@ -4,6 +4,11 @@ description: >-
     Classify assemblies using BLAST against alleles of a set of genes
 ---
 
+# `camlhmp-blast-alleles`
+
+`camlhmp-blast-alleles` is a command that allows users to type their samples using a provided
+schema with BLAST algorithms. This command is useful when the schema is typing specific alleles
+of a gene or set of genes (e.g. MLST).
 
 ```bash
  Usage: camlhmp-blast-alleles [OPTIONS]
@@ -31,6 +36,46 @@ description: >-
 │    --help                       Show this message and exit.                    │
 ╰────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Example Usage
+
+To run `camlhmp-blast-alleles`, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+`camlhmp-blast-alleles` using available test data.
+
+```bash
+camlhmp-blast-alleles \
+    --yaml tests/data/blast/alleles/spn-pbptype.yaml \
+    --targets tests/data/blast/alleles/spn-pbptype.fasta \
+    --input tests/data/blast/alleles/SRR2912551.fna.gz
+
+Running camlhmp with following parameters:
+    --input tests/data/blast/alleles/SRR2912551.fna.gz
+    --yaml tests/data/blast/alleles/spn-pbptype.yaml
+    --targets tests/data/blast/alleles/spn-pbptype.fasta
+    --outdir ./
+    --prefix camlhmp
+    --min-pident 95
+    --min-coverage 95
+
+Starting camlhmp for S. pneumoniae PBP typing...
+Running tblastn...
+Processing hits...
+Final Results...
+                               S. pneumoniae PBP typing
+┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┓
+┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ 1… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃
+┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━┩
+│ … │ … │ … │ … │ … │ … │ … │ … │ … │    │ 0 │ 1… │ … │ 5… │   │ 2  │ … │ 1… │ … │    │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┘
+Writing outputs...
+Final predicted type written to ./camlhmp.tsv
+tblastn results written to ./camlhmp.tblastn.tsv
+```
+
+!!! Note
+    The table printed to STDOUT by `camlhmp-blast-alleles` has been purposefully truncated
+    for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.
 
 ## Output Files
 

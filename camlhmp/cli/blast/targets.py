@@ -188,9 +188,9 @@ def camlhmp_blast_targets(
     )
 
     # Verify the engine is a support blast subcommand
-    if framework["engine"]["type"] not in ["blastn"]:
+    if framework["engine"]["type"] not in ["blast"]:
         raise ValueError(
-            f"Unsupported engine ({framework['engine']['type']}), camlhmp-blast only supports blast"
+            f"Unsupported engine ({framework['engine']['type']}), camlhmp-blast-targets only supports blast"
         )
 
     # Run blast

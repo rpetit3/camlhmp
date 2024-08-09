@@ -137,8 +137,6 @@ def camlhmp_blast_regions(
         logging.ERROR if silent else logging.DEBUG if verbose else logging.INFO
     )
 
-    print(f"yaml {yaml}")
-
     # Verify input files are available
     yaml_path = validate_file(yaml)
 

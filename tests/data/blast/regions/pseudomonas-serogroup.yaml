@@ -10,6 +10,7 @@ metadata:
     - "Robert Petit"
 # engine provides information about the tool and parameters used
 engine:
+  type: blast   # The type of tool used to generate the data
   tool: blastn # The tool used to generate the data
 # targets provides a list of sequence targets (primers, genes, proteins, etc...)
 targets: ["O1", "O2", "O3", "O4", "wzyB"]

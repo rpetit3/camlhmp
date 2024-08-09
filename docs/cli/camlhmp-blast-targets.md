@@ -7,8 +7,8 @@ description: >-
 # `camlhmp-blast-targets`
 
 `camlhmp-blast-targets` is a command that allows users to type their samples using a provided
-schema with BLAST algorithms. This command is useful when there is no extra logic needed for
-a given schema.
+schema with BLAST algorithms. This command is useful when a schema is looking at full length
+genes or proteins.
 
 ## Usage
 
@@ -36,6 +36,47 @@ a given schema.
 │    --help                       Show this message and exit.                         │
 ╰─────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+## Example Usage
+
+To run `camlhmp-blast-targets`, you will need a FASTA file of your input sequences, a YAML
+file with the schema, and a FASTA file with the targets. Below is an example of how to run
+`camlhmp-blast-targets` using available test data.
+
+```bash
+camlhmp-blast-targets \
+    --yaml tests/data/blast/targets/sccmec-partial.yaml \
+    --targets tests/data/blast/targets/sccmec-partial.fasta \
+    --input tests/data/blast/targets/sccmec-i.fasta
+
+Running camlhmp with following parameters:
+    --input tests/data/blast/targets/sccmec-i.fasta
+    --yaml tests/data/blast/targets/sccmec-partial.yaml
+    --targets tests/data/blast/targets/sccmec-partial.fasta
+    --outdir ./
+    --prefix camlhmp
+    --min-pident 95
+    --min-coverage 95
+
+Starting camlhmp for SCCmec Typing...
+Running blastn...
+Processing hits...
+Final Results...
+                                     SCCmec Typing
+┏━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━┓
+┃ sample  ┃ type ┃ targets   ┃ schema    ┃ schema_v… ┃ camlhmp… ┃ params    ┃ comment ┃
+┡━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━┩
+│ camlhmp │ I    │ ccrA1,cc… │ sccmec_p… │ 0.0.1     │ 0.3.1    │ min-cove… │         │
+└─────────┴──────┴───────────┴───────────┴───────────┴──────────┴───────────┴─────────┘
+Writing outputs...
+Final predicted type written to ./camlhmp.tsv
+Results against each type written to ./camlhmp.details.tsv
+blastn results written to ./camlhmp.blastn.tsv
+```
+
+!!! Note
+    The table printed to STDOUT by `camlhmp-blast-targets` has been purposefully truncated
+    for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.
 
 ## Output Files
 

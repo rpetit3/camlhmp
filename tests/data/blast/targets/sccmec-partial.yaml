@@ -10,7 +10,8 @@ metadata:
     - "Robert Petit"
 # engine provides information about the tool and parameters used
 engine:
-  tool: blastn # The tool used to generate the data
+  type: blast   # The type of tool used to generate the data
+  tool: blastn  # The tool used to generate the data
 # targets provides a list of sequence targets (primers, genes, proteins, etc...)
 targets:
   - "ccrA1"
