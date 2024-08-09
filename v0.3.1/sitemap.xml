@@ -51,21 +51,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-alleles/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-regions/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-targets/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-extract/</loc>
          <lastmod>2024-08-09</lastmod>
          <changefreq>daily</changefreq>
