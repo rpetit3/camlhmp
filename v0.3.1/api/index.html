@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CHANGELOG.md" class="md-nav__link">
+      <a href="../CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1202,7 +1202,59 @@
 
   <h1>Overview</h1>
 
-
+<p>At it's core <code>camlhmp</code> is a library that provides a set of functions for typing organisms. It
+includes functions for running programs and parsing their outputs. In situations where the
+available CLI commands do not meet your needs, you can use the API functions to build your own
+custom workflows.</p>
+<p>Currently the following modules are available in the <code>camlhmp</code> API:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Module</th>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engine</td>
+<td><a href="api/engines/blast.md">camlhmp.engines.blast</a></td>
+<td><a href="api/engines/blast.md#camlhmp.engines.blast.run_blast">run_blast</a></td>
+<td>Run BLAST program</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td><a href="api/engines/blast.md">camlhmp.engines.blast</a></td>
+<td><a href="api/engines/blast.md#camlhmp.engines.blast.run_blastn">run_blast</a></td>
+<td>Alias for <code>run_blast</code> with <code>blastn</code> specified</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td><a href="api/engines/blast.md">camlhmp.engines.blast</a></td>
+<td><a href="api/engines/blast.md#camlhmp.engines.blast.run_tblastn">run_blast</a></td>
+<td>Alias for <code>run_blast</code> with <code>tblastn</code> specified</td>
+</tr>
+<tr>
+<td>Parser</td>
+<td><a href="api/parsers/blast.md">camlhmp.parsers.blast</a></td>
+<td><a href="api/parsers/blast.md#camlhmp.parsers.blast.get_blast_allele_hits">get_blast_allele_hits</a></td>
+<td>Parse BLAST output for allele hits</td>
+</tr>
+<tr>
+<td>Parser</td>
+<td><a href="api/parsers/blast.md">camlhmp.parsers.blast</a></td>
+<td><a href="api/parsers/blast.md#camlhmp.parsers.blast.get_blast_region_hits">get_blast_region_hits</a></td>
+<td>Parse BLAST output for region hits</td>
+</tr>
+<tr>
+<td>parser</td>
+<td><a href="api/parsers/blast.md">camlhmp.parsers.blast</a></td>
+<td><a href="api/parsers/blast.md#camlhmp.parsers.blast.get_blast_target_hits">get_blast_target_hits</a></td>
+<td>Parse BLAST output for target hits</td>
+</tr>
+</tbody>
+</table>
 
 
 
