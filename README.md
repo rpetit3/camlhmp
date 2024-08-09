@@ -8,8 +8,6 @@
 with Tim Read, we identified a need for a straightforward method to define and manage typing
 schemas for organisms of interest. YAML was chosen for its simplicity and readability.
 
-## Documentation
-
 Full documentation for `camlhmp` can be found at [https://rpetit3.github.io/camlhmp/](https://rpetit3.github.io/camlhmp/).
 
 ## Purpose
@@ -64,3 +62,11 @@ came with the save and suggested "Heuristic Mapping Protocol". So, here we are -
 ## License
 
 I'm not a lawyer and MIT has always been my go-to license. So, MIT it is!
+
+## Funding
+
+Support for this project came (in part) from the [Wyoming Public Health Division](https://health.wyo.gov/publichealth/), and
+the [Center for Applied Pathogen Epidemiology and Outbreak Control (CAPE)](https://www.linkedin.com/company/center-for-applied-pathogen-epidemiology-and-outbreak-control/).
+
+![Wyoming Public Health Division](docs/assets/wyphd-banner.jpg)
+![Center for Applied Pathogen Epidemiology and Outbreak Control](docs/assets/cape-banner.png)
