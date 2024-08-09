@@ -157,6 +157,8 @@ nav:
       - "BLAST": 'api/engines/blast.md'
     - 'Parsers': 
       - "BLAST": 'api/parsers/blast.md'
+    - 'Framework': 'api/framework.md'
+    - 'Utils': 'api/utils.md'
   - "About":
     - "About camlhmp": "about.md"
 
