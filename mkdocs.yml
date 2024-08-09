@@ -146,9 +146,11 @@ nav:
   - 'CLI':
     - 'Overview': 'cli/index.md'
     - 'BLAST': 
-      - 'blast-alleles': 'cli/camlhmp-blast-alleles.md'
-      - 'blast-regions': 'cli/camlhmp-blast-regions.md'
-      - 'blast-targets': 'cli/camlhmp-blast-targets.md'
+      - 'blast-alleles': 'cli/blast/camlhmp-blast-alleles.md'
+      - 'blast-regions': 'cli/blast/camlhmp-blast-regions.md'
+      - 'blast-targets': 'cli/blast/camlhmp-blast-targets.md'
+    - 'Utility':
+      - 'camlhmp-extract': 'cli/camlhmp-extract.md'
   - 'API':
     - 'Overview': 'api/index.md'
     - 'Engines': 

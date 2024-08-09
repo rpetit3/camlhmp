@@ -16,6 +16,10 @@ def get_blast_allele_hits(
 
     Returns:
         dict: The allele hits
+
+    Examples:
+        >>> from camlhmp.parsers.blast import get_blast_allele_hits
+        >>> target_results = get_blast_allele_hits(framework["targets"], blast_stdout, min_pident, min_coverage)
     """
     # Aggregate the hits for each target
     target_results = {}
@@ -106,6 +110,10 @@ def get_blast_region_hits(
 
     Returns:
         dict: The target hits
+    
+    Examples:
+        >>> from camlhmp.parsers.blast import get_blast_region_hits
+        >>> target_results = get_blast_region_hits(target_lengths, blast_stdout, min_pident, min_coverage)
     """
     # Aggregate the hits for each target
     target_results = {}
@@ -168,6 +176,10 @@ def get_blast_target_hits(targets: list, results: dict) -> dict:
 
     Returns:
         dict: The target hits
+
+    Examples:
+        >>> from camlhmp.parsers.blast import get_blast_target_hits
+        >>> target_results = get_blast_target_hits(framework["targets"], hits)
     """
     target_hits = {}
     for target in targets:

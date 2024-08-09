@@ -19,6 +19,10 @@ def read_framework(yamlfile: str) -> dict:
 
     Returns:
         dict: the parsed YAML file
+
+    Examples:
+        >>> from camlhmp.framework import read_framework
+        >>> framework = read_framework(yaml_path)
     """
     return parse_yaml(yamlfile)
 
@@ -29,6 +33,10 @@ def print_version(framework: dict) -> None:
 
     Args:
         framework (dict): the parsed YAML framework
+
+    Examples:
+        >>> from camlhmp.framework import print_version
+        >>> print_version(framework)
     """
     print(f"camlhmp, version {camlhmp.__version__}", file=sys.stderr)
     print(f"schema {framework['metadata']['id']}, version {framework['metadata']['version']}", file=sys.stderr)
@@ -54,6 +62,10 @@ def get_types(framework: dict) -> dict:
 
     Returns:
         dict: the types with associated targets
+
+    Examples:
+        >>> from camlhmp.framework import get_types
+        >>> types = get_types(framework)
     """
     types = {}
     aliases = {}
@@ -113,6 +125,10 @@ def check_types(types: dict, results: dict) -> dict:
 
     Returns:
         dict: the types and their outcome
+
+    Examples:
+        >>> from camlhmp.framework import check_types
+        >>> type_hits = check_types(types, target_results)
     """
     type_hits = {}
     for type, vals in types.items():
@@ -160,6 +176,10 @@ def check_regions(types: dict, results: dict, min_coverage: int) -> dict:
 
     Returns:
         dict: the types and their outcome
+
+    Examples:
+        >>> from camlhmp.framework import check_regions
+        >>> type_hits = check_regions(types, target_results, min_coverage)
     """
     type_hits = {}
     for type, vals in types.items():

@@ -20,7 +20,30 @@ def execute(
     stderr_file=None,
     allow_fail=False,
 ):
-    """A simple wrapper around executor."""
+    """
+    A simple wrapper around executor.
+    
+    Args:
+        cmd (str): The command to be executed
+        directory (Path, optional): The directory to execute the command in. Defaults to Path.cwd().
+        capture (bool, optional): Capture the output of the command. Defaults to False.
+        stdout_file (Path, optional): The file to write stdout to. Defaults to None.
+        stderr_file (Path, optional): The file to write stderr to. Defaults to None.
+        allow_fail (bool, optional): Allow the command to fail. Defaults to False.
+
+    Returns:
+        Union[bool, list]: True if successful, otherwise a list of stdout and stderr
+
+    Raises:
+        ExternalCommandFailed: If the command fails and allow_fail is True
+
+    Examples:
+        >>> from camlhmp.utils import execute
+        >>> stdout, stderr = execute(
+                f"{cat_type} {subject} | {engine} -query {query} -subject - -outfmt '6 {outfmt}' {qcov_hsp_perc} {perc_identity}",
+                capture=True,
+            )
+    """
     try:
         command = ExternalCommand(
             cmd,
@@ -49,6 +72,10 @@ def execute(
 def check_dependencies():
     """
     Check if all dependencies are installed.
+
+    Examples:
+        >>> from camlhmp.utils import check_dependencies
+        >>> check_dependencies()
     """
     exit_code = 0
     print("Checking dependencies...", file=sys.stderr)
@@ -73,6 +100,10 @@ def get_platform() -> str:
 
     Returns:
         str: The platform of the executing machine
+
+    Examples:
+        >>> from camlhmp.utils import get_platform
+        >>> platform = get_platform()
     """
     if platform == "darwin":
         return "mac"
@@ -92,6 +123,14 @@ def validate_file(filename: str) -> str:
 
     Returns:
         str: absolute path to file
+
+    Raises:
+        FileNotFoundError: if the file does not exist
+        ValueError: if the file is empty
+
+    Examples:
+        >>> from camlhmp.utils import validate_file
+        >>> file = validate_file("data.fasta")
     """
     f = Path(filename)
     if not f.exists():
@@ -103,11 +142,14 @@ def validate_file(filename: str) -> str:
 
 def file_exists_error(filename: str, force: bool = False):
     """
-    Raise a FileExistsError if the file exists and force is False
+    Determine if a file exists and raise an error if it does.
 
     Args:
         filename (str): the file to check
         force (bool, optional): force overwrite. Defaults to False.
+
+    Raises:
+        FileExistsError: if the file exists and force is False
     """
     if Path(filename).exists() and not force:
         raise FileExistsError(
@@ -125,6 +167,10 @@ def parse_seq(seqfile: str, format: str) -> SeqIO:
 
     Returns:
         SeqIO: the parsed file as a SeqIO object
+
+    Examples:
+        >>> from camlhmp.utils import parse_seq
+        >>> seq = parse_seq("data.fasta", "fasta")
     """
     with open(seqfile, "rt") as fh:
         return SeqIO.read(fh, format)
@@ -140,6 +186,10 @@ def parse_seqs(seqfile: str, format: str) -> SeqIO:
 
     Returns:
         SeqIO: the parsed file as a SeqIO object
+
+    Examples:
+        >>> from camlhmp.utils import parse_seqs
+        >>> seqs = parse_seqs("data.fasta", "fasta")
     """
     with open(seqfile, "rt") as fh:
         return list(SeqIO.parse(fh, format))
@@ -158,6 +208,10 @@ def parse_table(
 
     Returns:
         Union[list, dict]: A dict is returned if a header is present, otherwise a list is returned
+
+    Examples:
+        >>> from camlhmp.utils import parse_table
+        >>> data = parse_table("data.tsv")
     """
     data = []
     with open(csvfile, "rt") as fh:
@@ -179,6 +233,10 @@ def parse_yaml(yamlfile: str) -> Union[list, dict]:
 
     Returns:
         Union[list, dict]: the values parsed from the YAML file
+
+    Examples:
+        >>> from camlhmp.utils import parse_yaml
+        >>> data = parse_yaml("data.yaml")
     """
     with open(yamlfile, "rt") as fh:
         return yaml.safe_load(fh)
@@ -191,6 +249,10 @@ def write_tsv(data: list, output: str):
     Args:
         data (list): a list of dicts to be written
         output (str): The output file
+
+    Examples:
+        >>> from camlhmp.utils import write_tsv
+        >>> write_tsv(data, "results.tsv")
     """
     logging.debug(f"Writing TSV results to {output}")
     with open(output, "w") as csvfile:

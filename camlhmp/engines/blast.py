@@ -23,7 +23,7 @@ BLASTN_COLS = [
 
 def run_blast(engine: str, subject: str, query: str, min_pident: float, min_coverage: int) -> list:
     """
-    Query sequences against a input subject using BLAST+.
+    Query sequences against a input subject using a specified BLAST+ algorithm.
 
     Args:
         engine (str): The BLAST engine to use
@@ -37,7 +37,9 @@ def run_blast(engine: str, subject: str, query: str, min_pident: float, min_cove
 
     Examples:
         >>> from camlhmp.engines.blast import run_blast
-        >>> run_blast("blastn", "subject.fasta", "query.fasta", 95, 95)
+        >>> hits, blast_stdout, blast_stderr = run_blast(
+                framework["engine"]["tool"], input_path, targets_path, min_pident, min_coverage
+            )
     """
     outfmt = " ".join(BLASTN_COLS)
     cat_type = "zcat" if str(subject).endswith(".gz") else "cat"
@@ -67,7 +69,7 @@ def run_blast(engine: str, subject: str, query: str, min_pident: float, min_cove
 
 def run_blastn(subject: str, query: str, min_pident: float, min_coverage: int) -> list:
     """
-    Query sequences against a input subject using BLASTN.
+    An alias for `run_blast` which uses `blastn`
 
     Args:
         subject (str): The subject database (input)
@@ -77,13 +79,19 @@ def run_blastn(subject: str, query: str, min_pident: float, min_coverage: int) -
 
     Returns:
         list: The parsed BLAST results, raw blast results, and stderr
+
+    Examples:
+        >>> from camlhmp.engines.blast import run_blastn
+        >>> hits, blast_stdout, blast_stderr = run_blastn(
+                input_path, targets_path, min_pident, min_coverage
+            )
     """
     return run_blast("blastn", subject, query, min_pident, min_coverage)
 
 
 def run_tblastn(subject: str, query: str, min_pident: float, min_coverage: int) -> list:
     """
-    Query sequences against a input subject using TBLASTN.
+    An alias for `run_blast` which uses `tblastn`.
 
     Args:
         subject (str): The subject database (input)
@@ -93,5 +101,11 @@ def run_tblastn(subject: str, query: str, min_pident: float, min_coverage: int) 
 
     Returns:
         list: The parsed BLAST results, raw blast results, and stderr
+
+    Examples:
+        >>> from camlhmp.engines.blast import run_tblastn
+        >>> hits, blast_stdout, blast_stderr = run_tblastn(
+                input_path, targets_path, min_pident, min_coverage
+            )
     """
     return run_blast("tblastn", subject, query, min_pident, min_coverage)

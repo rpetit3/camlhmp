@@ -10,9 +10,9 @@ available engines and schemas.
 
 Currently the following commands are available in the `camlhmp` CLI:
 
-| Command                                               | Description                                                          |
-|-------------------------------------------------------|----------------------------------------------------------------------|
-| [camlhmp-blast-alleles](camlhmp-blast-alleles.md) | Classify assemblies using BLAST against alleles of a set of genes    |
-| [camlhmp-blast-regions](camlhmp-blast-regions.md) | Classify assemblies using BLAST against larger genomic regions       |
-| [camlhmp-blast-targets](camlhmp-blast-targets.md) | Classify assemblies using BLAST against individual genes or proteins |
-| [camlhmp-extract](camlhmp-extract.md)             | Extract typing targets from a set of reference sequences             |
+| Command                                                 | Description                                                          |
+|---------------------------------------------------------|----------------------------------------------------------------------|
+| [camlhmp-blast-alleles](blast/camlhmp-blast-alleles.md) | Classify assemblies using BLAST against alleles of a set of genes    |
+| [camlhmp-blast-regions](blast/camlhmp-blast-regions.md) | Classify assemblies using BLAST against larger genomic regions       |
+| [camlhmp-blast-targets](blast/camlhmp-blast-targets.md) | Classify assemblies using BLAST against individual genes or proteins |
+| [camlhmp-extract](camlhmp-extract.md)                   | Extract typing targets from a set of reference sequences             |
