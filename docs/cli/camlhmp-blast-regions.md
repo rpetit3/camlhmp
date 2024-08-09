@@ -7,31 +7,34 @@ description: >-
 # `camlhmp-blast-regions`
 
 `camlhmp-blast-regions` is a command that allows users to search for full regions of interest.
-It is nearly identical to `camlhmp-blast`, but instead of many smaller targets the idea is to
-instead look at full regions such as O-antigens and or similar features.
+It is nearly identical to `camlhmp-blast-targets`, but instead of many smaller targets the
+idea is to instead look at full regions such as O-antigens and or similar features.
 
 ## Usage
 
 ```bash
- Usage: camlhmp-blast-region [OPTIONS]
+ Usage: camlhmp-blast-regions [OPTIONS]
 
- 🐪 camlhmp-blast-region 🐪 - Classify assemblies with a camlhmp schema using BLAST against
- larger genomic regions
+ 🐪 camlhmp-blast-regions 🐪 - Classify assemblies using BLAST against larger genomic
+ regions
 
-╭─ Options ───────────────────────────────────────────────────────────────────────────────────╮
-│ *  --input         -i  TEXT     Input file in FASTA format to classify [required]           │
-│ *  --yaml          -y  TEXT     YAML file documenting the targets and types [required]      │
-│ *  --targets       -t  TEXT     Query targets in FASTA format [required]                    │
-│    --outdir        -o  PATH     Directory to write output [default: ./]                     │
-│    --prefix        -p  TEXT     Prefix to use for output files [default: camlhmp]           │
-│    --min-pident        INTEGER  Minimum percent identity to count a hit [default: 95]       │
-│    --min-coverage      INTEGER  Minimum percent coverage to count a hit [default: 95]       │
-│    --force                      Overwrite existing reports                                  │
-│    --verbose                    Increase the verbosity of output                            │
-│    --silent                     Only critical errors will be printed                        │
-│    --version       -V           Print schema and camlhmp version                            │
-│    --help                       Show this message and exit.                                 │
-╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────╮
+│ *  --input         -i  TEXT     Input file in FASTA format to classify [required]   │
+│ *  --yaml          -y  TEXT     YAML file documenting the targets and types         │
+│                                 [required]                                          │
+│ *  --targets       -t  TEXT     Query targets in FASTA format [required]            │
+│    --outdir        -o  PATH     Directory to write output [default: ./]             │
+│    --prefix        -p  TEXT     Prefix to use for output files [default: camlhmp]   │
+│    --min-pident        INTEGER  Minimum percent identity to count a hit             │
+│                                 [default: 95]                                       │
+│    --min-coverage      INTEGER  Minimum percent coverage to count a hit             │
+│                                 [default: 95]                                       │
+│    --force                      Overwrite existing reports                          │
+│    --verbose                    Increase the verbosity of output                    │
+│    --silent                     Only critical errors will be printed                │
+│    --version                    Print schema and camlhmp version                    │
+│    --help                       Show this message and exit.                         │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Output Files
@@ -44,28 +47,36 @@ instead look at full regions such as O-antigens and or similar features.
 | `{PREFIX}.blast.tsv`   | A tab-delimited file of all blast hits          |
 | `{PREFIX}.details.tsv` | A tab-delimited file with details for each type |
 
-### Example {PREFIX}.tsv
+### {PREFIX}.tsv
+
+The `{PREFIX}.tsv` file is a tab-delimited file with the predicted type. The columns are:
+
+| Column          | Description                                                        |
+|-----------------|--------------------------------------------------------------------|
+| sample          | The sample name as determined by `--prefix`                        |
+| type            | The predicted type                                                 |
+| targets         | The targets for the given type that had a hit                      |
+| coverage        | The coverage of the target region                                  |
+| hits            | The number of hits used to calculate coverage of the target region |
+| schema          | The schema used to determine the type                              |
+| schema_version  | The version of the schema used                                     |
+| camlhmp_version | The version of camlhmp used                                        |
+| params          | The parameters used for the analysis                               |
+| comment         | A small comment about the result                                   |
+
+Below is an example of the `{PREFIX}.tsv` file:
 
 ```tsv
 sample	type	targets	coverage	hits	schema	schema_version	camlhmp_version	params	comment
 camlhmp	O5	O2	100.00	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-
 ```
 
-| Column  | Description                                      |
-|---------|--------------------------------------------------|
-| sample  | The sample name as determined by `--prefix`      |
-| type    | The predicted type                               |
-| targets | The targets for the given type that had a hit    |
-| coverage | The coverage of the target region               |
-| hits    | The number of hits used to calculate coverage of the target region         |
-| schema  | The schema used to determine the type            |
-| schema_version  | The version of the schema used           |
-| camlhmp_version | The version of camlhmp used              |
-| params  | The parameters used for the analysis             |
-| comment | A small comment about the result                 |
+### {PREFIX}.blast.tsv
 
-### Example {PREFIX}.blast.tsv
+The `{PREFIX}.blast.tsv` file is a tab-delimited file of the raw output for all blast hits.
+The columns are the standard BLAST output with `-outfmt 6`.
+
+Here is an example of the `{PREFIX}.blast.tsv` file:
 
 ```tsv
 qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore
@@ -83,9 +94,29 @@ O4	NZ_PSQS01000003.1	97.448	14	15279	6935329	1842	1795	47	0	1	1842	6618619	66204
 O4	NZ_PSQS01000003.1	99.638	14	15279	6935329	276	275	1	0	15004	15279	6641639	6641914	8.46e-142	505
 ```
 
-This is the standard BLAST output with `-outfmt 6`
+### {PREFIX}.details.tsv
 
-### Example {PREFIX}.details.tsv
+The `{PREFIX}.details.tsv` file is a tab-delimited file with details for each type. This file
+can be useful for seeing how a sample did against all other types in a schema.
+
+The columns in this file are:
+
+| Column          | Description                                                        |
+|-----------------|--------------------------------------------------------------------|
+| sample          | The sample name as determined by `--prefix`                        |
+| type            | The predicted type                                                 |
+| status          | The status of the type (True if failed)                            |
+| targets         | The targets for the given type that had a match                    |
+| missing         | The targets for the given type that were not found                 |
+| coverage        | The coverage of the target region                                  |
+| hits            | The number of hits used to calculate coverage of the target region |
+| schema          | The schema used to determine the type                              |
+| schema_version  | The version of the schema used                                     |
+| camlhmp_version | The version of camlhmp used                                        |
+| params          | The parameters used for the analysis                               |
+| comment         | A small comment about the result                                   |
+
+Below is an example of the `{PREFIX}.details.tsv` file:
 
 ```tsv
 sample	type	status	targets	missing	coverage	hits	schema	schema_version	camlhmp_version	params	comment
@@ -96,19 +127,23 @@ camlhmp	O4	False		O4	13.86	2	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-cover
 camlhmp	O5	True	O2		100.00	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
 ```
 
-This file provides a detailed view of the results. The columns are:
+## Example Implementation
 
-| Column  | Description                                        |
-|---------|----------------------------------------------------|
-| sample  | The sample name as determined by `--prefix`        |
-| type    | The predicted type                                 |
-| status  | The status of the type (True if failed)            |
-| targets | The targets for the given type that had a match    |
-| missing | The targets for the given type that were not found |
-| coverage | The coverage of the target region                  |
-| hits    | The number of hits used to calculate coverage of the target region         |
-| schema  | The schema used to determine the type              |
-| schema_version  | The version of the schema used             |
-| camlhmp_version | The version of camlhmp used                |
-| params  | The parameters used for the analysis               |
-| comment | A small comment about the result                   |
+If you would like to see how `camlhmp-blast-regions` can be used, please see
+[pasty](https://github.com/rpetit3/pasty). In `pasty` the schema is set up
+to directly use `camlhmp-blast-regions` to classify samples without any extra
+logic.
+
+This allows for a simple wrapper like the following:
+
+```bash
+#!/usr/bin/env bash
+pasty_dir=$(dirname $0)
+
+CAML_YAML="${pasty_dir}/../data/pa-osa.yaml" \
+CAML_TARGETS="${pasty_dir}/../data/pa-osa.fasta" \
+    camlhmp-blast-regions \
+    "${@:1}"
+```
+
+This script will run `camlhmp-blast-regions` with the `pasty` schema and targets.

@@ -1,38 +1,45 @@
 ---
 title: camlhmp-blast-targets
 description: >-
-    Classify assemblies using BLAST against alleles of a set of genes
+    Classify assemblies using BLAST against individual genes or proteins
 ---
 
 # `camlhmp-blast-targets`
 
-`camlhmp-blast` is a command that allows users to type their samples using a provided schema
-with BLAST algorithms.
+`camlhmp-blast-targets` is a command that allows users to type their samples using a provided
+schema with BLAST algorithms. This command is useful when there is no extra logic needed for
+a given schema.
 
 ## Usage
 
 ```bash
- 🐪 camlhmp-blast 🐪 - Classify assemblies with a camlhmp schema using BLAST                          
+ Usage: camlhmp-blast-targets [OPTIONS]
 
-╭─ Options ───────────────────────────────────────────────────────────────────────────────────╮
-│    --version       -V           Show the version and exit.                                  │
-│ *  --input         -i  TEXT     Input file in FASTA format to classify [required]           │
-│ *  --yaml          -y  TEXT     YAML file documenting the targets and types [required]      │
-│ *  --targets       -t  TEXT     Query targets in FASTA format [required]                    │
-│    --outdir        -o  PATH     Directory to write output [default: ./]                     │
-│    --prefix        -p  TEXT     Prefix to use for output files [default: camlhmp]           │
-│    --min-pident        INTEGER  Minimum percent identity to count a hit [default: 95]       │
-│    --min-coverage      INTEGER  Minimum percent coverage to count a hit [default: 95]       │
-│    --force                      Overwrite existing reports                                  │
-│    --verbose                    Increase the verbosity of output                            │
-│    --silent                     Only critical errors will be printed                        │
-│    --help                       Show this message and exit.                                 |
-╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+ 🐪 camlhmp-blast-targets 🐪 - Classify assemblies using BLAST against individual
+ genes or proteins
+
+╭─ Options ───────────────────────────────────────────────────────────────────────────╮
+│ *  --input         -i  TEXT     Input file in FASTA format to classify [required]   │
+│ *  --yaml          -y  TEXT     YAML file documenting the targets and types         │
+│                                 [required]                                          │
+│ *  --targets       -t  TEXT     Query targets in FASTA format [required]            │
+│    --outdir        -o  PATH     Directory to write output [default: ./]             │
+│    --prefix        -p  TEXT     Prefix to use for output files [default: camlhmp]   │
+│    --min-pident        INTEGER  Minimum percent identity to count a hit             │
+│                                 [default: 95]                                       │
+│    --min-coverage      INTEGER  Minimum percent coverage to count a hit             │
+│                                 [default: 95]                                       │
+│    --force                      Overwrite existing reports                          │
+│    --verbose                    Increase the verbosity of output                    │
+│    --silent                     Only critical errors will be printed                │
+│    --version                    Print schema and camlhmp version                    │
+│    --help                       Show this message and exit.                         │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Output Files
 
-`camlhmp-blast` will generate three output files:
+`camlhmp-blast-targets` will generate three output files:
 
 | File Name              | Description                                     |
 |------------------------|-------------------------------------------------|
@@ -40,25 +47,34 @@ with BLAST algorithms.
 | `{PREFIX}.blast.tsv`   | A tab-delimited file of all blast hits          |
 | `{PREFIX}.details.tsv` | A tab-delimited file with details for each type |
 
-### Example {PREFIX}.tsv
+### {PREFIX}.tsv
+
+The `{PREFIX}.tsv` file is a tab-delimited file with the predicted type. The columns are:
+
+| Column          | Description                                      |
+|-----------------|--------------------------------------------------|
+| sample          | The sample name as determined by `--prefix`      |
+| type            | The predicted type                               |
+| targets         | The targets for the given type that had a hit    |
+| schema          | The schema used to determine the type            |
+| schema_version  | The version of the schema used                   |
+| camlhmp_version | The version of camlhmp used                      |
+| params          | The parameters used for the analysis             |
+| comment         | A small comment about the result                 |
+
+Below is an example of the `{PREFIX}.tsv` file:
 
 ```tsv
 sample	type	targets	schema	schema_version	camlhmp_version	params	comment
 camlhmp	I	ccrA1,ccrB1,IS431,IS1272,mecA,mecR1	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
 ```
 
-| Column  | Description                                      |
-|---------|--------------------------------------------------|
-| sample  | The sample name as determined by `--prefix`      |
-| type    | The predicted type                               |
-| targets | The targets for the given type that had a hit    |
-| schema  | The schema used to determine the type            |
-| schema_version  | The version of the schema used           |
-| camlhmp_version | The version of camlhmp used              |
-| params  | The parameters used for the analysis             |
-| comment | A small comment about the result                 |
+### {PREFIX}.blast.tsv
 
-### Example {PREFIX}.blast.tsv
+The `{PREFIX}.blast.tsv` file is a tab-delimited file of the raw output for all blast hits.
+The columns are the standard BLAST output with `-outfmt 6`.
+
+Here is an example of the `{PREFIX}.blast.tsv` file:
 
 ```tsv
 qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore
@@ -72,9 +88,27 @@ IS431	AB033763.2	99.873	100	790	39332	790	789	1	0	1	790	35958	36747	0.0	1454
 IS431	AB033763.2	100.000	100	792	39332	792	792	0	0	1	792	35957	36748	0.0	1463
 ```
 
-This is the standard BLAST output with `-outfmt 6`
+### {PREFIX}.details.tsv
 
-### Example {PREFIX}.details.tsv
+The `{PREFIX}.details.tsv` file is a tab-delimited file with details for each type. This file
+can be useful for seeing how a sample did against all other types in a schema.
+
+The columns in this file are:
+
+| Column          | Description                                        |
+|-----------------|----------------------------------------------------|
+| sample          | The sample name as determined by `--prefix`        |
+| type            | The predicted type                                 |
+| status          | The status of the type (True if failed)            |
+| targets         | The targets for the given type that had a match    |
+| missing         | The targets for the given type that were not found |
+| schema          | The schema used to determine the type              |
+| schema_version  | The version of the schema used                     |
+| camlhmp_version | The version of camlhmp used                        |
+| params          | The parameters used for the analysis               |
+| comment         | A small comment about the result                   |
+
+Below is an example of the `{PREFIX}.details.tsv` file:
 
 ```tsv
 sample	type	status	targets	missing	schema	schema_version	camlhmp_version	params	comment
@@ -84,17 +118,23 @@ camlhmp	III	False	IS431,mecA,mecR1	ccrA3,ccrB3,mecI	sccmec_partial	0.0.1	0.2.1	m
 camlhmp	IV	False	IS431,mecA,mecR1,IS1272	ccrA2,ccrB2	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
 ```
 
-This file provides a detailed view of the results. The columns are:
+## Example Implementation
 
-| Column  | Description                                        |
-|---------|----------------------------------------------------|
-| sample  | The sample name as determined by `--prefix`        |
-| type    | The predicted type                                 |
-| status  | The status of the type (True if failed)            |
-| targets | The targets for the given type that had a match    |
-| missing | The targets for the given type that were not found |
-| schema  | The schema used to determine the type              |
-| schema_version  | The version of the schema used             |
-| camlhmp_version | The version of camlhmp used                |
-| params  | The parameters used for the analysis               |
-| comment | A small comment about the result                   |
+If you would like to see how `camlhmp-blast-targets` can be used, please see
+[sccmec](https://github.com/rpetit3/sccmec). In `sccmec` the schema is set up
+to directly use `camlhmp-blast-targets` to classify samples without any extra
+logic.
+
+This allows for a simple wrapper like the following:
+
+```bash
+#!/usr/bin/env bash
+sccmec_dir=$(dirname $0)
+
+CAML_YAML="${sccmec_dir}/../data/sccmec.yaml" \
+CAML_TARGETS="${sccmec_dir}/../data/sccmec.fasta" \
+    camlhmp-blast-targets \
+    "${@:1}"
+```
+
+This script will run `camlhmp-blast-targets` with the `sccmec` schema and targets.

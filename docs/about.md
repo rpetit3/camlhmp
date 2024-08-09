@@ -1,4 +1,8 @@
-# About
+---
+title: About
+description: >-
+    Learn a little about how camlhmp was named and funding.
+---
 
 ## Naming
 
