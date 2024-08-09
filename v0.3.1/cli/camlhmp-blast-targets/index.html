@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Classify assemblies using BLAST against alleles of a set of genes">
+        <meta name="description" content="Classify assemblies using BLAST against individual genes or proteins">
       
       
         <meta name="author" content="Robert A. Petit III">
@@ -80,7 +80,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="camlhmp-blast-targets - camlhmp" />
-<meta property="og:description" content="Classify assemblies using BLAST against alleles of a set of genes" />
+<meta property="og:description" content="Classify assemblies using BLAST against individual genes or proteins" />
 <meta property="og:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-blast-targets.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -88,7 +88,7 @@
 <meta property="og:url" content="https://rpetit3.github.io/camlhmp/v0.3.1/cli/camlhmp-blast-targets/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="camlhmp-blast-targets - camlhmp" />
-<meta property="twitter:description" content="Classify assemblies using BLAST against alleles of a set of genes" />
+<meta property="twitter:description" content="Classify assemblies using BLAST against individual genes or proteins" />
 <meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v0.3.1/assets/images/social/cli/camlhmp-blast-targets.png" />
 </head>
   
@@ -874,10 +874,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-prefixtsv" class="md-nav__link">
+  <a href="#prefixtsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.tsv
+        {PREFIX}.tsv
       
     </span>
   </a>
@@ -885,10 +885,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-prefixblasttsv" class="md-nav__link">
+  <a href="#prefixblasttsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.blast.tsv
+        {PREFIX}.blast.tsv
       
     </span>
   </a>
@@ -896,10 +896,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-prefixdetailstsv" class="md-nav__link">
+  <a href="#prefixdetailstsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.details.tsv
+        {PREFIX}.details.tsv
       
     </span>
   </a>
@@ -908,6 +908,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1315,10 +1326,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-prefixtsv" class="md-nav__link">
+  <a href="#prefixtsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.tsv
+        {PREFIX}.tsv
       
     </span>
   </a>
@@ -1326,10 +1337,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-prefixblasttsv" class="md-nav__link">
+  <a href="#prefixblasttsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.blast.tsv
+        {PREFIX}.blast.tsv
       
     </span>
   </a>
@@ -1337,10 +1348,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-prefixdetailstsv" class="md-nav__link">
+  <a href="#prefixdetailstsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example {PREFIX}.details.tsv
+        {PREFIX}.details.tsv
       
     </span>
   </a>
@@ -1349,6 +1360,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1378,28 +1400,35 @@
 
 
 <h1 id="camlhmp-blast-targets"><code>camlhmp-blast-targets</code><a class="headerlink" href="#camlhmp-blast-targets" title="Permanent link">&para;</a></h1>
-<p><code>camlhmp-blast</code> is a command that allows users to type their samples using a provided schema
-with BLAST algorithms.</p>
+<p><code>camlhmp-blast-targets</code> is a command that allows users to type their samples using a provided
+schema with BLAST algorithms. This command is useful when there is no extra logic needed for
+a given schema.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Classify<span class="w"> </span>assemblies<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>camlhmp<span class="w"> </span>schema<span class="w"> </span>using<span class="w"> </span>BLAST<span class="w">                          </span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-targets<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────────────────╮
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│<span class="w">    </span>--version<span class="w">       </span>-V<span class="w">           </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                  </span>│
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│<span class="w"> </span>*<span class="w">  </span>--input<span class="w">         </span>-i<span class="w">  </span>TEXT<span class="w">     </span>Input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>classify<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">           </span>│
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│<span class="w"> </span>*<span class="w">  </span>--yaml<span class="w">          </span>-y<span class="w">  </span>TEXT<span class="w">     </span>YAML<span class="w"> </span>file<span class="w"> </span>documenting<span class="w"> </span>the<span class="w"> </span>targets<span class="w"> </span>and<span class="w"> </span>types<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">      </span>│
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w"> </span>*<span class="w">  </span>--targets<span class="w">       </span>-t<span class="w">  </span>TEXT<span class="w">     </span>Query<span class="w"> </span>targets<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">                    </span>│
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">    </span>--outdir<span class="w">        </span>-o<span class="w">  </span>PATH<span class="w">     </span>Directory<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>output<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>./<span class="o">]</span><span class="w">                     </span>│
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w">    </span>--prefix<span class="w">        </span>-p<span class="w">  </span>TEXT<span class="w">     </span>Prefix<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>camlhmp<span class="o">]</span><span class="w">           </span>│
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w">    </span>--min-pident<span class="w">        </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>identity<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">       </span>│
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w">    </span>--min-coverage<span class="w">      </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>coverage<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">       </span>│
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">    </span>--force<span class="w">                      </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>reports<span class="w">                                  </span>│
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│<span class="w">    </span>--verbose<span class="w">                    </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w"> </span>output<span class="w">                            </span>│
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│<span class="w">    </span>--silent<span class="w">                     </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w">                        </span>│
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                 </span><span class="p">|</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast-targets<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Classify<span class="w"> </span>assemblies<span class="w"> </span>using<span class="w"> </span>BLAST<span class="w"> </span>against<span class="w"> </span>individual
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span>genes<span class="w"> </span>or<span class="w"> </span>proteins
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────────╮
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w"> </span>*<span class="w">  </span>--input<span class="w">         </span>-i<span class="w">  </span>TEXT<span class="w">     </span>Input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>classify<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">   </span>│
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w"> </span>*<span class="w">  </span>--yaml<span class="w">          </span>-y<span class="w">  </span>TEXT<span class="w">     </span>YAML<span class="w"> </span>file<span class="w"> </span>documenting<span class="w"> </span>the<span class="w"> </span>targets<span class="w"> </span>and<span class="w"> </span>types<span class="w">         </span>│
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w">                                 </span><span class="o">[</span>required<span class="o">]</span><span class="w">                                          </span>│
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w"> </span>*<span class="w">  </span>--targets<span class="w">       </span>-t<span class="w">  </span>TEXT<span class="w">     </span>Query<span class="w"> </span>targets<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">            </span>│
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w">    </span>--outdir<span class="w">        </span>-o<span class="w">  </span>PATH<span class="w">     </span>Directory<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>output<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>./<span class="o">]</span><span class="w">             </span>│
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">    </span>--prefix<span class="w">        </span>-p<span class="w">  </span>TEXT<span class="w">     </span>Prefix<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>camlhmp<span class="o">]</span><span class="w">   </span>│
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│<span class="w">    </span>--min-pident<span class="w">        </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>identity<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w">             </span>│
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│<span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">                                       </span>│
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│<span class="w">    </span>--min-coverage<span class="w">      </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>coverage<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w">             </span>│
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│<span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">                                       </span>│
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│<span class="w">    </span>--force<span class="w">                      </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>reports<span class="w">                          </span>│
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│<span class="w">    </span>--verbose<span class="w">                    </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w"> </span>output<span class="w">                    </span>│
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│<span class="w">    </span>--silent<span class="w">                     </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w">                </span>│
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│<span class="w">    </span>--version<span class="w">                    </span>Print<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>camlhmp<span class="w"> </span>version<span class="w">                    </span>│
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                         </span>│
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>╰─────────────────────────────────────────────────────────────────────────────────────╯
 </span></code></pre></div>
 <h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
-<p><code>camlhmp-blast</code> will generate three output files:</p>
+<p><code>camlhmp-blast-targets</code> will generate three output files:</p>
 <table>
 <thead>
 <tr>
@@ -1422,10 +1451,8 @@ with BLAST algorithms.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="example-prefixtsv">Example {PREFIX}.tsv<a class="headerlink" href="#example-prefixtsv" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  type    targets schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp I   ccrA1,ccrB1,IS431,IS1272,mecA,mecR1 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span></code></pre></div>
+<h3 id="prefixtsv">{PREFIX}.tsv<a class="headerlink" href="#prefixtsv" title="Permanent link">&para;</a></h3>
+<p>The <code>{PREFIX}.tsv</code> file is a tab-delimited file with the predicted type. The columns are:</p>
 <table>
 <thead>
 <tr>
@@ -1468,7 +1495,14 @@ with BLAST algorithms.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="example-prefixblasttsv">Example {PREFIX}.blast.tsv<a class="headerlink" href="#example-prefixblasttsv" title="Permanent link">&para;</a></h3>
+<p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sample  type    targets schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>camlhmp I   ccrA1,ccrB1,IS431,IS1272,mecA,mecR1 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span></code></pre></div>
+<h3 id="prefixblasttsv">{PREFIX}.blast.tsv<a class="headerlink" href="#prefixblasttsv" title="Permanent link">&para;</a></h3>
+<p>The <code>{PREFIX}.blast.tsv</code> file is a tab-delimited file of the raw output for all blast hits.
+The columns are the standard BLAST output with <code>-outfmt 6</code>.</p>
+<p>Here is an example of the <code>{PREFIX}.blast.tsv</code> file:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ccrA1   AB033763.2  100.000 100 1350    39332   1350    1350    0   0   1   1350    23692   25041   0.0 2494
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ccrB1   AB033763.2  100.000 100 1152    39332   1152    1152    0   0   1   1152    25063   26214   0.0 2128
@@ -1479,15 +1513,10 @@ with BLAST algorithms.</p>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>IS431   AB033763.2  99.873  100 790 39332   790 789 1   0   1   790 35958   36747   0.0 1454
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>IS431   AB033763.2  100.000 100 792 39332   792 792 0   0   1   792 35957   36748   0.0 1463
 </span></code></pre></div>
-<p>This is the standard BLAST output with <code>-outfmt 6</code></p>
-<h3 id="example-prefixdetailstsv">Example {PREFIX}.details.tsv<a class="headerlink" href="#example-prefixdetailstsv" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp I   True    ccrA1,ccrB1,IS431,mecA,mecR1,IS1272     sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp II  False   IS431,mecA,mecR1    ccrA2,ccrB2,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp III False   IS431,mecA,mecR1    ccrA3,ccrB3,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp IV  False   IS431,mecA,mecR1,IS1272 ccrA2,ccrB2 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span></code></pre></div>
-<p>This file provides a detailed view of the results. The columns are:</p>
+<h3 id="prefixdetailstsv">{PREFIX}.details.tsv<a class="headerlink" href="#prefixdetailstsv" title="Permanent link">&para;</a></h3>
+<p>The <code>{PREFIX}.details.tsv</code> file is a tab-delimited file with details for each type. This file
+can be useful for seeing how a sample did against all other types in a schema.</p>
+<p>The columns in this file are:</p>
 <table>
 <thead>
 <tr>
@@ -1538,6 +1567,28 @@ with BLAST algorithms.</p>
 </tr>
 </tbody>
 </table>
+<p>Below is an example of the <code>{PREFIX}.details.tsv</code> file:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sample  type    status  targets missing schema  schema_version  camlhmp_version params  comment
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>camlhmp I   True    ccrA1,ccrB1,IS431,mecA,mecR1,IS1272     sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>camlhmp II  False   IS431,mecA,mecR1    ccrA2,ccrB2,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>camlhmp III False   IS431,mecA,mecR1    ccrA3,ccrB3,mecI    sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>camlhmp IV  False   IS431,mecA,mecR1,IS1272 ccrA2,ccrB2 sccmec_partial  0.0.1   0.2.1   min-coverage=95;min-pident=95   
+</span></code></pre></div>
+<h2 id="example-implementation">Example Implementation<a class="headerlink" href="#example-implementation" title="Permanent link">&para;</a></h2>
+<p>If you would like to see how <code>camlhmp-blast-targets</code> can be used, please see
+<a href="https://github.com/rpetit3/sccmec">sccmec</a>. In <code>sccmec</code> the schema is set up
+to directly use <code>camlhmp-blast-targets</code> to classify samples without any extra
+logic.</p>
+<p>This allows for a simple wrapper like the following:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">sccmec_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$0</span><span class="k">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">CAML_YAML</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">CAML_TARGETS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sccmec_dir</span><span class="si">}</span><span class="s2">/../data/sccmec.fasta&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>camlhmp-blast-targets<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>This script will run <code>camlhmp-blast-targets</code> with the <code>sccmec</code> schema and targets.</p>
 
 
 
