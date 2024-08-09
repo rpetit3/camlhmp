@@ -39,7 +39,7 @@ Details about available CLI commands from `camlhmp`
 [API Reference](api/index.md)  
 Details about using the `camlhmp` package in your own code
 
-[About](about.md)
+[About](about.md)  
 Information about the development and funding of `camlhmp`
 
 ## Funding
