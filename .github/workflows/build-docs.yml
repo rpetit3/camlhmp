@@ -44,6 +44,7 @@ jobs:
           mkdocs --version
           # camlhmp
           pip install -vv .
+          cp CHANGELOG.md docs/
 
       - name: Deploy Docs
         run: |

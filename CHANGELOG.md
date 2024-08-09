@@ -1,6 +1,17 @@
 
 # Changelog
 
+## v1.0.0 rpetit3/camlhmp "Dromedary" 2024/08/??
+
+### `Added`
+
+- Added a mkdocs documentation site
+
+### `Fixed`
+
+- fixed `camlhmp-blast-regions` unnecessary debug output
+- fixed test schemas to match the new schema format
+
 ## v0.3.1 rpetit3/camlhmp "Maybe a cat?" 2024/08/05
 
 ### `Fixed`
