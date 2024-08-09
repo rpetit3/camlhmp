@@ -11,11 +11,11 @@ custom workflows.
 
 Currently the following modules are available in the `camlhmp` API:
 
-| Type   | Module                                        | Function                                                                                  | Description                                    |
-|--------|-----------------------------------------------|-------------------------------------------------------------------------------------------|------------------------------------------------|
-| Engine | [camlhmp.engines.blast](api/engines/blast.md) | [run_blast](api/engines/blast.md#camlhmp.engines.blast.run_blast)                         | Run BLAST program                              |
-| Engine | [camlhmp.engines.blast](api/engines/blast.md) | [run_blast](api/engines/blast.md#camlhmp.engines.blast.run_blastn)                        | Alias for `run_blast` with `blastn` specified  |
-| Engine | [camlhmp.engines.blast](api/engines/blast.md) | [run_blast](api/engines/blast.md#camlhmp.engines.blast.run_tblastn)                       | Alias for `run_blast` with `tblastn` specified |
-| Parser | [camlhmp.parsers.blast](api/parsers/blast.md) | [get_blast_allele_hits](api/parsers/blast.md#camlhmp.parsers.blast.get_blast_allele_hits) | Parse BLAST output for allele hits             |
-| Parser | [camlhmp.parsers.blast](api/parsers/blast.md) | [get_blast_region_hits](api/parsers/blast.md#camlhmp.parsers.blast.get_blast_region_hits) | Parse BLAST output for region hits             |
-| parser | [camlhmp.parsers.blast](api/parsers/blast.md) | [get_blast_target_hits](api/parsers/blast.md#camlhmp.parsers.blast.get_blast_target_hits) | Parse BLAST output for target hits             |
+| Type   | Module                                    | Function                                                                              | Description                                    |
+|--------|-------------------------------------------|---------------------------------------------------------------------------------------|------------------------------------------------|
+| Engine | [camlhmp.engines.blast](engines/blast.md) | [run_blast](engines/blast.md#camlhmp.engines.blast.run_blast)                         | Run BLAST program                              |
+| Engine | [camlhmp.engines.blast](engines/blast.md) | [run_blast](engines/blast.md#camlhmp.engines.blast.run_blastn)                        | Alias for `run_blast` with `blastn` specified  |
+| Engine | [camlhmp.engines.blast](engines/blast.md) | [run_blast](engines/blast.md#camlhmp.engines.blast.run_tblastn)                       | Alias for `run_blast` with `tblastn` specified |
+| Parser | [camlhmp.parsers.blast](parsers/blast.md) | [get_blast_allele_hits](parsers/blast.md#camlhmp.parsers.blast.get_blast_allele_hits) | Parse BLAST output for allele hits             |
+| Parser | [camlhmp.parsers.blast](parsers/blast.md) | [get_blast_region_hits](parsers/blast.md#camlhmp.parsers.blast.get_blast_region_hits) | Parse BLAST output for region hits             |
+| parser | [camlhmp.parsers.blast](parsers/blast.md) | [get_blast_target_hits](parsers/blast.md#camlhmp.parsers.blast.get_blast_target_hits) | Parse BLAST output for target hits             |
