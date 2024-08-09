@@ -21,7 +21,8 @@ metadata:
 # engine: specifies the computational tools and additional parameters used for sequence
 #         analysis.
 engine:
-  tool: "" # The tool used to generate the data
+  type: ""        # The type of tool used to generate the data
+  tool: ""        # The tool used to generate the data
 
 # targets: Lists the specific sequence targets such as genes, proteins, or markers that the
 #          schema will analyze. These should be included in the associated sequence query data
@@ -63,12 +64,12 @@ The `metadata` section provides general information about the schema. This inclu
 
 ## engine
 
-The `engine` section specifies the computational tools used for sequence analysis. Currently
-only one tool can be specified, and only `blastn` is supported.
+The `engine` section specifies the computational tools used for sequence analysis.
 
 | Field | Type   | Description                                      |
 |-------|--------|--------------------------------------------------|
-| tool  | string | The tool used to generate the data               |
+| type  | string | The type of engine used for analysis             |
+| tool  | string | The specific tool to be used for the engine      |
 
 ## targets
 
@@ -119,7 +120,8 @@ metadata:
 # engine: specifies the computational tools and additional parameters used for sequence
 #         analysis.
 engine:
-  tool: blastn # The tool used to generate the data
+  type: blast   # The type of tool used to generate the data
+  tool: blastn  # The tool used to generate the data
 
 # targets: Lists the specific sequence targets such as genes, proteins, or markers that the
 #          schema will analyze. These should be included in the associated sequence query data
