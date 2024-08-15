@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v1.0.0 rpetit3/camlhmp "Dromedary" 2024/08/??
+## v1.0.0 rpetit3/camlhmp "Dromedary" 2024/08/15
 
 ### `Added`
 
