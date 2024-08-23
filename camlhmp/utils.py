@@ -1,5 +1,6 @@
 import csv
 import logging
+import string
 import sys
 from pathlib import Path
 from shutil import which
@@ -140,6 +141,27 @@ def validate_file(filename: str) -> str:
     return f.absolute()
 
 
+def validate_engine(tool: str, engine: str, accepted: list) -> str:
+    """
+    Validate the engine is in the accepted list.
+
+    Args:
+        tool (str): the tool to validate
+        engine (str): the engine to validate
+        accepted (list): a list of accepted engines
+
+    Raises:
+        ValueError: if the engine is not in the accepted list
+
+    Examples:
+        >>> from camlhmp.utils import validate_engine
+        >>> validate_engine("blast", ["blast"])
+    """
+    if engine not in accepted:
+        raise ValueError(f"Unsupported engine ('{engine}'), {tool} only supports: {accepted}")
+    return engine
+
+
 def file_exists_error(filename: str, force: bool = False):
     """
     Determine if a file exists and raise an error if it does.
@@ -193,6 +215,28 @@ def parse_seqs(seqfile: str, format: str) -> SeqIO:
     """
     with open(seqfile, "rt") as fh:
         return list(SeqIO.parse(fh, format))
+
+
+def parse_seq_lengths(seqfile: str, format: str) -> dict:
+    """
+    Parse a sequence file and return the lengths of the sequences.
+
+    Args:
+        seqfile (str): input file to be read
+        format (str): format of the input file
+
+    Returns:
+        dict: a dictionary of sequence lengths
+
+    Examples:
+        >>> from camlhmp.utils import parse_seq_lengths
+        >>> lengths = parse_seq_lengths("data.fasta", "fasta")
+    """
+    lengths = {}
+    for seq in parse_seqs(seqfile, "fasta"):
+        logging.debug(f"Processing {seq.id} with length {len(seq.seq)}")
+        lengths[seq.id] = len(seq.seq)
+    return lengths
 
 
 def parse_table(
@@ -264,3 +308,21 @@ def write_tsv(data: list, output: str):
         else:
             # Data is empty
             logging.debug("NO_HITS found, only writing the column headers")
+
+
+def remove_lowercase(s: str) -> str:
+    """
+    Remove lowercase characters from a string.
+
+    Args:
+        s (str): input string to be processed
+
+    Returns:
+        str: the string with lowercase characters removed
+
+    Examples:
+        >>> from camlhmp.utils import remove_lowercase
+        >>> s = remove_lowercase("ABCdef")
+    """
+    table = str.maketrans('', '', string.ascii_lowercase)
+    return s.translate(table)

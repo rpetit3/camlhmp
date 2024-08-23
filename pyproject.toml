@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "camlhmp"
-version = "1.0.0"
+version = "1.0.1"
 description = "Classification through yAML Heuristic Mapping Protocol"
 authors = [
     "Robert A. Petit III <robbie.petit@gmail.com>",
@@ -16,6 +16,7 @@ camlhmp = "camlhmp.cli.camlhmp:main"
 camlhmp-blast-alleles = "camlhmp.cli.blast.alleles:main"
 camlhmp-blast-regions = "camlhmp.cli.blast.regions:main"
 camlhmp-blast-targets = "camlhmp.cli.blast.targets:main"
+camlhmp-blast-thresholds = "camlhmp.cli.blast.thresholds:main"
 camlhmp-extract = "camlhmp.cli.extract:main"
 
 [tool.poetry.dependencies]

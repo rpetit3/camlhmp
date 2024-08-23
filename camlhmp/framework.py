@@ -27,6 +27,21 @@ def read_framework(yamlfile: str) -> dict:
     return parse_yaml(yamlfile)
 
 
+def print_camlhmp_version() -> None:
+    """
+    Print the version of camlhmp, then exit
+
+    Args:
+        framework (dict): the parsed YAML framework
+
+    Examples:
+        >>> from camlhmp.framework import print_camlhmp_version
+        >>> print_camlhmp_version()
+    """
+    print(f"camlhmp, version {camlhmp.__version__}", file=sys.stderr)
+    sys.exit(0)
+
+
 def print_version(framework: dict) -> None:
     """
     Print the version of the framework, then exit
@@ -40,6 +55,23 @@ def print_version(framework: dict) -> None:
     """
     print(f"camlhmp, version {camlhmp.__version__}", file=sys.stderr)
     print(f"schema {framework['metadata']['id']}, version {framework['metadata']['version']}", file=sys.stderr)
+    sys.exit(0)
+
+
+def print_versions(frameworks: list) -> None:
+    """
+    Print the version of the framework, then exit
+
+    Args:
+        frameworks (list[dict]): A list of parsed YAML frameworks
+
+    Examples:
+        >>> from camlhmp.framework import print_version
+        >>> print_versions([framework1, framework2])
+    """
+    print(f"camlhmp, version {camlhmp.__version__}", file=sys.stderr)
+    for framework in frameworks:
+        print(f"schema {framework['metadata']['id']}, version {framework['metadata']['version']}", file=sys.stderr)
     sys.exit(0)
 
 

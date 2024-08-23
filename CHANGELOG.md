@@ -1,6 +1,14 @@
 
 # Changelog
 
+## v1.0.1 rpetit3/camlhmp "" 2024/08/??
+
+### `Added`
+
+- `camlhmp-blast-thresholds` command to suggest specificity thresholds for BLAST results
+- `print_versions` to print versions from multiple schemas
+- `print_camlhmp_version` to print the camlhmp version
+
 ## v1.0.0 rpetit3/camlhmp "Dromedary" 2024/08/15
 
 ### `Added`

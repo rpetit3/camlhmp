@@ -1,6 +1,8 @@
 # Functions for parsing BLAST results
 import logging
 
+import camlhmp
+
 
 def get_blast_allele_hits(
     targets: dict, results: dict, min_pident: float, min_coverage: int
@@ -192,3 +194,152 @@ def get_blast_target_hits(targets: list, results: dict) -> dict:
     logging.debug(f"Profile Hits: {target_hits}")
 
     return target_hits
+
+
+def finalize_regions(prefix: str, hits: dict, framework: dict, min_pident: float, min_coverage: int) -> list:
+    """
+    Finalize the results from region-based analysis.
+
+    Args:
+        prefix (str): The sample prefix
+        hits (dict): The BLAST+ results for each target hit
+        framework (dict): The framework schema that was used
+        min_pident (float): The minimum percent identity to count a hit
+        min_coverage (int): The minimum percent coverage to count a hit
+
+    Returns:
+        list: The finalized results
+    """
+    final_type = []
+    final_targets = []
+    final_coverages = []
+    final_hits = []
+
+    # Get a list of targets that met the threshold
+    for target, vals in hits.items():
+        if vals["status"]:
+            final_targets.append(",".join(vals["targets"]))
+            final_coverages.append(",".join(vals["coverage"]))
+            final_hits.append(",".join(vals["hits"]))
+
+    # Get the final type(s)
+    final_details = []
+    for type, vals in hits.items():
+        final_details.append(
+            {
+                "sample": prefix,
+                "type": type,
+                "status": vals["status"],
+                "targets": ",".join(vals["targets"]),
+                "missing": ",".join(vals["missing"]),
+                "coverage": ",".join(vals["coverage"]),
+                "hits": ",".join(vals["hits"]),
+                "schema": framework["metadata"]["id"],
+                "schema_version": framework["metadata"]["version"],
+                "camlhmp_version": camlhmp.__version__,
+                "params": f"min-coverage={min_coverage};min-pident={min_pident}",
+                "comment": ";".join(vals["comment"]),
+            }
+        )
+        if vals["status"]:
+            final_type.append(type)
+
+    # Generate a comment based on the results
+    comment = ""
+    if not len(final_type):
+        if len(final_targets):
+            comment = "A type could not be determined, but one or more targets found"
+        else:
+            comment = "A type could not be determined"
+    elif len(final_type) > 1:
+        comment = f"Found matches for multiple types including: {', '.join(final_type)}"
+        final_type = ["multiple"]
+    else:
+        # There is only one type, capture any available comments
+        comment = ";".join(hits[final_type[0]]["comment"])
+
+    # Write final prediction
+    final_result = {
+        "sample": prefix,
+        "type": ",".join(final_type) if len(final_type) > 0 else "-",
+        "targets": ",".join(final_targets),
+        "coverage": ",".join(final_coverages),
+        "hits": ",".join(final_hits),
+        "schema": framework["metadata"]["id"],
+        "schema_version": framework["metadata"]["version"],
+        "camlhmp_version": camlhmp.__version__,
+        "params": f"min-coverage={min_coverage};min-pident={min_pident}",
+        "comment": comment,
+    }
+
+    return final_result, final_details
+
+
+def finalize_targets(prefix: str, results: dict,  hits: dict, framework: dict, min_pident: float, min_coverage: int) -> list:
+    """
+    Finalize the target hits.
+
+    Args:
+        prefix (str): The sample prefix
+        results(dict): The status of each target
+        hits (dict): The BLAST+ results for each target hit
+        framework (dict): The framework schema that was used
+        min_pident (float): The minimum percent identity to count a hit
+        min_coverage (int): The minimum percent coverage to count a hit
+
+    Returns:
+        list: The finalized target hits
+
+    Examples:
+        >>> from camlhmp.parsers.blast import finalize_targets
+    """
+    final_type = []
+    final_targets = []
+    final_details = []
+
+    # Get a list of targets that met the threshold
+    for target, status in results.items():
+        if status:
+            final_targets.append(target)
+
+    for type, vals in hits.items():
+        final_details.append(
+            {
+                "sample": prefix,
+                "type": type,
+                "status": vals["status"],
+                "targets": ",".join(vals["targets"]),
+                "missing": ",".join(vals["missing"]),
+                "schema": framework["metadata"]["id"],
+                "schema_version": framework["metadata"]["version"],
+                "camlhmp_version": camlhmp.__version__,
+                "params": f"min-coverage={min_coverage};min-pident={min_pident}",
+                "comment": vals["comment"],
+            }
+        )
+        if vals["status"]:
+            final_type.append(type)
+
+    # Generate a comment based on the results
+    final_comment = ""
+    if not len(final_type):
+        if len(final_targets):
+            final_comment = "A type could not be determined, but one or more targets found"
+        else:
+            final_comment = "A type could not be determined"
+    elif len(final_type) > 1:
+        final_comment = f"Found matches for multiple types including: {', '.join(final_type)}"
+        final_type = ["multiple"]
+
+    final_result = {
+        "sample": prefix,
+        "type": ",".join(final_type) if len(final_type) > 0 else "-",
+        "targets": ",".join(final_targets),
+        "schema": framework["metadata"]["id"],
+        "schema_version": framework["metadata"]["version"],
+        "camlhmp_version": camlhmp.__version__,
+        "params": f"min-coverage={min_coverage};min-pident={min_pident}",
+        "comment": final_comment,
+    }
+
+    return final_result, final_details

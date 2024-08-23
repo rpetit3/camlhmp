@@ -171,7 +171,7 @@ def camlhmp_blast_targets(
     # Describe the command line arguments
     console = rich.console.Console(stderr=True)
     print(
-        "[italic]Running [deep_sky_blue1]camlhmp[/deep_sky_blue1] with following parameters:[/italic]",
+        "[italic]Running [deep_sky_blue1]camlhmp-blast-targets[/deep_sky_blue1] with following parameters:[/italic]",
         file=sys.stderr,
     )
     print(f"[italic]    --input {input}[/italic]", file=sys.stderr)
