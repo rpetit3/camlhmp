@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v1.0.1 rpetit3/camlhmp "" 2024/08/??
+## v1.0.1 rpetit3/camlhmp "Bactrian" 2024/08/25
 
 ### `Added`
 

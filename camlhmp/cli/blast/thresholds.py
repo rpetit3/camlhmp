@@ -157,7 +157,7 @@ def camlhmp_blast_thresholds(
         file=sys.stderr,
     )
     print(f"[italic]    --input {input}[/italic]", file=sys.stderr)
-    print(f"[italic]    --blast {input}[/italic]", file=sys.stderr)
+    print(f"[italic]    --blast {blast}[/italic]", file=sys.stderr)
     print(f"[italic]    --outdir {outdir}[/italic]", file=sys.stderr)
     print(f"[italic]    --prefix {prefix}[/italic]", file=sys.stderr)
     print(f"[italic]    --min-pident {min_pident}[/italic]", file=sys.stderr)
@@ -228,7 +228,7 @@ def camlhmp_blast_thresholds(
                             if int(coverage) == 100 or int(pident) == 100:
                                 reference_failures[ref]["comment"] = "Suspected overlap or containment with another target: "
                             print(
-                                f"Detection failure for {ref} with pident={pident} and coverage={coverage} - {hits}",
+                                f"Detected failure for {ref} with pident={pident} and coverage={coverage} - {hits}",
                                 file=sys.stderr,
                             )
                 coverage -= increment
@@ -250,10 +250,10 @@ def camlhmp_blast_thresholds(
         final_results.append(
             {
                 "reference": ref,
-                "pident": vals["pident"],
-                "coverage": vals["coverage"],
+                "pident_failure": vals["pident"],
+                "coverage_failure": vals["coverage"],
                 "hits": vals["hits"],
-                "comment": f"no detection failures for pident>={min_pident} and converage>={min_coverage}" if vals["hits"] == "-" else vals["comment"],
+                "comment": f"no detection failures for pident>={min_pident} and coverage>={min_coverage}" if vals["hits"] == "-" else vals["comment"],
             }
         )
     write_tsv(final_results, thresholds_tsv)
@@ -270,8 +270,8 @@ def camlhmp_blast_thresholds(
     for result in final_results:
         type_table.add_row(
             result["reference"],
-            result["pident"],
-            result["coverage"],
+            result["pident_failure"],
+            result["coverage_failure"],
             result["hits"],
             result["comment"],
         )
