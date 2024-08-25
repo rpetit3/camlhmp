@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Classify assemblies using BLAST against alleles of a set of genes">
+        <meta name="description" content="Determine the specificity thresholds for a set of reference sequences ">
       
       
         <meta name="author" content="Robert A. Petit III">
       
       
-        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v1.0.0/cli/blast/camlhmp-blast-alleles/">
+        <link rel="canonical" href="https://rpetit3.github.io/camlhmp/v1.0.0/cli/blast/camlhmp-blast-thresholds/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../camlhmp-blast-targets/">
       
       
-        <link rel="next" href="../camlhmp-blast-regions/">
+        <link rel="next" href="../../camlhmp-extract/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>camlhmp-blast-targets - camlhmp</title>
+        <title>camlhmp-blast-thresholds - camlhmp</title>
       
     
     
@@ -79,17 +79,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="camlhmp-blast-targets - camlhmp" />
-<meta property="og:description" content="Classify assemblies using BLAST against alleles of a set of genes" />
-<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v1.0.0/assets/images/social/cli/blast/camlhmp-blast-alleles.png" />
+<meta property="og:title" content="camlhmp-blast-thresholds - camlhmp" />
+<meta property="og:description" content="Determine the specificity thresholds for a set of reference sequences " />
+<meta property="og:image" content="https://rpetit3.github.io/camlhmp/v1.0.0/assets/images/social/cli/blast/camlhmp-blast-thresholds.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v1.0.0/cli/blast/camlhmp-blast-alleles/" />
+<meta property="og:url" content="https://rpetit3.github.io/camlhmp/v1.0.0/cli/blast/camlhmp-blast-thresholds/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="camlhmp-blast-targets - camlhmp" />
-<meta property="twitter:description" content="Classify assemblies using BLAST against alleles of a set of genes" />
-<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v1.0.0/assets/images/social/cli/blast/camlhmp-blast-alleles.png" />
+<meta property="twitter:title" content="camlhmp-blast-thresholds - camlhmp" />
+<meta property="twitter:description" content="Determine the specificity thresholds for a set of reference sequences " />
+<meta property="twitter:image" content="https://rpetit3.github.io/camlhmp/v1.0.0/assets/images/social/cli/blast/camlhmp-blast-thresholds.png" />
 </head>
   
   
@@ -109,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#camlhmp-blast-alleles" class="md-skip">
+        <a href="#camlhmp-blast-thresholds" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              camlhmp-blast-targets
+              camlhmp-blast-thresholds
             
           </span>
         </div>
@@ -736,36 +736,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    blast-alleles
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../camlhmp-blast-alleles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -780,87 +754,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Files
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Output Files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prefixtsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        {PREFIX}.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prefixblasttsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        {PREFIX}.blast.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prefixdetailstsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        {PREFIX}.details.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -924,10 +817,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../camlhmp-blast-thresholds/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    blast-thresholds
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -942,6 +861,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefixtsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        {PREFIX}.tsv
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1456,6 +1445,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1489,28 +1489,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prefixblasttsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        {PREFIX}.blast.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prefixdetailstsv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        {PREFIX}.details.tsv
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1533,7 +1511,7 @@
 
 
   
-    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/cli/blast/camlhmp-blast-alleles.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/rpetit3/camlhmp/edit/master/docs/cli/blast/camlhmp-blast-thresholds.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1541,74 +1519,110 @@
   
 
 
-<h1 id="camlhmp-blast-alleles"><code>camlhmp-blast-alleles</code><a class="headerlink" href="#camlhmp-blast-alleles" title="Permanent link">&para;</a></h1>
-<p><code>camlhmp-blast-alleles</code> is a command that allows users to type their samples using a provided
-schema with BLAST algorithms. This command is useful when the schema is typing specific alleles
-of a gene or set of genes (e.g. MLST).</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-alleles<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+<h1 id="camlhmp-blast-thresholds"><code>camlhmp-blast-thresholds</code><a class="headerlink" href="#camlhmp-blast-thresholds" title="Permanent link">&para;</a></h1>
+<p><code>camlhmp-blast-thresholds</code> is a command that allows users to determine the specificity
+percent identity and coverage thresholds when using BLAST+. This command will start at
+100 percent identity and coverage and work its way down until a reference sequence can
+no longer be distinguished from other reference sequences.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>Usage:<span class="w"> </span>camlhmp-blast-thresholds<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast-alleles<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Classify<span class="w"> </span>assemblies<span class="w"> </span>using<span class="w"> </span>BLAST<span class="w"> </span>against<span class="w"> </span>alleles<span class="w"> </span>of
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>genes
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>🐪<span class="w"> </span>camlhmp-blast-thresholds<span class="w"> </span>🐪<span class="w"> </span>-<span class="w"> </span>Determine<span class="w"> </span>the<span class="w"> </span>specificity<span class="w"> </span>thresholds<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span>reference<span class="w"> </span>sequences
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>╭─<span class="w"> </span>Options<span class="w"> </span>──────────────────────────────────────────────────────────────────────╮
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w"> </span>*<span class="w">  </span>--input<span class="w">         </span>-i<span class="w">  </span>TEXT<span class="w">     </span>Input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span>to<span class="w"> </span>classify<span class="w">         </span>│
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">                                 </span><span class="o">[</span>required<span class="o">]</span><span class="w">                                     </span>│
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w"> </span>*<span class="w">  </span>--yaml<span class="w">          </span>-y<span class="w">  </span>TEXT<span class="w">     </span>YAML<span class="w"> </span>file<span class="w"> </span>documenting<span class="w"> </span>the<span class="w"> </span>targets<span class="w"> </span>and<span class="w"> </span>types<span class="w">    </span>│
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w">                                 </span><span class="o">[</span>required<span class="o">]</span><span class="w">                                     </span>│
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w"> </span>*<span class="w">  </span>--targets<span class="w">       </span>-t<span class="w">  </span>TEXT<span class="w">     </span>Query<span class="w"> </span>targets<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">       </span>│
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">    </span>--outdir<span class="w">        </span>-o<span class="w">  </span>PATH<span class="w">     </span>Directory<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>output<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>./<span class="o">]</span><span class="w">        </span>│
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│<span class="w">    </span>--prefix<span class="w">        </span>-p<span class="w">  </span>TEXT<span class="w">     </span>Prefix<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>files<span class="w">                 </span>│
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│<span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span>camlhmp<span class="o">]</span><span class="w">                             </span>│
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│<span class="w">    </span>--min-pident<span class="w">        </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>identity<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w">        </span>│
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│<span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">                                  </span>│
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│<span class="w">    </span>--min-coverage<span class="w">      </span>INTEGER<span class="w">  </span>Minimum<span class="w"> </span>percent<span class="w"> </span>coverage<span class="w"> </span>to<span class="w"> </span>count<span class="w"> </span>a<span class="w"> </span>hit<span class="w">        </span>│
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│<span class="w">                                 </span><span class="o">[</span>default:<span class="w"> </span><span class="m">95</span><span class="o">]</span><span class="w">                                  </span>│
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│<span class="w">    </span>--force<span class="w">                      </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>reports<span class="w">                     </span>│
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│<span class="w">    </span>--verbose<span class="w">                    </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w"> </span>output<span class="w">               </span>│
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│<span class="w">    </span>--silent<span class="w">                     </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed<span class="w">           </span>│
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│<span class="w">    </span>--version<span class="w">                    </span>Print<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>camlhmp<span class="w"> </span>version<span class="w">               </span>│
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│<span class="w">    </span>--help<span class="w">                       </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                    </span>│
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>╰────────────────────────────────────────────────────────────────────────────────╯
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>╭─<span class="w"> </span>Options<span class="w"> </span>────────────────────────────────────────────────────────────────────────────╮
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│<span class="w"> </span>*<span class="w">  </span>--input<span class="w">         </span>-i<span class="w">  </span>TEXT<span class="w">                           </span>Input<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>FASTA<span class="w"> </span>format<span class="w"> </span>of<span class="w">  </span>│
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│<span class="w">                                                       </span>reference<span class="w"> </span>sequences<span class="w">            </span>│
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│<span class="w">                                                       </span><span class="o">[</span>required<span class="o">]</span><span class="w">                     </span>│
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│<span class="w"> </span>*<span class="w">  </span>--blast<span class="w">         </span>-b<span class="w">  </span><span class="o">[</span>blastn<span class="p">|</span>blastp<span class="p">|</span>blastx<span class="p">|</span>tblastn<span class="w">  </span>The<span class="w"> </span>blast<span class="w"> </span>algorithm<span class="w"> </span>to<span class="w"> </span>use<span class="w">     </span>│
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│<span class="w">                        </span><span class="p">|</span>tblastx<span class="o">]</span><span class="w">                      </span><span class="o">[</span>required<span class="o">]</span><span class="w">                     </span>│
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│<span class="w">    </span>--outdir<span class="w">        </span>-o<span class="w">  </span>PATH<span class="w">                           </span>Directory<span class="w"> </span>to<span class="w"> </span>write<span class="w"> </span>output<span class="w">      </span>│
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│<span class="w">                                                       </span><span class="o">[</span>default:<span class="w">                      </span>│
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│<span class="w">                                                       </span>./camlhmp-blast-thresholds<span class="o">]</span><span class="w">    </span>│
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│<span class="w">    </span>--prefix<span class="w">        </span>-p<span class="w">  </span>TEXT<span class="w">                           </span>Prefix<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span>│
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│<span class="w">                                                       </span><span class="o">[</span>default:<span class="w"> </span>camlhmp<span class="o">]</span><span class="w">             </span>│
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│<span class="w">    </span>--min-pident<span class="w">        </span>INTEGER<span class="w">                        </span>Minimum<span class="w"> </span>percent<span class="w"> </span>identity<span class="w"> </span>to<span class="w">    </span>│
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│<span class="w">                                                       </span><span class="nb">test</span><span class="w">                           </span>│
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│<span class="w">                                                       </span><span class="o">[</span>default:<span class="w"> </span><span class="m">70</span><span class="o">]</span><span class="w">                  </span>│
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│<span class="w">    </span>--min-coverage<span class="w">      </span>INTEGER<span class="w">                        </span>Minimum<span class="w"> </span>percent<span class="w"> </span>coverage<span class="w"> </span>to<span class="w">    </span>│
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│<span class="w">                                                       </span><span class="nb">test</span><span class="w">                           </span>│
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│<span class="w">                                                       </span><span class="o">[</span>default:<span class="w"> </span><span class="m">70</span><span class="o">]</span><span class="w">                  </span>│
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│<span class="w">    </span>--increment<span class="w">         </span>INTEGER<span class="w">                        </span>The<span class="w"> </span>value<span class="w"> </span>to<span class="w"> </span>increment<span class="w"> </span>the<span class="w">     </span>│
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│<span class="w">                                                       </span>thresholds<span class="w"> </span>by<span class="w">                  </span>│
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│<span class="w">                                                       </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="w">                   </span>│
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│<span class="w">    </span>--force<span class="w">                                            </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>reports<span class="w">     </span>│
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│<span class="w">    </span>--verbose<span class="w">                                          </span>Increase<span class="w"> </span>the<span class="w"> </span>verbosity<span class="w"> </span>of<span class="w">      </span>│
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│<span class="w">                                                       </span>output<span class="w">                         </span>│
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│<span class="w">    </span>--silent<span class="w">                                           </span>Only<span class="w"> </span>critical<span class="w"> </span>errors<span class="w"> </span>will<span class="w"> </span>be<span class="w">   </span>│
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│<span class="w">                                                       </span>printed<span class="w">                        </span>│
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│<span class="w">    </span>--version<span class="w">                                          </span>Print<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>camlhmp<span class="w">       </span>│
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│<span class="w">                                                       </span>version<span class="w">                        </span>│
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│<span class="w">    </span>--help<span class="w">                                             </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">    </span>│
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>╰──────────────────────────────────────────────────────────────────────────────────────╯
 </span></code></pre></div>
 <h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
-<p>To run <code>camlhmp-blast-alleles</code>, you will need a FASTA file of your input sequences, a YAML
-file with the schema, and a FASTA file with the targets. Below is an example of how to run
-<code>camlhmp-blast-alleles</code> using available test data.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>camlhmp-blast-alleles<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.fasta<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/alleles/SRR2912551.fna.gz
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Running<span class="w"> </span>camlhmp<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/alleles/SRR2912551.fna.gz
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--yaml<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.yaml
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--targets<span class="w"> </span>tests/data/blast/alleles/spn-pbptype.fasta
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--outdir<span class="w"> </span>./
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">95</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">95</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Starting<span class="w"> </span>camlhmp<span class="w"> </span><span class="k">for</span><span class="w"> </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing...
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>Running<span class="w"> </span>tblastn...
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Processing<span class="w"> </span>hits...
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Final<span class="w"> </span>Results...
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                               </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┓
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━┩
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│<span class="w"> </span><span class="m">0</span><span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">5</span>…<span class="w"> </span>│<span class="w">   </span>│<span class="w"> </span><span class="m">2</span><span class="w">  </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>└───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┘
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Writing<span class="w"> </span>outputs...
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>Final<span class="w"> </span>predicted<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tsv
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>tblastn<span class="w"> </span>results<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tblastn.tsv
+<p>To run <code>camlhmp-blast-thresholds</code>, you will need a FASTA file of your reference sequences.
+Below is an example of how to run <code>camlhmp-blast-thresholds</code> using available test data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>camlhmp-blast-thresholds<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/targets/sccmec-partial.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--blast<span class="w"> </span>blastn
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Running<span class="w"> </span>camlhmp-blast-thresholds<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--input<span class="w"> </span>tests/data/blast/targets/sccmec-partial.fasta
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--blast<span class="w"> </span>blastn
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--outdir<span class="w"> </span>./camlhmp-blast-thresholds
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">70</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">70</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>Gathering<span class="w"> </span>seqeuences<span class="w"> </span>from<span class="w"> </span>tests/data/blast/targets/sccmec-partial.fasta...
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>Writing<span class="w"> </span>reference<span class="w"> </span>seqeuences<span class="w"> </span>to<span class="w"> </span>./camlhmp-blast-thresholds/reference_seqs...
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA1
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>Detected<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA1<span class="w"> </span>with<span class="w"> </span><span class="nv">pident</span><span class="o">=</span><span class="m">75</span><span class="w"> </span>and<span class="w"> </span><span class="nv">coverage</span><span class="o">=</span><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="s1">&#39;ccrA1&#39;</span>,<span class="w"> </span><span class="s1">&#39;ccrA2&#39;</span><span class="o">]</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA2
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Detected<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA2<span class="w"> </span>with<span class="w"> </span><span class="nv">pident</span><span class="o">=</span><span class="m">75</span><span class="w"> </span>and<span class="w"> </span><span class="nv">coverage</span><span class="o">=</span><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="s1">&#39;ccrA1&#39;</span>,<span class="w"> </span><span class="s1">&#39;ccrA2&#39;</span><span class="o">]</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA3
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>Detected<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrA3<span class="w"> </span>with<span class="w"> </span><span class="nv">pident</span><span class="o">=</span><span class="m">75</span><span class="w"> </span>and<span class="w"> </span><span class="nv">coverage</span><span class="o">=</span><span class="m">95</span><span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="s1">&#39;ccrA1&#39;</span>,<span class="w"> </span><span class="s1">&#39;ccrA3&#39;</span><span class="o">]</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrB1
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrB2
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>ccrB3
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>IS1272
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>mecI
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>mecR1
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>mecA
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>Detecting<span class="w"> </span>failure<span class="w"> </span><span class="k">for</span><span class="w"> </span>IS431
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>Writing<span class="w"> </span>results<span class="w"> </span>to<span class="w"> </span>./camlhmp-blast-thresholds/camlhmp.tsv...
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>Final<span class="w"> </span>Results...
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">                                                  </span>Thresholds<span class="w"> </span>Detection
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>┃<span class="w"> </span>reference<span class="w"> </span>┃<span class="w"> </span>pident_failure<span class="w"> </span>┃<span class="w"> </span>coverage_failure<span class="w"> </span>┃<span class="w"> </span>hits<span class="w">        </span>┃<span class="w"> </span>comment<span class="w">                                                </span>┃
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>│<span class="w"> </span>IS1272<span class="w">    </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>│<span class="w"> </span>IS431<span class="w">     </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>│<span class="w"> </span>ccrA1<span class="w">     </span>│<span class="w"> </span><span class="m">75</span><span class="w">             </span>│<span class="w"> </span><span class="m">100</span><span class="w">              </span>│<span class="w"> </span>ccrA1,ccrA2<span class="w"> </span>│<span class="w"> </span>Suspected<span class="w"> </span>overlap<span class="w"> </span>or<span class="w"> </span>containment<span class="w"> </span>with<span class="w"> </span>another<span class="w"> </span>target:<span class="w">  </span>│
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>│<span class="w"> </span>ccrA2<span class="w">     </span>│<span class="w"> </span><span class="m">75</span><span class="w">             </span>│<span class="w"> </span><span class="m">100</span><span class="w">              </span>│<span class="w"> </span>ccrA1,ccrA2<span class="w"> </span>│<span class="w"> </span>Suspected<span class="w"> </span>overlap<span class="w"> </span>or<span class="w"> </span>containment<span class="w"> </span>with<span class="w"> </span>another<span class="w"> </span>target:<span class="w">  </span>│
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>│<span class="w"> </span>ccrA3<span class="w">     </span>│<span class="w"> </span><span class="m">75</span><span class="w">             </span>│<span class="w"> </span><span class="m">95</span><span class="w">               </span>│<span class="w"> </span>ccrA1,ccrA3<span class="w"> </span>│<span class="w">                                                        </span>│
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>│<span class="w"> </span>ccrB1<span class="w">     </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>│<span class="w"> </span>ccrB2<span class="w">     </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>│<span class="w"> </span>ccrB3<span class="w">     </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>│<span class="w"> </span>mecA<span class="w">      </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>│<span class="w"> </span>mecI<span class="w">      </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>│<span class="w"> </span>mecR1<span class="w">     </span>│<span class="w"> </span>-<span class="w">              </span>│<span class="w"> </span>-<span class="w">                </span>│<span class="w"> </span>-<span class="w">           </span>│<span class="w"> </span>no<span class="w"> </span>detection<span class="w"> </span>failures<span class="w"> </span><span class="k">for</span><span class="w"> </span>pident&gt;<span class="o">=</span><span class="m">70</span><span class="w"> </span>and<span class="w"> </span>coverage&gt;<span class="o">=</span><span class="m">70</span><span class="w">  </span>│
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>└───────────┴────────────────┴──────────────────┴─────────────┴────────────────────────────────────────────────────────┘
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>Suggested<span class="w"> </span>thresholds<span class="w"> </span><span class="k">for</span><span class="w"> </span>specificity:<span class="w"> </span>pident&gt;75<span class="w"> </span>and<span class="w"> </span>coverage&gt;95
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>**NOTE**<span class="w"> </span>these<span class="w"> </span>are<span class="w"> </span>suggestions<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>starting<span class="w"> </span>point
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The table printed to STDOUT by <code>camlhmp-blast-alleles</code> has been purposefully truncated
-for viewing on the docs. It is the same information that that is in {PREFIX}.tsv.</p>
+<p>The final results will suggest a starting point for the specificity thresholds. You should
+still validate these thresholds with your own data. You may also notice that shorter
+sequences are more susceptible to percent identity and longer sequences are more susceptible
+to coverage.</p>
 </div>
 <h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h2>
-<p><code>camlhmp-blast-region</code> will generate three output files:</p>
+<p><code>camlhmp-blast-thresholds</code> will generate an output directory called <code>camlhmp-blast-thresholds</code>
+by default and in there will be the individual reference sequences and a final table of 
+suggested cutoffs.</p>
 <table>
 <thead>
 <tr>
@@ -1619,16 +1633,13 @@ for viewing on the docs. It is the same information that that is in {PREFIX}.tsv
 <tbody>
 <tr>
 <td><code>{PREFIX}.tsv</code></td>
-<td>A tab-delimited file with the predicted type</td>
-</tr>
-<tr>
-<td><code>{PREFIX}.blast.tsv</code></td>
-<td>A tab-delimited file of all blast hits</td>
+<td>A tab-delimited file the threshold failures (if observed) of each reference sequence</td>
 </tr>
 </tbody>
 </table>
 <h3 id="prefixtsv">{PREFIX}.tsv<a class="headerlink" href="#prefixtsv" title="Permanent link">&para;</a></h3>
-<p>The <code>{PREFIX}.tsv</code> file is a tab-delimited file with the predicted type. The columns are:</p>
+<p>The <code>{PREFIX}.tsv</code> file is a tab-delimited file the threshold failures (if observed) of each
+reference sequence . The columns are:</p>
 <table>
 <thead>
 <tr>
@@ -1638,129 +1649,20 @@ for viewing on the docs. It is the same information that that is in {PREFIX}.tsv
 </thead>
 <tbody>
 <tr>
-<td>sample</td>
-<td>The sample name as determined by <code>--prefix</code></td>
+<td>reference</td>
+<td>The reference sequence name</td>
 </tr>
 <tr>
-<td>schema</td>
-<td>The schema used to determine the type</td>
+<td>pident_failure</td>
+<td>The point at which percent identity no longer differentiated from other sequences</td>
 </tr>
 <tr>
-<td>schema_version</td>
-<td>The version of the schema used</td>
-</tr>
-<tr>
-<td>camlhmp_version</td>
-<td>The version of camlhmp used</td>
-</tr>
-<tr>
-<td>params</td>
-<td>The parameters used for the analysis</td>
-</tr>
-<tr>
-<td>{TARGET}_id</td>
-<td>The allele ID for a target hit</td>
-</tr>
-<tr>
-<td>{TARGET}_pident</td>
-<td>The percent identity of the hit</td>
-</tr>
-<tr>
-<td>{TARGET}_qcovs</td>
-<td>The percent coverage of the hit</td>
-</tr>
-<tr>
-<td>{TARGET}_bitscore</td>
-<td>The bitscore of the hit</td>
-</tr>
-<tr>
-<td>{TARGET}_comment</td>
-<td>A small comment about the hit</td>
-</tr>
-</tbody>
-</table>
-<p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sample  schema  schema_version  camlhmp_version params  1A_id   1A_pident   1A_qcovs    1A_bitscore 1A_comment  2B_id   2B_pident   2B_qcovs    2B_bitscore 2B_comment  2X_id   2X_pident   2X_qcovs    2X_bitscore 2X_comment
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>camlhmp pbptype_partial 0.0.1   0.3.1   min-coverage=95;min-pident=95   23  100.0   100 556     0   100.0   100 567     2   100.0   100 741 
-</span></code></pre></div>
-<h3 id="prefixblasttsv">{PREFIX}.blast.tsv<a class="headerlink" href="#prefixblasttsv" title="Permanent link">&para;</a></h3>
-<p>The <code>{PREFIX}.blast.tsv</code> file is a tab-delimited file of the raw output for all blast hits.
-The columns are the standard BLAST output with <code>-outfmt 6</code>.</p>
-<p>Here is an example of the <code>{PREFIX}.blast.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch    gapopen qstart  qend    sstart  send    evalue  bitscore
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>1A_0    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>1A_1    NODE_223_length_8196_cov_21.291849  99.638  100 276 8324    276 275 1   0   1   276 1807    2634    0.0 555
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>1A_2    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 554
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>1A_3    NODE_223_length_8196_cov_21.291849  99.275  100 276 8324    276 274 2   0   1   276 1807    2634    0.0 553
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>1A_4    NODE_223_length_8196_cov_21.291849  84.420  100 276 8324    276 233 43  0   1   276 1807    2634    3.91e-155   474
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>1A_23   NODE_223_length_8196_cov_21.291849  100.000 100 276 8324    276 276 0   0   1   276 1807    2634    0.0 556
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>2B_0    NODE_878_length_2854_cov_17.976875  100.000 100 277 2982    277 277 0   0   1   277 1218    2048    0.0 567
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>2B_1    NODE_878_length_2854_cov_17.976875  87.365  100 277 2982    277 242 35  0   1   277 1218    2048    3.24e-173   501
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>2B_2    NODE_878_length_2854_cov_17.976875  99.278  100 277 2982    277 275 2   0   1   277 1218    2048    0.0 563
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>2B_3    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>2B_4    NODE_878_length_2854_cov_17.976875  99.639  100 277 2982    277 276 1   0   1   277 1218    2048    0.0 565
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>2X_0    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 740
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>2X_1    NODE_210_length_5085_cov_16.539627  92.179  100 358 5213    358 330 28  0   1   358 3172    2099    0.0 688
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>2X_1    NODE_878_length_2854_cov_17.976875  23.797  99  358 2982    395 94  230 17  1   353 915 2012    1.95e-06    45.8
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>2X_2    NODE_210_length_5085_cov_16.539627  100.000 100 358 5213    358 358 0   0   1   358 3172    2099    0.0 741
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>2X_3    NODE_210_length_5085_cov_16.539627  99.721  100 358 5213    358 357 1   0   1   358 3172    2099    0.0 739
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>2X_4    NODE_210_length_5085_cov_16.539627  99.441  100 358 5213    358 356 2   0   1   358 3172    2099    0.0 738
-</span></code></pre></div>
-<h3 id="prefixdetailstsv">{PREFIX}.details.tsv<a class="headerlink" href="#prefixdetailstsv" title="Permanent link">&para;</a></h3>
-<p>The <code>{PREFIX}.details.tsv</code> file is a tab-delimited file with details for each type. This file
-can be useful for seeing how a sample did against all other types in a schema.</p>
-<p>The columns in this file are:</p>
-<table>
-<thead>
-<tr>
-<th>Column</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sample</td>
-<td>The sample name as determined by <code>--prefix</code></td>
-</tr>
-<tr>
-<td>type</td>
-<td>The predicted type</td>
-</tr>
-<tr>
-<td>status</td>
-<td>The status of the type (True if failed)</td>
-</tr>
-<tr>
-<td>targets</td>
-<td>The targets for the given type that had a match</td>
-</tr>
-<tr>
-<td>missing</td>
-<td>The targets for the given type that were not found</td>
-</tr>
-<tr>
-<td>coverage</td>
-<td>The coverage of the target region</td>
+<td>coverage_failure</td>
+<td>The point at which coverage identity no longer differentiated from other sequences</td>
 </tr>
 <tr>
 <td>hits</td>
-<td>The number of hits used to calculate coverage of the target region</td>
-</tr>
-<tr>
-<td>schema</td>
-<td>The schema used to determine the type</td>
-</tr>
-<tr>
-<td>schema_version</td>
-<td>The version of the schema used</td>
-</tr>
-<tr>
-<td>camlhmp_version</td>
-<td>The version of camlhmp used</td>
-</tr>
-<tr>
-<td>params</td>
-<td>The parameters used for the analysis</td>
+<td>The other reference sequences that also had a hit</td>
 </tr>
 <tr>
 <td>comment</td>
@@ -1768,13 +1670,19 @@ can be useful for seeing how a sample did against all other types in a schema.</
 </tr>
 </tbody>
 </table>
-<p>Below is an example of the <code>{PREFIX}.details.tsv</code> file:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sample  type    status  targets missing coverage    hits    schema  schema_version  camlhmp_version params  comment
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>camlhmp O1  False       O1  12.49   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>camlhmp O2  False   O2  wzyB    100.00,0.00 1,0 pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>camlhmp O3  False       O3  1.43    1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>camlhmp O4  False       O4  13.86   2   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   Coverage based on 2 hits
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>camlhmp O5  True    O2      100.00  1   pseudomonas_serogroup_partial   0.0.1   0.2.1   min-coverage=95;min-pident=95   
+<p>Below is an example of the <code>{PREFIX}.tsv</code> file:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>reference   pident_failure  coverage_failure    hits    comment
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>IS1272  -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>IS431   -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ccrA1   75  100 ccrA1,ccrA2 Suspected overlap or containment with another target: 
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ccrA2   75  100 ccrA1,ccrA2 Suspected overlap or containment with another target: 
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ccrA3   75  95  ccrA1,ccrA3 
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>ccrB1   -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>ccrB2   -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>ccrB3   -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>mecA    -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>mecI    -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>mecR1   -   -   -   no detection failures for pident&gt;=70 and coverage&gt;=70
 </span></code></pre></div>
 
 
@@ -1816,7 +1724,7 @@ can be useful for seeing how a sample did against all other types in a schema.</
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="../camlhmp-blast-targets/" class="md-footer__link md-footer__link--prev" aria-label="Previous: blast-targets">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1826,20 +1734,20 @@ can be useful for seeing how a sample did against all other types in a schema.</
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                blast-targets
               </div>
             </div>
           </a>
         
         
           
-          <a href="../camlhmp-blast-regions/" class="md-footer__link md-footer__link--next" aria-label="Next: blast-regions">
+          <a href="../../camlhmp-extract/" class="md-footer__link md-footer__link--next" aria-label="Next: camlhmp-extract">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                blast-regions
+                camlhmp-extract
               </div>
             </div>
             <div class="md-footer__button md-icon">
