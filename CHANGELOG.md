@@ -1,6 +1,16 @@
 
 # Changelog
 
+## v1.0.2 rpetit3/camlhmp "Wild Bactrian" 2024/08/25
+
+### `Added`
+
+- allow `min-coverage` and `min-coverage` params to be set in the yaml
+    - Priority:
+        - user provided command line arguments (`--min-pident` and `--min-coverage`)
+        - schema provided values
+        - default values specified in the command script
+
 ## v1.0.1 rpetit3/camlhmp "Bactrian" 2024/08/25
 
 ### `Added`

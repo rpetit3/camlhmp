@@ -168,6 +168,15 @@ def camlhmp_blast_targets(
     file_exists_error(blast_tsv, force)
     file_exists_error(details_tsv, force)
 
+    # Check if params are set in the YAML (only change if not set on the command line)
+    if "--min-pident" not in sys.argv:
+        if "min_pident" in framework["engine"]["params"]:
+            min_pident = framework["engine"]["params"]["min_pident"]
+    if "--min-coverage" not in sys.argv:
+        if "min_coverage" in framework["engine"]["params"]:
+            min_coverage = framework["engine"]["params"]["min_coverage"]
+
+
     # Describe the command line arguments
     console = rich.console.Console(stderr=True)
     print(

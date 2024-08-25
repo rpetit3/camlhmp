@@ -21,8 +21,11 @@ metadata:
 # engine: specifies the computational tools and additional parameters used for sequence
 #         analysis.
 engine:
-  type: ""        # The type of tool used to generate the data
-  tool: ""        # The tool used to generate the data
+  type: ""            # The type of tool used to generate the data
+  tool: ""            # The tool used to generate the data
+  params: {}          # Additional parameters for the tool
+    min_pident: int   # Minimum percent identity for the tool
+    min_coverage: int # Minimum percent coverage for the tool
 
 # targets: Lists the specific sequence targets such as genes, proteins, or markers that the
 #          schema will analyze. These should be included in the associated sequence query data
@@ -66,10 +69,11 @@ The `metadata` section provides general information about the schema. This inclu
 
 The `engine` section specifies the computational tools used for sequence analysis.
 
-| Field | Type   | Description                                      |
-|-------|--------|--------------------------------------------------|
-| type  | string | The type of engine used for analysis             |
-| tool  | string | The specific tool to be used for the engine      |
+| Field  | Type   | Description                                          |
+|--------|--------|------------------------------------------------------|
+| type   | string | The type of engine used for analysis                 |
+| tool   | string | The specific tool to be used for the engine          |
+| params | dict   | Additional parameters for the tool to use as default |
 
 ## targets
 
