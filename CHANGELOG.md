@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v1.0.2 rpetit3/camlhmp "Wild Bactrian" 2024/08/25
+## v1.1.0 rpetit3/camlhmp "Wild Bactrian" 2024/08/25
 
 ### `Added`
 
