@@ -126,6 +126,9 @@ metadata:
 engine:
   type: blast   # The type of tool used to generate the data
   tool: blastn  # The tool used to generate the data
+  params:       # Additional parameters for the tool
+    min_pident: 80   # Minimum percent identity for the tool
+    min_coverage: 80 # Minimum percent coverage for the tool
 
 # targets: Lists the specific sequence targets such as genes, proteins, or markers that the
 #          schema will analyze. These should be included in the associated sequence query data
