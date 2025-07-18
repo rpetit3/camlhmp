@@ -26,7 +26,7 @@ jobs:
           MKDOCS_INSIDERS: ${{ secrets.MKDOCS_INSIDERS }}
         run: |
           # Conda dependencies
-          conda install -c conda-forge jq 'python>3.6'
+          conda install -c conda-forge jq 'python<3.12'
           # MkDocs dependencies
           pip install \
             "cairosvg>=2.5" \
