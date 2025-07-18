@@ -140,7 +140,7 @@ The columns in this file are:
 |-----------------|----------------------------------------------------|
 | sample          | The sample name as determined by `--prefix`        |
 | type            | The predicted type                                 |
-| status          | The status of the type (True if failed)            |
+| status          | The status of the type (`True` if passed thresholds, `False` if failed to exceed thresholds) |
 | targets         | The targets for the given type that had a match    |
 | missing         | The targets for the given type that were not found |
 | schema          | The schema used to determine the type              |
