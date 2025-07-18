@@ -2,87 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/CHANGELOG/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/about/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/available-tools/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/installation/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/schema/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/api/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/api/framework/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/api/utils/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/api/engines/blast/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/api/parsers/blast/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/camlhmp-extract/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/blast/camlhmp-blast-alleles/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/blast/camlhmp-blast-regions/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/blast/camlhmp-blast-targets/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
     <url>
          <loc>https://rpetit3.github.io/camlhmp/v1.1.0/cli/blast/camlhmp-blast-thresholds/</loc>
-         <lastmod>2024-08-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-07-18</lastmod>
     </url>
 </urlset>
