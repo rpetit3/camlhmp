@@ -31,6 +31,7 @@ authors:
   - name: Joseph M. Reed
     affiliation: "1"
   - name: Timothy D. Read
+    orcid: 0000-0001-8966-9680
     affiliation: "2,3"
 affiliations:
   - index: 1
@@ -79,7 +80,7 @@ Recognizing the need for a standardized framework to develop sequence-based typi
 are accessible and easy to use, we developed `camlhmp` (Classification through yAML Heuristic
 Mapping Protocol; pronounced *"camel hump").* `camlhmp` is a Python-based bioinformatics
 framework designed to simplify the development and management of sequence-based typing tools.
-It uses YAML (YAML Ain't Markup Language) [@yaml-pf], a simple, flexible, human-readable data
+It uses YAML [@yaml-pf], a simple, flexible, human-readable data
 serialization language, to define a typing schema. With instructions provided by the YAML file,
 `camlhmp` will produce genetic typing results for an input whole genome sequence in a
 consistent tab-delimited format. `camlhmp` has multiple built-in functions to execute tools
@@ -97,7 +98,7 @@ sequence file, a command-line interface, and an application programming interfac
 ### User-supplied files: YAML and FASTA
 
 The YAML format was selected primarily for its human readability compared to other data
-formats such as JSON (JavaScript Object Notation) [@json-wm] or TOML (Tom’s Obvious, Minimal
+formats such as JSON [@json-wm] or TOML (Tom’s Obvious, Minimal
 Language) [@toml-ku]. Each YAML schema was composed of specific sections, including `metadata`,
 `engine`, `targets`, `aliases`, and `types`. The `metadata` section included fields to
 describe the schema, such as name, description, version, and curators. The `engine` section
@@ -202,11 +203,7 @@ O3, O10, and O4 also showed moderate prevalence, while O2, O7, O9, and O12 each 
 approximately 2% or less. Rare serogroups such as O13, O15, and O17 were detected in fewer
 than 0.5% of samples.
 
-### Figure 1 \- Distribution of *Pseudomonas aeruginosa* Serogroups
-
-Counts of *P. aeruginosa* genome assemblies were assigned to each serogroup using the `pasty` tool (n \= 43,160).  
-
-![Figure 1](figure1.png)
+![Distribution of *Pseudomonas aeruginosa* serogroups assigned with `pasty` (n \= 43,160)](figure1.png)
 
 ### Table 1 \- Distribution of *Pseudomonas aeruginosa* Serogroups
 
@@ -234,27 +231,23 @@ Counts and percentages of serogroups assigned by the `pasty` typing tool across 
 ## *Staphylococcus aureus* SCC*mec* Typing with `sccmec`
 
 We analyzed 121,427 *S. aureus* ATB genome assemblies using the `sccmec` (v1.2.0) typing tool.
-Of these, 54.5% (*n \= 66,227*) were assigned a SCCmec type, while 45.5% (*n \= 55,200*)
+Of these, 54.5% (*n \= 66,227*) were assigned a SCC*mec* type, while 45.5% (*n \= 55,200*)
 returned no result ("-"), which may represent either methicillin-susceptible (MSSA)
 isolates (true negatives) or untyped methicillin-resistant ones (false negatives)
-(**Figure 2;** **Table 2**). The most common SCCmec type was IV (*31.7%, n \= 38,436*),
+(**Figure 2;** **Table 2**). The most common SCC*mec* type was IV (*31.7%, n \= 38,436*),
 followed by type V (*8.4%, n \= 10,217*) and type II (*7.1%, n \= 8,648*). Types I, III,
 and XI were observed at lower frequencies (1–2%), while other types (VI-X, XII-XV) were
 rare (*\<0.3% each*). A small proportion of samples (*1.2%, n \= 1,453*) matched multiple
-types. The genomes matching this category were candidates for having novel variant SCCmec
+types. The genomes matching this category were candidates for having novel variant SCC*mec*
 types.
 
-### Figure 2 \- Distribution of SCCmec Types in Staphylococcus aureus
+![Distribution of SCC*mec* Types in *Staphylococcus aureus* assigned with `sccmec` (n \= 121,427)](figure2.png)
 
-Counts of *S. aureus* assemblies assigned to SCCmec types using the `sccmec` typing tool (n \= 121,427).
+### Table 2 \- Distribution of SCC*mec* Types in *Staphylococcus aureus*
 
-![Figure 2](figure2.png)
+Counts and percentages of SCC*mec* types assigned by the `sccmec` typing tool across 121,427 *S. aureus* assemblies.
 
-### Table 2 \- Distribution of SCCmec Types in *Staphylococcus aureus*
-
-Counts and percentages of SCCmec types assigned by the `sccmec` typing tool across 121,427 *S. aureus* assemblies.
-
-| SCCmec Type | Count | Percentage |
+| SCC*mec* Type | Count | Percentage |
 | :---- | ----: | ----: |
 | I | 2163 | 1.781 |
 | II | 8648 | 7.122 |

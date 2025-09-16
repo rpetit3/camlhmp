@@ -1,6 +1,18 @@
 
 # Changelog
 
+## v1.1.2 rpetit3/camlhmp "Bactrian Paper Patch" 2025/09/16
+
+## `Added`
+
+- rebuild lock file
+
+## `Fixed`
+
+- Formatting of the paper
+- `just` missing from `environment.yml`
+
+
 ## v1.1.1 rpetit3/camlhmp "Wild Bactrian Paper" 2025/09/16
 
 ## `Added`
