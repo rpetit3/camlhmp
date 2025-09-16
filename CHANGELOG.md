@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v1.1.1 rpetit3/camlhmp "Wild Bactrian Paper" 2025/09/16
+
+## `Added`
+
+- A paper for camlhmp
+
 ## v1.1.0 rpetit3/camlhmp "Wild Bactrian" 2024/08/25
 
 ### `Added`
