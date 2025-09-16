@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v1.1.3 rpetit3/camlhmp "Bactrian Paper Patch (2)" 2025/09/16
+
+## `Fixed`
+
+- circumvent conda install of poetry (currently broken)
+
 ## v1.1.2 rpetit3/camlhmp "Bactrian Paper Patch" 2025/09/16
 
 ## `Added`
@@ -11,7 +17,6 @@
 
 - Formatting of the paper
 - `just` missing from `environment.yml`
-
 
 ## v1.1.1 rpetit3/camlhmp "Wild Bactrian Paper" 2025/09/16
 

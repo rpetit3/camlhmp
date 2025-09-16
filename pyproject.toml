@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "camlhmp"
-version = "1.1.2"
+version = "1.1.3"
 description = "Classification through yAML Heuristic Mapping Protocol"
 authors = [
     "Robert A. Petit III <robbie.petit@gmail.com>",
