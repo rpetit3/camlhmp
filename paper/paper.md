@@ -109,18 +109,17 @@ generic modules for reading, writing, and validating data.
 To demonstrate the application of `camlhmp`, we developed schemas for the bacterial pathogens
 *Pseudomonas aeruginosa*, *Streptococcus pneumoniae*, and *Staphylococcus aureus.*
 
-`pasty` ([https://github.com/rpetit3/pasty](https://github.com/rpetit3/pasty)), for
-serogrouping *P. aeruginosa* samples, used `camlhmp-blast-regions` to align user assemblies to
-representative O-specific antigen (OSA) clusters [@Thrane2016-ga] to user assemblies.
+`pasty`, for serogrouping *P. aeruginosa* samples, used `camlhmp-blast-regions` to align user
+assemblies to representative O-specific antigen (OSA) clusters [@Thrane2016-ga] to user
+assemblies.
 
-`pbptyper` ([https://github.com/rpetit3/pbptyper](https://github.com/rpetit3/pbptyper)), for
-typing the penicillin-binding protein (PBP) in *S. pneumoniae* [@Chambers1999-dm], used the
-`camlhmp` API to align representative PBPs alleles [@Li2016-dy] against user assemblies.
+`pbptyper`, for typing the penicillin-binding protein (PBP) in *S. pneumoniae*
+[@Chambers1999-dm], used the `camlhmp` API to align representative PBPs alleles [@Li2016-dy]
+against user assemblies.
 
-`sccmec` ([https://github.com/rpetit3/sccmec](https://github.com/rpetit3/sccmec)), for typing
-SCC*mec* cassette in *S. aureus* samples [@Uehara2022-en], used `camlhmp-blast-targets` to
-align user assemblies against known target SCC*mec* [@Wolska-Gebarzewska2023-ig] associated
-genes.
+`sccmec`, for typing SCC*mec* cassette in *S. aureus* samples [@Uehara2022-en], used
+`camlhmp-blast-targets` to align user assemblies against known target
+SCC*mec* [@Wolska-Gebarzewska2023-ig] associated genes.
 
 Each can be used as stand-alone tools or from the Bactopia pipeline (v3.2.0) [@Petit2020-gt].
 
@@ -138,7 +137,7 @@ across diverse microbial pathogens.
 
 camlhmp is available at GitHub, PyPi, and Bioconda:
 
-- [https://github.com/rpetit3/camlhmp](https://github.com/rpetit3/camlhmp)  
+- [https://github.com/rpetit3/camlhmp](https://github.com/rpetit3/camlhmp)
 - [https://pypi.org/project/camlhmp/](https://pypi.org/project/camlhmp/)
 - [https://bioconda.github.io/recipes/camlhmp/README.html](https://bioconda.github.io/recipes/camlhmp/README.html)
 
