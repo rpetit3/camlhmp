@@ -26,6 +26,17 @@ maintenance of multiple organism typing tools. Managing these tools separately i
 time-consuming and challenging. `camlhmp` simplifies this by providing a single
 framework for each tool.
 
+## Quick Start
+
+To quickly get started with `camlhmp`, you can install it through Bioconda and run the
+command-line interface:
+
+```bash
+conda create -n camlhmp -c conda-forge -c bioconda camlhmp
+conda activate camlhmp
+camlhmp --help
+```
+
 ## Installation
 
 `camlhmp` is available through [PyPI](https://pypi.org/project/camlhmp/) and
@@ -33,11 +44,81 @@ framework for each tool.
 through PyPi, it is recommended to install it through BioConda so that non-Python dependencies
 are also installed.
 
+### System Requirements
+
+`camlhmp` has been developed and tested on x86-64 Linux and macOS systems.
+
+| OS           | Architecture | Supported?                   |
+|--------------|--------------|------------------------------|
+| Linux        | x86-64       | ✅                           |
+| Linux        | aarch64      | ❌ _(missing dependencies)_  |
+| macOS        | x86-64       | ✅                           |
+| macOS        | arm64        | ❌ _(missing dependencies)_  |
+| Windows      | x86-64       | ❌ _(consider using WSL2) _  |
+
+> [!TIP]
+> Docker containers are available from [biocontainers/camlhmp](https://quay.io/repository/biocontainers/camlhmp?tab=tags)
+> which can be used with the `--platform` flag to run on Apple Silicon and ARM-based Linux systems.
+
+### Dependencies
+
+`camlhmp` relies on the following dependencies:
+
+```{yaml}
+dependencies:
+  python:
+    - biopython >=1.83
+    - pyyaml >=6.0.1
+    - executor >=23.2
+    - rich >=13.7.1,<14
+    - rich-click >=1.6.0
+  non_python:
+    - blast >=2.15.0
+    - pigz
+```
+
+### Bioconda Installation
+
 ```bash
 conda create -n camlhmp -c conda-forge -c bioconda camlhmp
 conda activate camlhmp
 camlhmp
+🐪 camlhmp 🐪 - Classification through YAML Heuristic Mapping Protocol
+
+Available camlhmp commands
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ command               ┃ description                                                          ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ camlhmp-blast-alleles │ Classify assemblies using BLAST against alleles of a set of genes    │
+│ camlhmp-blast-regions │ Classify assemblies using BLAST against larger genomic regions       │
+│ camlhmp-blast-targets │ Classify assemblies using BLAST against individual genes or proteins │
+│ camlhmp-extract       │ Extract typing targets from a set of reference sequences             │
+└───────────────────────┴──────────────────────────────────────────────────────────────────────┘
 ```
+
+### PyPi Installation
+
+To install `camlhmp` through PyPi, you can can use `pip`:
+
+```bash
+pip install camlhmp
+camlhmp
+🐪 camlhmp 🐪 - Classification through YAML Heuristic Mapping Protocol
+
+Available camlhmp commands
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ command               ┃ description                                                          ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ camlhmp-blast-alleles │ Classify assemblies using BLAST against alleles of a set of genes    │
+│ camlhmp-blast-regions │ Classify assemblies using BLAST against larger genomic regions       │
+│ camlhmp-blast-targets │ Classify assemblies using BLAST against individual genes or proteins │
+│ camlhmp-extract       │ Extract typing targets from a set of reference sequences             │
+└───────────────────────┴──────────────────────────────────────────────────────────────────────┘
+```
+
+> [!WARNING]
+> Installing through PyPi will not install non-Python dependencies. You will need to ensure
+> these are installed manually.
 
 ## Citing `camlhmp`
 
@@ -63,6 +144,12 @@ came with the save and suggested "Heuristic Mapping Protocol". So, here we are -
 
 I'm not a lawyer and MIT has always been my go-to license. So, MIT it is!
 
+## Artificial Intelligence Disclaimer
+
+As of v1.1.3, `camlhmp` has been developed with minimal assistance of Artificial
+Intelligence (AI). GitHub Copilot was used for auto-completion, but otherwise all
+code was written and reviewed by the author.
+
 ## Funding
 
 Support for this project came (in part) from the [Wyoming Public Health Division](https://health.wyo.gov/publichealth/), and
@@ -70,3 +157,4 @@ the [Center for Applied Pathogen Epidemiology and Outbreak Control (CAPE)](https
 
 ![Wyoming Public Health Division](docs/assets/wyphd-banner.jpg)
 ![Center for Applied Pathogen Epidemiology and Outbreak Control](docs/assets/cape-banner.png)
+

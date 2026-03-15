@@ -44,15 +44,21 @@ file with the schema, and a FASTA file with the targets. Below is an example of 
 `camlhmp-blast-regions` using available test data.
 
 ```bash
-camlhmp-blast-regions \
-    --yaml tests/data/blast/regions/pseudomonas-serogroup.yaml \
-    --targets tests/data/blast/regions/pseudomonas-serogroup.fasta \
-    --input tests/data/blast/regions/O1-GCF_000504045.fna.gz
+# Acquire test data
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/regions/pseudomonas-serogroup.yaml
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/regions/pseudomonas-serogroup.fasta
+wget https://github.com/rpetit3/camlhmp/raw/refs/heads/main/tests/data/blast/regions/O1-GCF_000504045.fna.gz
 
-Running camlhmp with following parameters:
-    --input tests/data/blast/regions/O1-GCF_000504045.fna.gz
-    --yaml tests/data/blast/regions/pseudomonas-serogroup.yaml
-    --targets tests/data/blast/regions/pseudomonas-serogroup.fasta
+# Run camlhmp-blast-regions
+camlhmp-blast-regions \
+    --yaml pseudomonas-serogroup.yaml \
+    --targets pseudomonas-serogroup.fasta \
+    --input O1-GCF_000504045.fna.gz
+
+Running camlhmp-blast-regions with following parameters:
+    --input O1-GCF_000504045.fna.gz
+    --yaml pseudomonas-serogroup.yaml
+    --targets pseudomonas-serogroup.fasta
     --outdir ./
     --prefix camlhmp
     --min-pident 95
@@ -66,7 +72,7 @@ Final Results...
 ┏━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
 ┃ sample ┃ type ┃ targe… ┃ cover… ┃ hits ┃ schema ┃ schem… ┃ camlh… ┃ params ┃ comme… ┃
 ┡━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
-│ camlh… │ O1   │ O1     │ 100.00 │ 1    │ pseud… │ 0.0.1  │ 0.3.1  │ min-c… │        │
+│ camlh… │ O1   │ O1     │ 100.00 │ 1    │ pseud… │ 0.0.1  │ 1.1.4  │ min-c… │        │
 └────────┴──────┴────────┴────────┴──────┴────────┴────────┴────────┴────────┴────────┘
 Writing outputs...
 Final predicted type written to ./camlhmp.tsv
@@ -108,8 +114,8 @@ The `{PREFIX}.tsv` file is a tab-delimited file with the predicted type. The col
 Below is an example of the `{PREFIX}.tsv` file:
 
 ```tsv
-sample	type	targets	coverage	hits	schema	schema_version	camlhmp_version	params	comment
-camlhmp	O5	O2	100.00	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
+sample  type    targets coverage        hits    schema  schema_version  camlhmp_version params  comment
+camlhmp O1      O1      100.00  1       pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95	
 ```
 
 ### {PREFIX}.blast.tsv
@@ -120,19 +126,16 @@ The columns are the standard BLAST output with `-outfmt 6`.
 Here is an example of the `{PREFIX}.blast.tsv` file:
 
 ```tsv
-qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore
-wzyB	NZ_PSQS01000003.1	88.403	99	1140	6935329	595	526	69	0	545	1139	6874509	6875103	0.0	717
-wzyB	NZ_PSQS01000003.1	88.403	99	1140	6935329	595	526	69	0	545	1139	6920911	6921505	0.0	717
-wzyB	NZ_PSQS01000003.1	89.444	99	1140	6935329	540	483	56	1	1	539	6872864	6873403	0.0	680
-wzyB	NZ_PSQS01000003.1	89.444	99	1140	6935329	540	483	56	1	1	539	6919266	6919805	0.0	680
-O1	NZ_PSQS01000003.1	97.972	12	18368	6935329	1972	1932	38	2	16398	18368	6620589	6618619	0.0	3419
-O1	NZ_PSQS01000003.1	96.296	12	18368	6935329	324	312	11	1	1	323	6641914	6641591	1.68e-149	531
-O2	NZ_PSQS01000003.1	99.841	100	23303	6935329	23303	23266	30	1	1	23303	6618619	6641914	0.0	42821
-O2	NZ_PSQS01000003.1	86.935	100	23303	6935329	1240	1078	130	12	2542	3749	3864567	3863328	0.0	1363
-O3	NZ_PSQS01000003.1	94.442	13	20210	6935329	2393	2260	114	15	1	2386	6618619	6620999	0.0	3664
-O3	NZ_PSQS01000003.1	99.308	13	20210	6935329	289	287	2	0	19922	20210	6641626	6641914	3.09e-147	523
-O4	NZ_PSQS01000003.1	97.448	14	15279	6935329	1842	1795	47	0	1	1842	6618619	6620460	0.0	3142
-O4	NZ_PSQS01000003.1	99.638	14	15279	6935329	276	275	1	0	15004	15279	6641639	6641914	8.46e-142	505
+qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch        gapopen qstart  qend    sstart  send    evalue  bitscore
+O1      NC_023019.1     99.510  100     18368   6580038 18369   18279   87      3       1       18368   1946644 1965010 0.0     33419
+O2      NC_023019.1     97.519  15      23303   6580038 1975    1926    47      2       1       1974    1965010 1963037 0.0     3374
+O2      NC_023019.1     87.318  15      23303   6580038 1238    1081    122     14      2542    3746    6116835 6118070 0.0     1384
+O2      NC_023019.1     96.296  15      23303   6580038 324     312     11      1       22980   23303   1946966 1946644 2.02e-149       531
+O2      NC_023019.1     83.417  15      23303   6580038 398     332     43      11      2542    2920    4514276 4514669 2.18e-94        348
+O3      NC_023019.1     97.975  11      20210   6580038 1975    1935    38      2       1       1974    1965010 1963037 0.0     3424
+O3      NC_023019.1     100.000 11      20210   6580038 292     292     0       0       19919   20210   1946935 1946644 2.91e-152       540
+O4      NC_023019.1     95.829  14      15279   6580038 1918    1838    80      0       1       1918    1965010 1963093 0.0     3099
+O4      NC_023019.1     99.275  14      15279   6580038 276     274     2       0       15004   15279   1946919 1946644 3.73e-140       499
 ```
 
 ### {PREFIX}.details.tsv
@@ -160,12 +163,12 @@ The columns in this file are:
 Below is an example of the `{PREFIX}.details.tsv` file:
 
 ```tsv
-sample	type	status	targets	missing	coverage	hits	schema	schema_version	camlhmp_version	params	comment
-camlhmp	O1	False		O1	12.49	2	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	Coverage based on 2 hits
-camlhmp	O2	False	O2	wzyB	100.00,0.00	1,0	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	O3	False		O3	1.43	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	O4	False		O4	13.86	2	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	Coverage based on 2 hits
-camlhmp	O5	True	O2		100.00	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
+sample  type    status  targets missing coverage        hits    schema  schema_version  camlhmp_version params  comment
+camlhmp O1      True    O1              100.00  1       pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95
+camlhmp O2      False           O2,wzyB 9.86,0.00       2,0     pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95   O2:Coverage based on 2 hits
+camlhmp O3      False           O3      11.21   2       pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95   Coverage based on 2 hits
+camlhmp O4      False           O4      14.36   2       pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95   Coverage based on 2 hits
+camlhmp O5      False           O2      9.86    2       pseudomonas_serogroup_partial   0.0.1   1.1.4   min-coverage=95;min-pident=95   Coverage based on 2 hits
 ```
 
 ## Example Implementation

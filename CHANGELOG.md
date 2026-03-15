@@ -1,6 +1,18 @@
 
 # Changelog
 
+## v1.1.4 rpetit3/camlhmp "Bactrian Paper Patch (3)" 2026/03/15
+
+### `Updates`
+
+- Changes in response to reviewers:
+    - README updates:
+        - Added/Updated System Requirements, Dependencies, Installation, AI Disclaimer sections
+    - Docs updates:
+        - CLI commands that demonstrated using test data now include "how to acquire the test data" instructions
+    - Added Zenodo DOI badge to README and docs
+- Removed the stale JOSS paper
+
 ## v1.1.3 rpetit3/camlhmp "Bactrian Paper Patch (2)" 2025/09/16
 
 ## `Fixed`

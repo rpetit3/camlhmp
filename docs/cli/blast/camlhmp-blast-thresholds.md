@@ -56,19 +56,22 @@ To run `camlhmp-blast-thresholds`, you will need a FASTA file of your reference 
 Below is an example of how to run `camlhmp-blast-thresholds` using available test data.
 
 ```bash
+# Acquire test data
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/targets/sccmec-partial.fasta
+
 camlhmp-blast-thresholds \
-    --input tests/data/blast/targets/sccmec-partial.fasta \
+    --input sccmec-partial.fasta \
     --blast blastn
 
 Running camlhmp-blast-thresholds with following parameters:
-    --input tests/data/blast/targets/sccmec-partial.fasta
+    --input sccmec-partial.fasta
     --blast blastn
     --outdir ./camlhmp-blast-thresholds
     --prefix camlhmp
     --min-pident 70
     --min-coverage 70
 
-Gathering seqeuences from tests/data/blast/targets/sccmec-partial.fasta...
+Gathering seqeuences from sccmec-partial.fasta...
 Writing reference seqeuences to ./camlhmp-blast-thresholds/reference_seqs...
 Detecting failure for ccrA1
 Detected failure for ccrA1 with pident=75 and coverage=100 - ['ccrA1', 'ccrA2']

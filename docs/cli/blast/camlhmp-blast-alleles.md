@@ -44,15 +44,21 @@ file with the schema, and a FASTA file with the targets. Below is an example of 
 `camlhmp-blast-alleles` using available test data.
 
 ```bash
-camlhmp-blast-alleles \
-    --yaml tests/data/blast/alleles/spn-pbptype.yaml \
-    --targets tests/data/blast/alleles/spn-pbptype.fasta \
-    --input tests/data/blast/alleles/SRR2912551.fna.gz
+# Acquire test data
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.yaml
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.fasta
+wget https://github.com/rpetit3/camlhmp/raw/refs/heads/main/tests/data/blast/alleles/SRR2912551.fna.gz
 
-Running camlhmp with following parameters:
-    --input tests/data/blast/alleles/SRR2912551.fna.gz
-    --yaml tests/data/blast/alleles/spn-pbptype.yaml
-    --targets tests/data/blast/alleles/spn-pbptype.fasta
+# Run camlhmp-blast-alleles
+camlhmp-blast-alleles \
+    --yaml spn-pbptype.yaml \
+    --targets spn-pbptype.fasta \
+    --input SRR2912551.fna.gz
+
+Running camlhmp-blast-alleless with following parameters:
+    --input SRR2912551.fna.gz
+    --yaml spn-pbptype.yaml
+    --targets spn-pbptype.fasta
     --outdir ./
     --prefix camlhmp
     --min-pident 95
@@ -79,7 +85,7 @@ tblastn results written to ./camlhmp.tblastn.tsv
 
 ## Output Files
 
-`camlhmp-blast-region` will generate three output files:
+`camlhmp-blast-alleles` will generate three output files:
 
 | File Name              | Description                                     |
 |------------------------|-------------------------------------------------|
@@ -136,37 +142,4 @@ qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	
 2X_2	NODE_210_length_5085_cov_16.539627	100.000	100	358	5213	358	358	0	0	1	358	3172	2099	0.0	741
 2X_3	NODE_210_length_5085_cov_16.539627	99.721	100	358	5213	358	357	1	0	1	358	3172	2099	0.0	739
 2X_4	NODE_210_length_5085_cov_16.539627	99.441	100	358	5213	358	356	2	0	1	358	3172	2099	0.0	738
-```
-
-### {PREFIX}.details.tsv
-
-The `{PREFIX}.details.tsv` file is a tab-delimited file with details for each type. This file
-can be useful for seeing how a sample did against all other types in a schema.
-
-The columns in this file are:
-
-| Column          | Description                                                        |
-|-----------------|--------------------------------------------------------------------|
-| sample          | The sample name as determined by `--prefix`                        |
-| type            | The predicted type                                                 |
-| status          | The status of the type (`True` if passed thresholds, `False` if failed to exceed thresholds) |
-| targets         | The targets for the given type that had a match                    |
-| missing         | The targets for the given type that were not found                 |
-| coverage        | The coverage of the target region                                  |
-| hits            | The number of hits used to calculate coverage of the target region |
-| schema          | The schema used to determine the type                              |
-| schema_version  | The version of the schema used                                     |
-| camlhmp_version | The version of camlhmp used                                        |
-| params          | The parameters used for the analysis                               |
-| comment         | A small comment about the result                                   |
-
-Below is an example of the `{PREFIX}.details.tsv` file:
-
-```tsv
-sample	type	status	targets	missing	coverage	hits	schema	schema_version	camlhmp_version	params	comment
-camlhmp	O1	False		O1	12.49	2	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	Coverage based on 2 hits
-camlhmp	O2	False	O2	wzyB	100.00,0.00	1,0	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	O3	False		O3	1.43	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	O4	False		O4	13.86	2	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	Coverage based on 2 hits
-camlhmp	O5	True	O2		100.00	1	pseudomonas_serogroup_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
 ```

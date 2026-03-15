@@ -44,15 +44,21 @@ file with the schema, and a FASTA file with the targets. Below is an example of 
 `camlhmp-blast-targets` using available test data.
 
 ```bash
-camlhmp-blast-targets \
-    --yaml tests/data/blast/targets/sccmec-partial.yaml \
-    --targets tests/data/blast/targets/sccmec-partial.fasta \
-    --input tests/data/blast/targets/sccmec-i.fasta
+# Acquire test data
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/targets/sccmec-partial.yaml
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/targets/sccmec-partial.fasta
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/targets/sccmec-i.fasta
 
-Running camlhmp with following parameters:
-    --input tests/data/blast/targets/sccmec-i.fasta
-    --yaml tests/data/blast/targets/sccmec-partial.yaml
-    --targets tests/data/blast/targets/sccmec-partial.fasta
+# Run camlhmp-blast-targets
+camlhmp-blast-targets \
+    --yaml sccmec-partial.yaml \
+    --targets sccmec-partial.fasta \
+    --input sccmec-i.fasta
+
+Running camlhmp-blast-targets with following parameters:
+    --input sccmec-i.fasta
+    --yaml sccmec-partial.yaml
+    --targets sccmec-partial.fasta
     --outdir ./
     --prefix camlhmp
     --min-pident 95
@@ -66,7 +72,7 @@ Final Results...
 ┏━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━┓
 ┃ sample  ┃ type ┃ targets   ┃ schema    ┃ schema_v… ┃ camlhmp… ┃ params    ┃ comment ┃
 ┡━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━┩
-│ camlhmp │ I    │ ccrA1,cc… │ sccmec_p… │ 0.0.1     │ 0.3.1    │ min-cove… │         │
+│ camlhmp │ I    │ ccrA1,cc… │ sccmec_p… │ 0.0.1     │ 1.1.4    │ min-cove… │         │
 └─────────┴──────┴───────────┴───────────┴───────────┴──────────┴───────────┴─────────┘
 Writing outputs...
 Final predicted type written to ./camlhmp.tsv
@@ -106,8 +112,8 @@ The `{PREFIX}.tsv` file is a tab-delimited file with the predicted type. The col
 Below is an example of the `{PREFIX}.tsv` file:
 
 ```tsv
-sample	type	targets	schema	schema_version	camlhmp_version	params	comment
-camlhmp	I	ccrA1,ccrB1,IS431,IS1272,mecA,mecR1	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
+sample  type    targets schema  schema_version  camlhmp_version params  comment
+camlhmp I       ccrA1,ccrB1,IS431,IS1272,mecA,mecR1     sccmec_partial  0.0.1   1.1.4   min-coverage=95;min-pident=95
 ```
 
 ### {PREFIX}.blast.tsv
@@ -118,15 +124,15 @@ The columns are the standard BLAST output with `-outfmt 6`.
 Here is an example of the `{PREFIX}.blast.tsv` file:
 
 ```tsv
-qseqid	sseqid	pident	qcovs	qlen	slen	length	nident	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore
-ccrA1	AB033763.2	100.000	100	1350	39332	1350	1350	0	0	1	1350	23692	25041	0.0	2494
-ccrB1	AB033763.2	100.000	100	1152	39332	1152	1152	0	0	1	1152	25063	26214	0.0	2128
-IS1272	AB033763.2	100.000	100	1659	39332	1659	1659	0	0	1	1659	28423	30081	0.0	3064
-mecR1	AB033763.2	100.000	100	987	39332	987	987	0	0	1	987	30304	31290	0.0	1823
-mecA	AB033763.2	99.950	100	2007	39332	2007	2006	1	0	1	2007	31390	33396	0.0	3701
-mecA	AB033763.2	99.950	100	2007	39332	2007	2006	1	0	1	2007	31390	33396	0.0	3701
-IS431	AB033763.2	99.873	100	790	39332	790	789	1	0	1	790	35958	36747	0.0	1454
-IS431	AB033763.2	100.000	100	792	39332	792	792	0	0	1	792	35957	36748	0.0	1463
+qseqid  sseqid  pident  qcovs   qlen    slen    length  nident  mismatch        gapopen qstart  qend    sstart  send    evalue  bitscore
+ccrA1   AB033763.2      100.000 100     1350    39332   1350    1350    0       0       1       1350    23692   25041   0.0     2494
+ccrB1   AB033763.2      100.000 100     1152    39332   1152    1152    0       0       1       1152    25063   26214   0.0     2128
+IS1272  AB033763.2      100.000 100     1659    39332   1659    1659    0       0       1       1659    28423   30081   0.0     3064
+mecR1   AB033763.2      100.000 100     987     39332   987     987     0       0       1       987     30304   31290   0.0     1823
+mecA    AB033763.2      99.950  100     2007    39332   2007    2006    1       0       1       2007    31390   33396   0.0     3701
+mecA    AB033763.2      99.950  100     2007    39332   2007    2006    1       0       1       2007    31390   33396   0.0     3701
+IS431   AB033763.2      99.873  100     790     39332   790     789     1       0       1       790     35958   36747   0.0     1454
+IS431   AB033763.2      100.000 100     792     39332   792     792     0       0       1       792     35957   36748   0.0     1463
 ```
 
 ### {PREFIX}.details.tsv
@@ -152,11 +158,11 @@ The columns in this file are:
 Below is an example of the `{PREFIX}.details.tsv` file:
 
 ```tsv
-sample	type	status	targets	missing	schema	schema_version	camlhmp_version	params	comment
-camlhmp	I	True	ccrA1,ccrB1,IS431,mecA,mecR1,IS1272		sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	II	False	IS431,mecA,mecR1	ccrA2,ccrB2,mecI	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	III	False	IS431,mecA,mecR1	ccrA3,ccrB3,mecI	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
-camlhmp	IV	False	IS431,mecA,mecR1,IS1272	ccrA2,ccrB2	sccmec_partial	0.0.1	0.2.1	min-coverage=95;min-pident=95	
+sample  type    status  targets missing schema  schema_version  camlhmp_version params  comment
+camlhmp I       True    ccrA1,ccrB1,IS431,mecA,mecR1,IS1272             sccmec_partial  0.0.1   1.1.4   min-coverage=95;min-pident=95
+camlhmp II      False   IS431,mecA,mecR1        ccrA2,ccrB2,mecI        sccmec_partial  0.0.1   1.1.4   min-coverage=95;min-pident=95
+camlhmp III     False   IS431,mecA,mecR1        ccrA3,ccrB3,mecI        sccmec_partial  0.0.1   1.1.4   min-coverage=95;min-pident=95
+camlhmp IV      False   IS431,mecA,mecR1,IS1272 ccrA2,ccrB2     sccmec_partial  0.0.1   1.1.4   min-coverage=95;min-pident=95	
 ```
 
 ## Example Implementation
