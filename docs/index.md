@@ -22,6 +22,59 @@ maintenance of multiple organism typing tools. Managing these tools separately i
 time-consuming and challenging. `camlhmp` simplifies this by providing a single
 framework for each tool.
 
+## Quick Start
+
+To quickly get started with `camlhmp`, you can install it through Bioconda and run the
+command-line interface:
+
+```bash
+# Install camlhmp through Bioconda
+conda create -n camlhmp -c conda-forge -c bioconda camlhmp
+conda activate camlhmp
+camlhmp --help
+
+# Example usage of camlhmp-blast-alleles
+# Acquire test data
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.yaml
+wget https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.fasta
+wget https://github.com/rpetit3/camlhmp/raw/refs/heads/main/tests/data/blast/alleles/SRR2912551.fna.gz
+
+# Run camlhmp-blast-alleles
+camlhmp-blast-alleles \
+    --yaml spn-pbptype.yaml \
+    --targets spn-pbptype.fasta \
+    --input SRR2912551.fna.gz
+
+Running camlhmp-blast-alleless with following parameters:
+    --input SRR2912551.fna.gz
+    --yaml spn-pbptype.yaml
+    --targets spn-pbptype.fasta
+    --outdir ./
+    --prefix camlhmp
+    --min-pident 95
+    --min-coverage 95
+
+Starting camlhmp for S. pneumoniae PBP typing...
+Running tblastn...
+Processing hits...
+Final Results...
+                               S. pneumoniae PBP typing
+┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┓
+┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ 1… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃ … ┃ 2… ┃
+┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━┩
+│ … │ … │ … │ … │ … │ … │ … │ … │ … │    │ 0 │ 1… │ … │ 5… │   │ 2  │ … │ 1… │ … │    │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┘
+Writing outputs...
+Final predicted type written to ./camlhmp.tsv
+tblastn results written to ./camlhmp.tblastn.tsv
+```
+
+For more example commands and outputs, see the documentation for each command:
+
+- [camlhmp-blast-alleles](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-alleles/)
+- [camlhmp-blast-regions](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-regions/)
+- [camlhmp-blast-targets](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-targets/)
+
 ## Documentation Overview
 
 [Installation](installation.md)  

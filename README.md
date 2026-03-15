@@ -73,6 +73,12 @@ Final predicted type written to ./camlhmp.tsv
 tblastn results written to ./camlhmp.tblastn.tsv
 ```
 
+For more example commands and outputs, see the documentation for each command:
+
+- [camlhmp-blast-alleles](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-alleles/)
+- [camlhmp-blast-regions](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-regions/)
+- [camlhmp-blast-targets](https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-targets/)
+
 ## Installation
 
 `camlhmp` is available through [PyPI](https://pypi.org/project/camlhmp/) and
