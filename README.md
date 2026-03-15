@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19040444.svg)](https://doi.org/10.5281/zenodo.19040444)
+
 # camlhmp
 
 🐪 camlhmp 🐪 - Classification through yAML Heuristic Mapping Protocol
