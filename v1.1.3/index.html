@@ -541,6 +541,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1446,6 +1457,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1520,6 +1542,55 @@ can easily remain up to date with the latest scientific developments.</p>
 maintenance of multiple organism typing tools. Managing these tools separately is
 time-consuming and challenging. <code>camlhmp</code> simplifies this by providing a single
 framework for each tool.</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>To quickly get started with <code>camlhmp</code>, you can install it through Bioconda and run the
+command-line interface:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install camlhmp through Bioconda</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>camlhmp<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>camlhmp
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>camlhmp
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>camlhmp<span class="w"> </span>--help
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Example usage of camlhmp-blast-alleles</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Acquire test data</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.yaml
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/rpetit3/camlhmp/refs/heads/main/tests/data/blast/alleles/spn-pbptype.fasta
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>wget<span class="w"> </span>https://github.com/rpetit3/camlhmp/raw/refs/heads/main/tests/data/blast/alleles/SRR2912551.fna.gz
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># Run camlhmp-blast-alleles</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>camlhmp-blast-alleles<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span>--yaml<span class="w"> </span>spn-pbptype.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>--targets<span class="w"> </span>spn-pbptype.fasta<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span>--input<span class="w"> </span>SRR2912551.fna.gz
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Running<span class="w"> </span>camlhmp-blast-alleless<span class="w"> </span>with<span class="w"> </span>following<span class="w"> </span>parameters:
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span>--input<span class="w"> </span>SRR2912551.fna.gz
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span>--yaml<span class="w"> </span>spn-pbptype.yaml
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span>--targets<span class="w"> </span>spn-pbptype.fasta
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span>--outdir<span class="w"> </span>./
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span>--prefix<span class="w"> </span>camlhmp
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span>--min-pident<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span>--min-coverage<span class="w"> </span><span class="m">95</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>Starting<span class="w"> </span>camlhmp<span class="w"> </span><span class="k">for</span><span class="w"> </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing...
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Running<span class="w"> </span>tblastn...
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>Processing<span class="w"> </span>hits...
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>Final<span class="w"> </span>Results...
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">                               </span>S.<span class="w"> </span>pneumoniae<span class="w"> </span>PBP<span class="w"> </span>typing
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┓
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃<span class="w"> </span>…<span class="w"> </span>┃<span class="w"> </span><span class="m">2</span>…<span class="w"> </span>┃
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━┩
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│<span class="w"> </span><span class="m">0</span><span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">5</span>…<span class="w"> </span>│<span class="w">   </span>│<span class="w"> </span><span class="m">2</span><span class="w">  </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w"> </span><span class="m">1</span>…<span class="w"> </span>│<span class="w"> </span>…<span class="w"> </span>│<span class="w">    </span>│
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>└───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┴───┴────┘
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>Writing<span class="w"> </span>outputs...
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Final<span class="w"> </span>predicted<span class="w"> </span><span class="nb">type</span><span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tsv
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>tblastn<span class="w"> </span>results<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>./camlhmp.tblastn.tsv
+</span></code></pre></div>
+<p>For more example commands and outputs, see the documentation for each command:</p>
+<ul>
+<li><a href="https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-alleles/">camlhmp-blast-alleles</a></li>
+<li><a href="https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-regions/">camlhmp-blast-regions</a></li>
+<li><a href="https://rpetit3.github.io/camlhmp/latest/cli/blast/camlhmp-blast-targets/">camlhmp-blast-targets</a></li>
+</ul>
 <h2 id="documentation-overview">Documentation Overview<a class="headerlink" href="#documentation-overview" title="Permanent link">&para;</a></h2>
 <p><a href="installation/">Installation</a><br />
 Information for installing <code>camlhmp</code> on your system</p>
