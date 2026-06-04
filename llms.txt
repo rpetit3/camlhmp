@@ -1,0 +1,68 @@
+# camlhmp
+
+> Classification through yAML Heuristic Mapping Protocol
+
+camlhmp is a framework for generating organism typing tools from YAML schemas.
+Researchers define typing schemas (targets, aliases, types) in YAML; camlhmp
+runs BLAST+ against input FASTA assemblies and resolves the results into a
+final type call. No schemas ship with the package -- they are user-supplied.
+
+## Core Entry Points
+
+- [pyproject.toml](pyproject.toml): Package metadata, entry points, dependencies
+- [camlhmp/cli/camlhmp.py](camlhmp/cli/camlhmp.py): Main CLI dispatcher
+- [camlhmp/framework.py](camlhmp/framework.py): Schema parsing, type resolution
+- [camlhmp/engines/blast.py](camlhmp/engines/blast.py): BLAST+ execution engine
+
+## CLI Commands
+
+- `camlhmp`: camlhmp.cli.camlhmp:main
+- `camlhmp-blast-alleles`: Classify assemblies using BLAST against alleles of a set of genes
+- `camlhmp-blast-regions`: Classify assemblies using BLAST against larger genomic regions
+- `camlhmp-blast-targets`: Classify assemblies using BLAST against individual genes or proteins
+- `camlhmp-blast-thresholds`: camlhmp.cli.blast.thresholds:main
+- `camlhmp-extract`: Extract typing targets from a set of reference sequences
+
+## Classification Modes
+
+- **alleles**: Per-gene allele classification (exact match vs novel variant)
+- **regions**: Coverage-based classification aggregating multiple HSPs across a region
+- **targets**: Binary presence/absence of individual gene or protein targets
+
+## Python API
+
+- [camlhmp/framework.py](camlhmp/framework.py): `read_framework`, `print_camlhmp_version`, `print_version`, `print_versions`, `get_types`, `check_types`, `check_regions`
+- [camlhmp/engines/blast.py](camlhmp/engines/blast.py): `run_blast`, `run_blastn`, `run_tblastn`
+- [camlhmp/parsers/blast.py](camlhmp/parsers/blast.py): `get_blast_allele_hits`, `get_blast_region_hits`, `get_blast_target_hits`, `finalize_regions`, `finalize_targets`
+- [camlhmp/utils.py](camlhmp/utils.py): `execute`, `check_dependencies`, `get_platform`, `validate_file`, `validate_engine`, `file_exists_error`, `parse_seq`, `parse_seqs`, `parse_seq_lengths`, `parse_table`, `parse_yaml`, `write_tsv`, `remove_lowercase`
+- [camlhmp/visuals/framework.py](camlhmp/visuals/framework.py): `describe_framework`
+
+## Schema Structure
+
+Typing schemas are YAML files with these sections:
+- **metadata**: General information about the typing schema
+- **engine**: Computational tool and default parameters for analysis
+- **targets**: List of sequence targets (genes, proteins, markers) to analyze
+- **aliases**: Groups of targets under a common name for easier reference
+- **types**: Combinations of targets/aliases that define distinct types
+
+- [docs/schema.md](docs/schema.md): Full schema specification and examples
+
+## Tools Built with camlhmp
+
+- [pasty](https://github.com/rpetit3/pasty): in silico serogrouping of Pseudomonas aeruginosa isolates (_Pseudomonas aeruginosa_)
+- [pbptyper](https://github.com/rpetit3/pbptyper): In silico Penicillin Binding Protein (PBP) typer for Streptococcus pneumoniae assemblies (_Streptococcus pneumoniae_)
+- [sccmec](https://github.com/rpetit3/sccmec): A tool for typing SCCmec cassettes in assemblies (_Staphylococcus aureus_)
+
+## Documentation
+
+- [README.md](README.md): Project overview and quick start
+- [CHANGELOG.md](CHANGELOG.md): Version history
+- [docs/](docs/): Full MkDocs documentation source
+- [docs/cli/](docs/cli/): CLI command reference (one page per command)
+- [docs/api/](docs/api/): Python API reference
+
+## AI Agent Documentation
+
+- [CLAUDE.md](CLAUDE.md): Project context for AI agents -- architecture, conventions, gotchas
+- [catalog.json](catalog.json): Machine-readable component index (this file's structured counterpart)

@@ -1,0 +1,406 @@
+{
+  "version": "1.0",
+  "generated": "2026-06-04T19:23:29Z",
+  "camlhmp_version": "1.1.4",
+  "project": {
+    "name": "camlhmp",
+    "description": "Classification through yAML Heuristic Mapping Protocol",
+    "license": "MIT",
+    "homepage": "https://github.com/rpetit3/camlhmp",
+    "repository": "https://github.com/rpetit3/camlhmp",
+    "keywords": [
+      "bioinformatics",
+      "bacteria",
+      "serotype",
+      "genotype"
+    ],
+    "python": "^3.11"
+  },
+  "dependencies": {
+    "pyyaml": "^6.0.1",
+    "executor": "^23.2",
+    "rich": "^13.7.1",
+    "rich-click": "^1.7.4",
+    "biopython": "^1.83"
+  },
+  "commands": {
+    "camlhmp": {
+      "description": "",
+      "entry_point": "camlhmp.cli.camlhmp:main",
+      "classification_mode": "general"
+    },
+    "camlhmp-blast-alleles": {
+      "description": "Classify assemblies using BLAST against alleles of a set of genes",
+      "entry_point": "camlhmp.cli.blast.alleles:main",
+      "classification_mode": "alleles"
+    },
+    "camlhmp-blast-regions": {
+      "description": "Classify assemblies using BLAST against larger genomic regions",
+      "entry_point": "camlhmp.cli.blast.regions:main",
+      "classification_mode": "regions"
+    },
+    "camlhmp-blast-targets": {
+      "description": "Classify assemblies using BLAST against individual genes or proteins",
+      "entry_point": "camlhmp.cli.blast.targets:main",
+      "classification_mode": "targets"
+    },
+    "camlhmp-blast-thresholds": {
+      "description": "",
+      "entry_point": "camlhmp.cli.blast.thresholds:main",
+      "classification_mode": "thresholds"
+    },
+    "camlhmp-extract": {
+      "description": "Extract typing targets from a set of reference sequences",
+      "entry_point": "camlhmp.cli.extract:main",
+      "classification_mode": "extract"
+    }
+  },
+  "api": {
+    "framework": {
+      "module": "camlhmp.framework",
+      "path": "camlhmp/framework.py",
+      "functions": [
+        {
+          "name": "read_framework",
+          "args": [
+            "yamlfile"
+          ],
+          "description": "Read the framework YAML file."
+        },
+        {
+          "name": "print_camlhmp_version",
+          "args": [],
+          "description": "Print the version of camlhmp, then exit"
+        },
+        {
+          "name": "print_version",
+          "args": [
+            "framework"
+          ],
+          "description": "Print the version of the framework, then exit"
+        },
+        {
+          "name": "print_versions",
+          "args": [
+            "frameworks"
+          ],
+          "description": "Print the version of the framework, then exit"
+        },
+        {
+          "name": "get_types",
+          "args": [
+            "framework"
+          ],
+          "description": "Get the types from the framework."
+        },
+        {
+          "name": "check_types",
+          "args": [
+            "types",
+            "results"
+          ],
+          "description": "Check the types against the results."
+        },
+        {
+          "name": "check_regions",
+          "args": [
+            "types",
+            "results",
+            "min_coverage"
+          ],
+          "description": "Check the region types against the results."
+        }
+      ]
+    },
+    "engines.blast": {
+      "module": "camlhmp.engines.blast",
+      "path": "camlhmp/engines/blast.py",
+      "functions": [
+        {
+          "name": "run_blast",
+          "args": [
+            "engine",
+            "subject",
+            "query",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "Query sequences against a input subject using a specified BLAST+ algorithm."
+        },
+        {
+          "name": "run_blastn",
+          "args": [
+            "subject",
+            "query",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "An alias for `run_blast` which uses `blastn`"
+        },
+        {
+          "name": "run_tblastn",
+          "args": [
+            "subject",
+            "query",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "An alias for `run_blast` which uses `tblastn`."
+        }
+      ]
+    },
+    "parsers.blast": {
+      "module": "camlhmp.parsers.blast",
+      "path": "camlhmp/parsers/blast.py",
+      "functions": [
+        {
+          "name": "get_blast_allele_hits",
+          "args": [
+            "targets",
+            "results",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "Find the allele hits in the BLAST results."
+        },
+        {
+          "name": "get_blast_region_hits",
+          "args": [
+            "targets",
+            "results",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "Aggregate multiple target hits for a region from the BLAST results."
+        },
+        {
+          "name": "get_blast_target_hits",
+          "args": [
+            "targets",
+            "results"
+          ],
+          "description": "Find the target hits in the BLAST results."
+        },
+        {
+          "name": "finalize_regions",
+          "args": [
+            "prefix",
+            "hits",
+            "framework",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "Finalize the results from region-based analysis."
+        },
+        {
+          "name": "finalize_targets",
+          "args": [
+            "prefix",
+            "results",
+            "hits",
+            "framework",
+            "min_pident",
+            "min_coverage"
+          ],
+          "description": "Finalize the target hits."
+        }
+      ]
+    },
+    "utils": {
+      "module": "camlhmp.utils",
+      "path": "camlhmp/utils.py",
+      "functions": [
+        {
+          "name": "execute",
+          "args": [
+            "cmd",
+            "directory",
+            "capture",
+            "stdout_file",
+            "stderr_file",
+            "allow_fail"
+          ],
+          "description": "A simple wrapper around executor."
+        },
+        {
+          "name": "check_dependencies",
+          "args": [],
+          "description": "Check if all dependencies are installed."
+        },
+        {
+          "name": "get_platform",
+          "args": [],
+          "description": "Get the platform of the executing machine"
+        },
+        {
+          "name": "validate_file",
+          "args": [
+            "filename"
+          ],
+          "description": "Validate a file exists and not empty, if passing return the absolute path"
+        },
+        {
+          "name": "validate_engine",
+          "args": [
+            "tool",
+            "engine",
+            "accepted"
+          ],
+          "description": "Validate the engine is in the accepted list."
+        },
+        {
+          "name": "file_exists_error",
+          "args": [
+            "filename",
+            "force"
+          ],
+          "description": "Determine if a file exists and raise an error if it does."
+        },
+        {
+          "name": "parse_seq",
+          "args": [
+            "seqfile",
+            "format"
+          ],
+          "description": "Parse a sequence file containing a single record."
+        },
+        {
+          "name": "parse_seqs",
+          "args": [
+            "seqfile",
+            "format"
+          ],
+          "description": "Parse a sequence file containing a multiple records."
+        },
+        {
+          "name": "parse_seq_lengths",
+          "args": [
+            "seqfile",
+            "format"
+          ],
+          "description": "Parse a sequence file and return the lengths of the sequences."
+        },
+        {
+          "name": "parse_table",
+          "args": [
+            "csvfile",
+            "delimiter",
+            "has_header"
+          ],
+          "description": "Parse a delimited file."
+        },
+        {
+          "name": "parse_yaml",
+          "args": [
+            "yamlfile"
+          ],
+          "description": "Parse a YAML file."
+        },
+        {
+          "name": "write_tsv",
+          "args": [
+            "data",
+            "output"
+          ],
+          "description": "Write the dictionary to a TSV file."
+        },
+        {
+          "name": "remove_lowercase",
+          "args": [
+            "s"
+          ],
+          "description": "Remove lowercase characters from a string."
+        }
+      ]
+    },
+    "visuals.framework": {
+      "module": "camlhmp.visuals.framework",
+      "path": "camlhmp/visuals/framework.py",
+      "functions": [
+        {
+          "name": "describe_framework",
+          "args": [
+            "framework"
+          ],
+          "description": "Print the framework YAML file."
+        }
+      ]
+    }
+  },
+  "engines": {
+    "blast": {
+      "tools": [
+        "blastn",
+        "tblastn"
+      ],
+      "description": "BLAST+ sequence search via shell pipe"
+    }
+  },
+  "classification_modes": {
+    "alleles": "Per-gene allele classification (exact match vs novel variant)",
+    "regions": "Coverage-based classification aggregating multiple HSPs across a region",
+    "targets": "Binary presence/absence of individual gene or protein targets"
+  },
+  "schema_structure": {
+    "metadata": {
+      "fields": [
+        "id",
+        "name",
+        "description",
+        "version",
+        "curators"
+      ],
+      "description": "General information about the typing schema"
+    },
+    "engine": {
+      "fields": [
+        "type",
+        "tool",
+        "params"
+      ],
+      "params": [
+        "min_pident",
+        "min_coverage"
+      ],
+      "description": "Computational tool and default parameters for analysis"
+    },
+    "targets": {
+      "description": "List of sequence targets (genes, proteins, markers) to analyze"
+    },
+    "aliases": {
+      "fields": [
+        "name",
+        "targets"
+      ],
+      "description": "Groups of targets under a common name for easier reference"
+    },
+    "types": {
+      "fields": [
+        "name",
+        "targets",
+        "excludes"
+      ],
+      "description": "Combinations of targets/aliases that define distinct types"
+    }
+  },
+  "available_tools": [
+    {
+      "name": "pasty",
+      "url": "https://github.com/rpetit3/pasty",
+      "organism": "Pseudomonas aeruginosa",
+      "description": "in silico serogrouping of Pseudomonas aeruginosa isolates"
+    },
+    {
+      "name": "pbptyper",
+      "url": "https://github.com/rpetit3/pbptyper",
+      "organism": "Streptococcus pneumoniae",
+      "description": "In silico Penicillin Binding Protein (PBP) typer for Streptococcus pneumoniae assemblies"
+    },
+    {
+      "name": "sccmec",
+      "url": "https://github.com/rpetit3/sccmec",
+      "organism": "Staphylococcus aureus",
+      "description": "A tool for typing SCCmec cassettes in assemblies"
+    }
+  ]
+}
