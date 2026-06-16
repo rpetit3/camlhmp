@@ -79,7 +79,6 @@ Non-Python dependencies (install via conda/mamba):
 ```bash
 conda env create -f environment.yml
 conda activate camlhmp
-pip install poetry
 just install
 ```
 

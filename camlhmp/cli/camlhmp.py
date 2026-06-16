@@ -12,6 +12,7 @@ COMMANDS = {
     "camlhmp-blast-alleles": "Classify assemblies using BLAST against alleles of a set of genes",
     "camlhmp-blast-regions": "Classify assemblies using BLAST against larger genomic regions",
     "camlhmp-blast-targets": "Classify assemblies using BLAST against individual genes or proteins",
+    "camlhmp-blast-thresholds": "Determine the specificity thresholds for a set of reference sequences",
     "camlhmp-extract": "Extract typing targets from a set of reference sequences",
 }
 
